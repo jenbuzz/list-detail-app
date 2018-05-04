@@ -1,0 +1,231 @@
+list-detail-app {
+    @import '~bootstrap/scss/bootstrap';
+}
+
+list-detail-app {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+list-detail-app .container {
+    width: 100% !important;
+    min-width: auto !important;
+    max-width: none !important;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+list-detail-app .header {
+    background: #000000;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+list-detail-app .header a, list-detail-app .header a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+list-detail-app h2 {
+    font-size: 1.4rem !important;
+    margin-bottom: 0;
+}
+
+list-detail-app .searchbar {
+    background: #000000;
+    padding: 0 15px 15px 15px;
+
+    .clear {
+        background-image: url(assets/delete.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #fff;
+        padding: 0 20px;
+        cursor: pointer;
+    }
+}
+
+list-detail-app .col-md-12, list-detail-app .col-sm, list-detail-app .col-12 {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+list .col-sm {
+    max-width: 100%;
+}
+
+list .pagination-row .col-sm {
+    max-width: 50%;
+}
+
+list .row {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+}
+
+list .card {
+    cursor: pointer;
+}
+
+list .page-link {
+    font-size: 0.8rem;
+
+    &.disabled:hover {
+        background: none;
+    }
+}
+
+detail .card .card-image-container {
+    width: 100%;
+}
+
+detail .btn {
+    background: #000000;
+    color: #fff;
+    max-width: 100%;
+    white-space: normal;
+
+    &:hover {
+        color: #fff;
+    }
+}
+detail .btn:hover {
+    opacity: 0.8;
+}
+
+list .card-image-container {
+    height: 300px;
+    background-position: center;
+    background-color: #222;
+    background-size: cover;
+}
+
+list .card-body {
+    min-height: 150px;
+    overflow: hidden;
+}
+
+.card-image-container {
+    position: relative;
+}
+
+.card-image-container div {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: linear-gradient(transparent, #000000);
+    color: #fff;
+    padding: 25px 5px 5px 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media (min-width: 335px) {
+    list .page-link {
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 576px) {
+    list-detail-app h2 {
+        font-size: 1.6rem !important;
+    }
+
+    list .col-sm {
+        max-width: 50%;
+        flex: 1 0 50%;
+    }
+
+    list .card-body {
+        max-height: 150px;
+    }
+}
+
+@media (min-width: 768px) {
+    detail .card {
+        flex-direction: row;
+    }
+
+    detail .card .card-image-container {
+        width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    list .card-body {
+        min-height: 130px;
+        max-height: 130px;
+    }
+}
+
+list-detail-app .loader-container {
+    position: absolute;
+    background: #fff;
+    height: 100%;
+    right: 0;
+    left: 0;
+}
+.loader {
+    font-size: 10px;
+    margin: 50px auto;
+    text-indent: -9999em;
+    width: 11em;
+    height: 11em;
+    border-radius: 50%;
+    background: #ffffff;
+    background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+    background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+    background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+    background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+    background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+    position: relative;
+    -webkit-animation: animationLoad 1.4s infinite linear;
+    animation: animationLoad 1.4s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+}
+.loader:before {
+    width: 50%;
+    height: 50%;
+    background: #dddddd;
+    border-radius: 100% 0 0 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+}
+.loader:after {
+    background: #ffffff;
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+@-webkit-keyframes animationLoad {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes animationLoad {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}

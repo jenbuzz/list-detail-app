@@ -1,0 +1,36 @@
+{
+    "metaTags": {
+        "url": "",
+        "title": "",
+        "titleSuffix": "",
+        "image": ""
+    },
+    "apiPath": "",
+    "apiListParameters": [],
+    "apiListSearchFieldName": "",
+    "apiListPaginationOffsetName": "",
+    "apiListPaginationLimitName": "",
+    "apiDetailParameters": [],
+    "apiDetailIdParameter": "",
+    "apiDataPath": [],
+    "apiImagePath": [],
+    "apiImageIdPath": [],
+    "apiImageUrlPath": [],
+    "articleFieldMapping": {
+        "id": [],
+        "title": [],
+        "internal_link": [],
+        "external_link": [],
+        "image": [],
+        "source": []
+    },
+    "styling": {
+        "themeMainColor": ""
+    },
+    "text": {
+        "title": "",
+        "search": "",
+        "goback": "",
+        "readmore": ""
+    }
+}

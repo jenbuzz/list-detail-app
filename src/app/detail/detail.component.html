@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-12 mb-4 mt-3 text-center">
+        <a class="page-link d-inline-block" (click)="back()">&laquo; {{ goback }}</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm" *ngIf="(article$ | async) as article">
+        <div class="card mb-4">
+            <div class="card-image-container">
+                <img class="card-img-top" src="{{ article.image }}" alt="{{ article.title }}">
+                <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ article.source }}</div>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"><strong>{{ article.title }}</strong></h5>
+                <p class="card-text text-muted"><small>Source: {{ article.source }}</small></p>
+                <div>
+                    <a class="btn" [style.background]="themeMainColor" href="{{ article.external_link }}" target="_blank" rel="nofollow">{{ readmore }} {{ article.source }} (external link)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="loader" *ngIf="isLoading$ | async"></div>
+        <div class="text-center" *ngIf="hasError$ | async">
+            <p>Sorry, something went wrong...</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 mb-3 mt-2 text-center">
+        <a class="page-link d-inline-block" (click)="back()">&laquo; {{ goback }}</a>
+    </div>
+</div>

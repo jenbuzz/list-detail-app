@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row header" [style.background-color]="themeMainColor">
+        <div class="col-md-12 text-center">
+            <a [routerLink]="['/']" *ngIf="title"><h2>{{ title }}</h2></a>
+        </div>
+    </div>
+    <div class="row searchbar" [style.background-color]="themeMainColor">
+        <div class="col-md-12">
+            <form>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        placeholder="{{ searchPlaceholder }}" 
+                        aria-label="Search" 
+                        aria-describedby="search" 
+                        name="search" 
+                        [value]="searchTerm"
+                        (keyup)="setSearchTerm($event.target.value)">
+
+                    <div class="input-group-append">
+                        <i class="input-group-text clear" (click)="setSearchTerm('')"></i>
+                    </div>
+                </div>    
+            </form>
+        </div>
+    </div>
+    
+    <router-outlet></router-outlet>
+</div>
