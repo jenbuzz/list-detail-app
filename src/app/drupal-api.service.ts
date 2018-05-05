@@ -116,24 +116,7 @@ export class DrupalApiService {
                             return;
                         }
 
-                        let finalImagePath = '';
-                        let imagePath = this.getElementDataByMapping(element, 'image');
-                        let apiImagePath = this.config.get('api').image.path;
-                        if (imagePath && apiImagePath && apiImagePath.length > 0) {
-                            let elementImage = this.mapData(elements, apiImagePath);
-
-                            elementImage.forEach(image => {
-                                let apiImageIdPath = this.config.get('api').image.idPath;
-                                let imageId = this.mapData(image, apiImageIdPath);
-                                if (imageId == imagePath) {
-                                    let apiImageUrlPath = this.config.get('api').image.urlPath;
-                                    finalImagePath = this.mapData(image, apiImageUrlPath);
-                                    return;
-                                }
-                            });
-                        }
-
-                        preparedElements.push(this.prepareElement(element, finalImagePath));
+                        preparedElements.push(this.prepareElement(element));
                     });
                 }
 
@@ -180,24 +163,7 @@ export class DrupalApiService {
                         return;
                     }
 
-                    let finalImagePath = '';
-                    let imagePath = this.getElementDataByMapping(element, 'image');
-                    let apiImagePath = this.config.get('api').image.path;
-                    if (imagePath && apiImagePath && apiImagePath.length > 0) {
-                        let elementImage = this.mapData(element, apiImagePath);
-
-                        elementImage.forEach(image => {
-                            let apiImageIdPath = this.config.get('api').image.idPath;
-                            let imageId = this.mapData(image, apiImageIdPath);
-                            if (imageId == imagePath) {
-                                let apiImageUrlPath = this.config.get('api').image.urlPath;
-                                finalImagePath = this.mapData(image, apiImageUrlPath);
-                                return;
-                            }
-                        });
-                    }
-
-                    preparedElement = this.prepareElement(element, finalImagePath);
+                    preparedElement = this.prepareElement(element);
                 }
 
                 return preparedElement;
@@ -213,7 +179,24 @@ export class DrupalApiService {
             );;
     }
 
-    private prepareElement(element: any, imagePath: string): Element {
+    private prepareElement(element: any): Element {
+        let finalImagePath = '';
+        let imagePath = this.getElementDataByMapping(element, 'image');
+        let apiImagePath = this.config.get('api').image.path;
+        if (imagePath && apiImagePath && apiImagePath.length > 0) {
+            let elementImage = this.mapData(element, apiImagePath);
+
+            elementImage.forEach(image => {
+                let apiImageIdPath = this.config.get('api').image.idPath;
+                let imageId = this.mapData(image, apiImageIdPath);
+                if (imageId == imagePath) {
+                    let apiImageUrlPath = this.config.get('api').image.urlPath;
+                    finalImagePath = this.mapData(image, apiImageUrlPath);
+                    return;
+                }
+            });
+        }
+
         return {
             id: this.getElementDataByMapping(element, 'id'),
             title: this.getElementDataByMapping(element, 'title'),
