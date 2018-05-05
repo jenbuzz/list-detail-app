@@ -6,3 +6,11 @@ export interface Element {
     image: string;
     source: string;
 }
+
+export interface Config {
+    metaTags: any;
+    api: any;
+    elementFieldMapping: any;
+    styling: any;
+    text: any;
+}
