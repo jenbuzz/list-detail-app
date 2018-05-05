@@ -5,11 +5,12 @@
         "titleSuffix": "",
         "image": ""
     },
-    "apiPath": "",
+    "apiListPath": "",
     "apiListParameters": [],
     "apiListSearchFieldName": "",
     "apiListPaginationOffsetName": "",
     "apiListPaginationLimitName": "",
+    "apiDetailPath": "",
     "apiDetailParameters": [],
     "apiDetailIdParameter": "",
     "apiDataPath": [],

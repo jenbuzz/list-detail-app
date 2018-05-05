@@ -90,7 +90,7 @@ export class DrupalApiService {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        let apiPath = this.config.get('apiPath');
+        let apiPath = this.config.get('apiListPath');
         apiPath += '?' + this.config.get('apiListParameters').join('&');
         apiPath += '&' + this.config.get('apiListPaginationOffsetName') + '=' + (this.page * this.limit);
         apiPath += '&' + this.config.get('apiListPaginationLimitName') + '=' + this.limit;
@@ -158,7 +158,7 @@ export class DrupalApiService {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        let apiPath = environment.apiUrl + this.config.get('apiPath');
+        let apiPath = environment.apiUrl + this.config.get('apiDetailPath');
         apiPath += '?' + this.config.get('apiDetailIdParameter') + '=' + id;
         apiPath += '&' + this.config.get('apiDetailParameters').join('&');
 
