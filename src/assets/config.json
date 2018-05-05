@@ -5,18 +5,26 @@
         "titleSuffix": "",
         "image": ""
     },
-    "apiListPath": "",
-    "apiListParameters": [],
-    "apiListSearchFieldName": "",
-    "apiListPaginationOffsetName": "",
-    "apiListPaginationLimitName": "",
-    "apiDetailPath": "",
-    "apiDetailParameters": [],
-    "apiDetailIdParameter": "",
-    "apiDataPath": [],
-    "apiImagePath": [],
-    "apiImageIdPath": [],
-    "apiImageUrlPath": [],
+    "api": {
+        "list": {
+            "path": "",
+            "parameters": [],
+            "searchFieldName": "",
+            "paginationOffsetName": "",
+            "paginationLimitName": ""
+        },
+        "detail": {
+            "path": "",
+            "parameters": [],
+            "idParameter": ""
+        },
+        "dataPath": [],
+        "image": {
+            "path": [],
+            "idPath": [],
+            "urlPath": []
+        }
+    },
     "elementFieldMapping": {
         "id": [],
         "title": [],

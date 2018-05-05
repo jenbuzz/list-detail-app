@@ -90,13 +90,13 @@ export class DrupalApiService {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        let apiPath = this.config.get('apiListPath');
-        apiPath += '?' + this.config.get('apiListParameters').join('&');
-        apiPath += '&' + this.config.get('apiListPaginationOffsetName') + '=' + (this.page * this.limit);
-        apiPath += '&' + this.config.get('apiListPaginationLimitName') + '=' + this.limit;
+        let apiPath = this.config.get('api').list.path;
+        apiPath += '?' + this.config.get('api').list.parameters.join('&');
+        apiPath += '&' + this.config.get('api').list.paginationOffsetName + '=' + (this.page * this.limit);
+        apiPath += '&' + this.config.get('api').list.paginationLimitName + '=' + this.limit;
 
         if (searchTerm) {
-            apiPath += '&' + this.config.get('apiListSearchFieldName') + '=' + searchTerm;
+            apiPath += '&' + this.config.get('api').list.searchFieldName + '=' + searchTerm;
         }
 
         this.http.get(environment.apiUrl + apiPath)
@@ -107,7 +107,7 @@ export class DrupalApiService {
             .map(elements => {
                 let preparedElements = [];
 
-                let apiDataPath = this.config.get('apiDataPath');
+                let apiDataPath = this.config.get('api').dataPath;
                 let elementData = this.mapData(elements, apiDataPath);
 
                 if (elementData && elementData.length > 0) {
@@ -118,15 +118,15 @@ export class DrupalApiService {
 
                         let finalImagePath = '';
                         let imagePath = this.getElementDataByMapping(element, 'image');
-                        let apiImagePath = this.config.get('apiImagePath');
+                        let apiImagePath = this.config.get('api').image.path;
                         if (imagePath && apiImagePath && apiImagePath.length > 0) {
                             let elementImage = this.mapData(elements, apiImagePath);
 
                             elementImage.forEach(image => {
-                                let apiImageIdPath = this.config.get('apiImageIdPath');
+                                let apiImageIdPath = this.config.get('api').image.idPath;
                                 let imageId = this.mapData(image, apiImageIdPath);
                                 if (imageId == imagePath) {
-                                    let apiImageUrlPath = this.config.get('apiImageUrlPath');
+                                    let apiImageUrlPath = this.config.get('api').image.urlPath;
                                     finalImagePath = this.mapData(image, apiImageUrlPath);
                                     return;
                                 }
@@ -158,9 +158,9 @@ export class DrupalApiService {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        let apiPath = environment.apiUrl + this.config.get('apiDetailPath');
-        apiPath += '?' + this.config.get('apiDetailIdParameter') + '=' + id;
-        apiPath += '&' + this.config.get('apiDetailParameters').join('&');
+        let apiPath = environment.apiUrl + this.config.get('api').detail.path;
+        apiPath += '?' + this.config.get('api').detail.idParameter + '=' + id;
+        apiPath += '&' + this.config.get('api').detail.parameters.join('&');
 
         this.http.get(apiPath)
             .pipe(
@@ -170,7 +170,7 @@ export class DrupalApiService {
             .map(element => {
                 let preparedElement: Element;
 
-                let apiDataPath = this.config.get('apiDataPath');
+                let apiDataPath = this.config.get('api').dataPath;
                 let elementData = this.mapData(element, apiDataPath);
 
                 if (elementData && elementData.length > 0) {
@@ -182,15 +182,15 @@ export class DrupalApiService {
 
                     let finalImagePath = '';
                     let imagePath = this.getElementDataByMapping(element, 'image');
-                    let apiImagePath = this.config.get('apiImagePath');
-                    if (imagePath && apiImagePath) {
+                    let apiImagePath = this.config.get('api').image.path;
+                    if (imagePath && apiImagePath && apiImagePath.length > 0) {
                         let elementImage = this.mapData(element, apiImagePath);
 
                         elementImage.forEach(image => {
-                            let apiImageIdPath = this.config.get('apiImageIdPath');
+                            let apiImageIdPath = this.config.get('api').image.idPath;
                             let imageId = this.mapData(image, apiImageIdPath);
                             if (imageId == imagePath) {
-                                let apiImageUrlPath = this.config.get('apiImageUrlPath');
+                                let apiImageUrlPath = this.config.get('api').image.urlPath;
                                 finalImagePath = this.mapData(image, apiImageUrlPath);
                                 return;
                             }
