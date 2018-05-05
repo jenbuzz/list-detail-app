@@ -119,7 +119,7 @@ export class DrupalApiService {
                         let finalImagePath = '';
                         let imagePath = this.getArticleDataByMapping(element, 'image');
                         let apiImagePath = this.config.get('apiImagePath');
-                        if (imagePath && apiImagePath) {
+                        if (imagePath && apiImagePath && apiImagePath.length > 0) {
                             let articleImage = this.mapData(articles, apiImagePath);
 
                             articleImage.forEach(image => {
