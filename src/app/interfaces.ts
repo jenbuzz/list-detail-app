@@ -1,4 +1,4 @@
-export interface Article {
+export interface Element {
     id: number;
     title?: string;
     internal_link?: string;

@@ -7,18 +7,18 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm" *ngFor="let article of (articles$ | async)">
-        <div class="card m-2" [routerLink]="['/', article.id]">
-            <div class="card-image-container" [style.backgroundImage]="'url('+article.image+')'">
-                <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ article.source }}</div>
+    <div class="col-sm" *ngFor="let element of (elements$ | async)">
+        <div class="card m-2" [routerLink]="['/', element.id]">
+            <div class="card-image-container" [style.backgroundImage]="'url('+element.image+')'">
+                <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ element.source }}</div>
             </div>
             <div class="card-body">
-                <h5 class="card-title"><strong>{{ article.title }}</strong></h5>
-                <p class="card-text text-muted"><small>Source: {{ article.source }}</small></p>
+                <h5 class="card-title"><strong>{{ element.title }}</strong></h5>
+                <p class="card-text text-muted"><small>Source: {{ element.source }}</small></p>
             </div>
         </div>
     </div>
-    <div class="col-12 text-center" *ngIf="(articles$ | async)?.length == 0">
+    <div class="col-12 text-center" *ngIf="(elements$ | async)?.length == 0">
         <p>Sorry, nothing here...</p>
     </div>
     <div class="col-12 loader-container" *ngIf="isLoading$ | async">

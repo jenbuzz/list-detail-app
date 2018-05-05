@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
 import { DrupalApiService } from './../drupal-api.service';
-import { Article } from './../interfaces';
+import { Element } from './../interfaces';
 
 @Component({
     selector: 'detail',
@@ -16,7 +16,7 @@ export class DetailComponent {
     goback: string = 'Go back';
     readmore: string = '';
 
-    article$: Observable<Article>;
+    element$: Observable<Element>;
     isLoading$: Observable<boolean>;
     hasError$: Observable<boolean>;
 
@@ -31,23 +31,23 @@ export class DetailComponent {
         this.readmore = this.config.get('text').readmore;
         this.goback = this.config.get('text').goback;
 
-        this.article$ = drupalApiService.getArticleSubject();
+        this.element$ = drupalApiService.getElementSubject();
         this.isLoading$ = drupalApiService.getIsLoadingSubject();
         this.hasError$ = drupalApiService.getHasErrorSubject();
 
         this.route.params.subscribe(params => {
             let id = params['id'];
-            this.drupalApiService.getArticleById(id);
+            this.drupalApiService.getElementById(id);
         });
 
-        this.article$.subscribe(article => {
-            let title = article['title'] + ' ' + this.config.get('metaTags').titleSuffix;
-            let url = this.config.get('url') + article['id'];
+        this.element$.subscribe(element => {
+            let title = element['title'] + ' ' + this.config.get('metaTags').titleSuffix;
+            let url = this.config.get('url') + element['id'];
 
             this.metafrenzyService.setTitle(title);
             this.metafrenzyService.setMetaTag('og:title', title);
             this.metafrenzyService.setMetaTag('og:url', url);
-            this.metafrenzyService.setMetaTag('og:image:url', article['image']);
+            this.metafrenzyService.setMetaTag('og:image:url', element['image']);
             this.metafrenzyService.setLinkTag({
                 rel: 'canonical',
                 href: url

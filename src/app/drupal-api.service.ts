@@ -5,7 +5,7 @@ import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from './../environments/environment';
-import { Article } from './interfaces';
+import { Element } from './interfaces';
 import { ConfigService } from './config.service';
 import { catchError, retry } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
@@ -19,8 +19,8 @@ export class DrupalApiService {
     isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     hasError$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     searchTerm$: BehaviorSubject<string> = new BehaviorSubject('');
-    articles$: Subject<Article[]> = new Subject<Article[]>();
-    article$: Subject<Article> = new Subject<Article>();
+    elements$: Subject<Element[]> = new Subject<Element[]>();
+    element$: Subject<Element> = new Subject<Element>();
     isLastPageLoaded: boolean = false;
     limit: number = 10;
     page: number = 0;
@@ -34,7 +34,7 @@ export class DrupalApiService {
             .debounceTime(400)
             .distinctUntilChanged()
             .subscribe(term => {
-                this.getArticles(term);
+                this.getElements(term);
             });
     }
 
@@ -46,12 +46,12 @@ export class DrupalApiService {
         return this.isLoading$;
     }
 
-    getArticlesSubject(): Subject<Article[]> {
-        return this.articles$;
+    getElementsSubject(): Subject<Element[]> {
+        return this.elements$;
     }
 
-    getArticleSubject(): Subject<Article> {
-        return this.article$;
+    getElementSubject(): Subject<Element> {
+        return this.element$;
     }
 
     setSearchTerm(term: string): void {
@@ -62,14 +62,14 @@ export class DrupalApiService {
         if (this.page > 0) {
             this.page--;
             this.isLastPageLoaded = false;
-            this.getArticles();
+            this.getElements();
         }
     }
 
     incrementPage(): void {
         if (!this.isLastPageLoaded) {
             this.page++;
-            this.getArticles();
+            this.getElements();
         }
     }
 
@@ -86,7 +86,7 @@ export class DrupalApiService {
         this.isLastPageLoaded = false;
     }
 
-    getArticles(searchTerm?: string): void {
+    getElements(searchTerm?: string): void {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
@@ -104,25 +104,25 @@ export class DrupalApiService {
                 retry(1),
                 catchError(this.handleError)
             )
-            .map(articles => {
-                let preparedArticles = [];
+            .map(elements => {
+                let preparedElements = [];
 
                 let apiDataPath = this.config.get('apiDataPath');
-                let articleData = this.mapData(articles, apiDataPath);
+                let elementData = this.mapData(elements, apiDataPath);
 
-                if (articleData && articleData.length > 0) {
-                    articleData.forEach(element => {
+                if (elementData && elementData.length > 0) {
+                    elementData.forEach(element => {
                         if (element == undefined) {
                             return;
                         }
 
                         let finalImagePath = '';
-                        let imagePath = this.getArticleDataByMapping(element, 'image');
+                        let imagePath = this.getElementDataByMapping(element, 'image');
                         let apiImagePath = this.config.get('apiImagePath');
                         if (imagePath && apiImagePath && apiImagePath.length > 0) {
-                            let articleImage = this.mapData(articles, apiImagePath);
+                            let elementImage = this.mapData(elements, apiImagePath);
 
-                            articleImage.forEach(image => {
+                            elementImage.forEach(image => {
                                 let apiImageIdPath = this.config.get('apiImageIdPath');
                                 let imageId = this.mapData(image, apiImageIdPath);
                                 if (imageId == imagePath) {
@@ -133,21 +133,19 @@ export class DrupalApiService {
                             });
                         }
 
-                        let article = this.prepareArticle(element, finalImagePath);
-
-                        preparedArticles.push(article);
+                        preparedElements.push(this.prepareElement(element, finalImagePath));
                     });
                 }
 
-                if (articleData.length < this.limit) {
+                if (elementData.length < this.limit) {
                     this.isLastPageLoaded = true;
                 }
 
-                return preparedArticles;
+                return preparedElements;
             }).subscribe(
-                articles => {
+                elements => {
                     this.isLoading$.next(false);
-                    this.articles$.next(articles);
+                    this.elements$.next(elements);
                 },
                 error => {
                     this.isLoading$.next(false);
@@ -156,7 +154,7 @@ export class DrupalApiService {
             );
     }
 
-    getArticleById(id: number): void {
+    getElementById(id: number): void {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
@@ -169,26 +167,26 @@ export class DrupalApiService {
                 retry(1),
                 catchError(this.handleError)
             )
-            .map(article => {
-                let preparedArticle: Article;
+            .map(element => {
+                let preparedElement: Element;
 
                 let apiDataPath = this.config.get('apiDataPath');
-                let articleData = this.mapData(article, apiDataPath);
+                let elementData = this.mapData(element, apiDataPath);
 
-                if (articleData && articleData.length > 0) {
-                    let element = articleData[0];
+                if (elementData && elementData.length > 0) {
+                    let element = elementData[0];
 
                     if (element == undefined) {
                         return;
                     }
 
                     let finalImagePath = '';
-                    let imagePath = this.getArticleDataByMapping(element, 'image');
+                    let imagePath = this.getElementDataByMapping(element, 'image');
                     let apiImagePath = this.config.get('apiImagePath');
                     if (imagePath && apiImagePath) {
-                        let articleImage = this.mapData(article, apiImagePath);
+                        let elementImage = this.mapData(element, apiImagePath);
 
-                        articleImage.forEach(image => {
+                        elementImage.forEach(image => {
                             let apiImageIdPath = this.config.get('apiImageIdPath');
                             let imageId = this.mapData(image, apiImageIdPath);
                             if (imageId == imagePath) {
@@ -199,14 +197,14 @@ export class DrupalApiService {
                         });
                     }
 
-                    preparedArticle = this.prepareArticle(element, finalImagePath);
+                    preparedElement = this.prepareElement(element, finalImagePath);
                 }
 
-                return preparedArticle;
+                return preparedElement;
             }).subscribe(
-                article => {
+                element => {
                     this.isLoading$.next(false);
-                    this.article$.next(article);
+                    this.element$.next(element);
                 },
                 error => {
                     this.isLoading$.next(false);
@@ -215,14 +213,14 @@ export class DrupalApiService {
             );;
     }
 
-    private prepareArticle(element: any, imagePath: string): Article {
+    private prepareElement(element: any, imagePath: string): Element {
         return {
-            id: this.getArticleDataByMapping(element, 'id'),
-            title: this.getArticleDataByMapping(element, 'title'),
-            internal_link: this.getArticleDataByMapping(element, 'internal_link'),
-            external_link: this.getArticleDataByMapping(element, 'external_link'),
+            id: this.getElementDataByMapping(element, 'id'),
+            title: this.getElementDataByMapping(element, 'title'),
+            internal_link: this.getElementDataByMapping(element, 'internal_link'),
+            external_link: this.getElementDataByMapping(element, 'external_link'),
             image: environment.apiUrl + imagePath,
-            source: this.getArticleDataByMapping(element, 'source'),
+            source: this.getElementDataByMapping(element, 'source'),
         };
     }
 
@@ -243,8 +241,8 @@ export class DrupalApiService {
         return null;
     }
 
-    private getArticleDataByMapping(element, field) {
-        let fieldMapping = this.config.get('articleFieldMapping');
+    private getElementDataByMapping(element, field) {
+        let fieldMapping = this.config.get('elementFieldMapping');
 
         if (field in fieldMapping) {
             let fields = fieldMapping[field];

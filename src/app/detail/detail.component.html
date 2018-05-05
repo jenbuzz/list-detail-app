@@ -4,17 +4,17 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm" *ngIf="(article$ | async) as article">
+    <div class="col-sm" *ngIf="(element$ | async) as element">
         <div class="card mb-4">
             <div class="card-image-container">
-                <img class="card-img-top" src="{{ article.image }}" alt="{{ article.title }}">
-                <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ article.source }}</div>
+                <img class="card-img-top" src="{{ element.image }}" alt="{{ element.title }}">
+                <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ element.source }}</div>
             </div>
             <div class="card-body">
-                <h5 class="card-title"><strong>{{ article.title }}</strong></h5>
-                <p class="card-text text-muted"><small>Source: {{ article.source }}</small></p>
+                <h5 class="card-title"><strong>{{ element.title }}</strong></h5>
+                <p class="card-text text-muted"><small>Source: {{ element.source }}</small></p>
                 <div>
-                    <a class="btn" [style.background]="themeMainColor" href="{{ article.external_link }}" target="_blank" rel="nofollow">{{ readmore }} {{ article.source }} (external link)</a>
+                    <a class="btn" [style.background]="themeMainColor" href="{{ element.external_link }}" target="_blank" rel="nofollow">{{ readmore }} {{ element.source }} (external link)</a>
                 </div>
             </div>
         </div>

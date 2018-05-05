@@ -16,7 +16,7 @@
     "apiImagePath": [],
     "apiImageIdPath": [],
     "apiImageUrlPath": [],
-    "articleFieldMapping": {
+    "elementFieldMapping": {
         "id": [],
         "title": [],
         "internal_link": [],

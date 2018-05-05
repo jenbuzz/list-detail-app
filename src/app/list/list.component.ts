@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
 import { DrupalApiService } from './../drupal-api.service';
-import { Article } from './../interfaces';
+import { Element } from './../interfaces';
 
 @Component({
     selector: 'list',
@@ -14,20 +14,20 @@ export class ListComponent implements OnInit {
 
     themeMainColor: string = '#000000';
 
-    articles$: Observable<Article[]>;
+    elements$: Observable<Element[]>;
     isLoading$: Observable<boolean>;
     hasError$: Observable<boolean>;
 
     constructor(private route: ActivatedRoute, private drupalApiService: DrupalApiService, private config: ConfigService, private readonly metafrenzyService: MetafrenzyService) {
         this.themeMainColor = this.config.get('styling').themeMainColor;
 
-        this.articles$ = drupalApiService.getArticlesSubject();
+        this.elements$ = drupalApiService.getElementsSubject();
         this.isLoading$ = drupalApiService.getIsLoadingSubject();
         this.hasError$ = drupalApiService.getHasErrorSubject();
     }
 
     ngOnInit() {
-        this.drupalApiService.getArticles();
+        this.drupalApiService.getElements();
 
         let title = this.config.get('metaTags').title + this.config.get('metaTags').titleSuffix;
 
