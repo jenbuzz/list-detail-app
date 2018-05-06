@@ -107,8 +107,8 @@ export class DrupalApiService {
             .map(elements => {
                 let preparedElements = [];
 
-                let apiDataPath = this.config.get('api').dataPath;
-                let elementData = this.mapData(elements, apiDataPath);
+                const apiDataPath = this.config.get('api').dataPath;
+                const elementData = this.mapData(elements, apiDataPath);
 
                 if (elementData && elementData.length > 0) {
                     elementData.forEach(element => {
@@ -116,7 +116,7 @@ export class DrupalApiService {
                             return;
                         }
 
-                        preparedElements.push(this.prepareElement(element));
+                        preparedElements.push(this.prepareElement(element, elements));
                     });
                 }
 
@@ -151,22 +151,18 @@ export class DrupalApiService {
                 catchError(this.handleError)
             )
             .map(element => {
-                let preparedElement: Element;
-
                 let apiDataPath = this.config.get('api').dataPath;
                 let elementData = this.mapData(element, apiDataPath);
 
                 if (elementData && elementData.length > 0) {
-                    element = elementData[0];
-
-                    if (element == undefined) {
+                    if (elementData[0] == undefined) {
                         return;
                     }
 
-                    preparedElement = this.prepareElement(element);
+                    return this.prepareElement(elementData[0], element);
                 }
 
-                return preparedElement;
+                return;
             }).subscribe(
                 element => {
                     this.isLoading$.next(false);
@@ -179,11 +175,11 @@ export class DrupalApiService {
             );
     }
 
-    private prepareElement(element: any): Element {
+    private prepareElement(element: any, fullElement?: any): Element {
         let imagePath = this.getElementDataByMapping(element, 'image');
         const apiImagePath = this.config.get('api').image.path;
         if (imagePath && apiImagePath && apiImagePath.length > 0) {
-            let elementImage = this.mapData(element, apiImagePath);
+            let elementImage = this.mapData(fullElement, apiImagePath);
 
             elementImage.forEach(image => {
                 const apiImageIdPath = this.config.get('api').image.idPath;
