@@ -195,6 +195,7 @@ export class DrupalApiService {
         return {
             id: this.getElementDataByMapping(element, 'id'),
             title: this.getElementDataByMapping(element, 'title'),
+            description: this.getElementDataByMapping(element, 'description'),
             internal_link: this.getElementDataByMapping(element, 'internal_link'),
             external_link: this.getElementDataByMapping(element, 'external_link'),
             image: environment.apiUrl + imagePath,

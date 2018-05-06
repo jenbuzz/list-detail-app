@@ -28,6 +28,7 @@
     "elementFieldMapping": {
         "id": [],
         "title": [],
+        "description": [],
         "internal_link": [],
         "external_link": [],
         "image": [],
