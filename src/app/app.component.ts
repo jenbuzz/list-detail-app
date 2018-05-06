@@ -10,7 +10,7 @@ import { ConfigService } from './config.service';
     templateUrl: './app.component.html'
 })
 export class AppComponent {
-    
+
     themeMainColor: string = '#ffffff';
     title: string = '';
     searchPlaceholder: string = '';

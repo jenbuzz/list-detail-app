@@ -36,13 +36,12 @@ export class DetailComponent {
         this.hasError$ = drupalApiService.getHasErrorSubject();
 
         this.route.params.subscribe(params => {
-            let id = params['id'];
-            this.drupalApiService.getElementById(id);
+            this.drupalApiService.getElementById(params['id']);
         });
 
         this.element$.subscribe(element => {
-            let title = element['title'] + ' ' + this.config.get('metaTags').titleSuffix;
-            let url = this.config.get('url') + element['id'];
+            const title = element['title'] + ' ' + this.config.get('metaTags').titleSuffix;
+            const url = this.config.get('url') + element['id'];
 
             this.metafrenzyService.setTitle(title);
             this.metafrenzyService.setMetaTag('og:title', title);

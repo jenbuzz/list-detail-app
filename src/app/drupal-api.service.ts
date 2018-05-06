@@ -157,7 +157,7 @@ export class DrupalApiService {
                 let elementData = this.mapData(element, apiDataPath);
 
                 if (elementData && elementData.length > 0) {
-                    let element = elementData[0];
+                    element = elementData[0];
 
                     if (element == undefined) {
                         return;
@@ -176,22 +176,21 @@ export class DrupalApiService {
                     this.isLoading$.next(false);
                     this.hasError$.next(true);
                 }
-            );;
+            );
     }
 
     private prepareElement(element: any): Element {
-        let finalImagePath = '';
         let imagePath = this.getElementDataByMapping(element, 'image');
-        let apiImagePath = this.config.get('api').image.path;
+        const apiImagePath = this.config.get('api').image.path;
         if (imagePath && apiImagePath && apiImagePath.length > 0) {
             let elementImage = this.mapData(element, apiImagePath);
 
             elementImage.forEach(image => {
-                let apiImageIdPath = this.config.get('api').image.idPath;
-                let imageId = this.mapData(image, apiImageIdPath);
+                const apiImageIdPath = this.config.get('api').image.idPath;
+                const imageId = this.mapData(image, apiImageIdPath);
                 if (imageId == imagePath) {
                     let apiImageUrlPath = this.config.get('api').image.urlPath;
-                    finalImagePath = this.mapData(image, apiImageUrlPath);
+                    imagePath = this.mapData(image, apiImageUrlPath);
                     return;
                 }
             });
@@ -208,10 +207,10 @@ export class DrupalApiService {
     }
 
     private mapData(element, fields) {
-        for (var i = 0; i < fields.length; i++) {
-            var field = fields[i];
-            if (element.hasOwnProperty(field)) {                
-                let newFields = fields.slice(1);
+        for (let i = 0; i < fields.length; i++) {
+            const field = fields[i];
+            if (element.hasOwnProperty(field)) {
+                const newFields = fields.slice(1);
 
                 if (newFields.length >= 1) {
                     return this.mapData(element[field], newFields);
@@ -219,18 +218,16 @@ export class DrupalApiService {
                     return element[field];
                 }
             }
-        };
+        }
 
         return null;
     }
 
     private getElementDataByMapping(element, field) {
-        let fieldMapping = this.config.get('elementFieldMapping');
+        const fieldMapping = this.config.get('elementFieldMapping');
 
         if (field in fieldMapping) {
-            let fields = fieldMapping[field];
-            let val = this.mapData(element, fields);
-            return val;
+            return this.mapData(element, fieldMapping[field]);
         }
     }
 

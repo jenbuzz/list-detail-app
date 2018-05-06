@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { Config } from './interfaces';
 
 @Injectable()
@@ -22,8 +22,8 @@ export class ConfigService {
     }
 
     getConfigFilename(): string {
-        let baseHref = this.platformLocation.getBaseHrefFromDOM().slice(1).replace('/', '-').replace(/,\s*$/, '');
-        let filename = 'config' + (baseHref === '' ? '' : '-' + baseHref) + '.json';
+        const baseHref = this.platformLocation.getBaseHrefFromDOM().slice(1).replace('/', '-').replace(/,\s*$/, '');
+        const filename = 'config' + (baseHref === '' ? '' : '-' + baseHref) + '.json';
 
         return filename;
     }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { MetafrenzyService } from 'ngx-metafrenzy';
@@ -18,7 +18,12 @@ export class ListComponent implements OnInit {
     isLoading$: Observable<boolean>;
     hasError$: Observable<boolean>;
 
-    constructor(private route: ActivatedRoute, private drupalApiService: DrupalApiService, private config: ConfigService, private readonly metafrenzyService: MetafrenzyService) {
+    constructor(
+        private route: ActivatedRoute,
+        private drupalApiService: DrupalApiService,
+        private config: ConfigService,
+        private readonly metafrenzyService: MetafrenzyService
+    ) {
         this.themeMainColor = this.config.get('styling').themeMainColor;
 
         this.elements$ = drupalApiService.getElementsSubject();
@@ -29,7 +34,7 @@ export class ListComponent implements OnInit {
     ngOnInit() {
         this.drupalApiService.getElements();
 
-        let title = this.config.get('metaTags').title + this.config.get('metaTags').titleSuffix;
+        const title = this.config.get('metaTags').title + this.config.get('metaTags').titleSuffix;
 
         this.metafrenzyService.setTitle(title);
         this.metafrenzyService.setMetaTag('og:title', title);
