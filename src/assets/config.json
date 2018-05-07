@@ -16,7 +16,8 @@
         "detail": {
             "path": "",
             "parameters": [],
-            "idParameter": ""
+            "idParameter": "",
+            "idPath": false
         },
         "dataPath": [],
         "image": {
