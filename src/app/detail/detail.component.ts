@@ -15,6 +15,7 @@ export class DetailComponent {
     themeMainColor: string = '#000000';
     goback: string = 'Go back';
     readmore: string = '';
+    externallink: string = '';
 
     element$: Observable<Element>;
     isLoading$: Observable<boolean>;
@@ -30,6 +31,7 @@ export class DetailComponent {
         this.themeMainColor = this.config.get('styling', 'themeMainColor');
         this.readmore = this.config.get('text', 'readmore');
         this.goback = this.config.get('text', 'goback');
+        this.externallink = this.config.get('text', 'externallink');
 
         this.element$ = drupalApiService.getElementSubject();
         this.isLoading$ = drupalApiService.getIsLoadingSubject();
