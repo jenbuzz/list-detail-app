@@ -28,12 +28,20 @@ export class ConfigService {
         return filename;
     }
 
-    get(key: string): any {
-        if (this.config && key in this.config) {
-            return this.config[key];
+    get(...keys: string[]): any {
+        return this.fetchValue(this.config, keys);
+    }
+
+    private fetchValue(config: any, args: string[]): any {
+        const key = args.shift();
+
+        if (!config[key]) {
+            return;
         }
 
-        return null;
+        const value = config[key];
+      
+        return args.length ? this.fetchValue(value, args) : value;
     }
 
 }

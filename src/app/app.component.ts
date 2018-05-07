@@ -20,9 +20,9 @@ export class AppComponent {
     constructor(private router: Router, private drupalApiService: DrupalApiService, private config: ConfigService) {
         this.drupalApiService.initSearch();
 
-        this.themeMainColor = this.config.get('styling').themeMainColor;
-        this.title = this.config.get('text').title;
-        this.searchPlaceholder = this.config.get('text').search;
+        this.themeMainColor = this.config.get('styling', 'themeMainColor');
+        this.title = this.config.get('text', 'title');
+        this.searchPlaceholder = this.config.get('text', 'search');
     }
 
     setSearchTerm(searchTerm) {

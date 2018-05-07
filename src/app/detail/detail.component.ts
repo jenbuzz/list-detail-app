@@ -27,9 +27,9 @@ export class DetailComponent {
         private config: ConfigService,
         private readonly metafrenzyService: MetafrenzyService
     ) {
-        this.themeMainColor = this.config.get('styling').themeMainColor;
-        this.readmore = this.config.get('text').readmore;
-        this.goback = this.config.get('text').goback;
+        this.themeMainColor = this.config.get('styling', 'themeMainColor');
+        this.readmore = this.config.get('text', 'readmore');
+        this.goback = this.config.get('text', 'goback');
 
         this.element$ = drupalApiService.getElementSubject();
         this.isLoading$ = drupalApiService.getIsLoadingSubject();
@@ -40,7 +40,7 @@ export class DetailComponent {
         });
 
         this.element$.subscribe(element => {
-            const title = element['title'] + ' ' + this.config.get('metaTags').titleSuffix;
+            const title = element['title'] + ' ' + this.config.get('metaTags', 'titleSuffix');
             const url = this.config.get('url') + element['id'];
 
             this.metafrenzyService.setTitle(title);
