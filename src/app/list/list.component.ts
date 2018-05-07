@@ -35,15 +35,23 @@ export class ListComponent implements OnInit {
         this.drupalApiService.getElements();
 
         const title = this.config.get('metaTags', 'title') + this.config.get('metaTags', 'titleSuffix');
+        const image = this.config.get('metaTags', 'image');
+        const url = this.config.get('metaTags', 'url');
 
-        this.metafrenzyService.setTitle(title);
-        this.metafrenzyService.setMetaTag('og:title', title);
-        this.metafrenzyService.setMetaTag('og:url', this.config.get('metaTags', 'url'));
-        this.metafrenzyService.setMetaTag('og:image:url', this.config.get('metaTags', 'image'));
-        this.metafrenzyService.setLinkTag({
-            rel: 'canonical',
-            href: this.config.get('url')
-        });
+        if (title) {
+            this.metafrenzyService.setTitle(title);
+            this.metafrenzyService.setMetaTag('og:title', title);
+        }
+        if (image) {
+            this.metafrenzyService.setMetaTag('og:image:url', image);
+        }
+        if (url) {
+            this.metafrenzyService.setMetaTag('og:url', url);            
+            this.metafrenzyService.setLinkTag({
+                rel: 'canonical',
+                href: url
+            });
+        }
     }
 
     prevPage() {

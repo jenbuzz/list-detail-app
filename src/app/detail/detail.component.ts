@@ -45,14 +45,21 @@ export class DetailComponent {
             const title = element['title'] + ' ' + this.config.get('metaTags', 'titleSuffix');
             const url = this.config.get('url') + element['id'];
 
-            this.metafrenzyService.setTitle(title);
-            this.metafrenzyService.setMetaTag('og:title', title);
-            this.metafrenzyService.setMetaTag('og:url', url);
-            this.metafrenzyService.setMetaTag('og:image:url', element['image']);
-            this.metafrenzyService.setLinkTag({
-                rel: 'canonical',
-                href: url
-            });
+            if (title) {
+                this.metafrenzyService.setTitle(title);
+                this.metafrenzyService.setMetaTag('og:title', title);
+            }
+            if ('image' in element) {
+                this.metafrenzyService.setMetaTag('og:image:url', element['image']);
+            }
+            if (url) {
+                this.metafrenzyService.setMetaTag('og:url', url);
+                
+                this.metafrenzyService.setLinkTag({
+                    rel: 'canonical',
+                    href: url
+                });
+            }
         });
     }
 
