@@ -10,6 +10,7 @@ import { MetafrenzyModule } from 'ngx-metafrenzy';
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 import { ConfigService } from './config.service';
 import { DrupalApiService } from './drupal-api.service';
@@ -36,6 +37,7 @@ export function loadConfig(configService: ConfigService) {
         AppComponent,
         ListComponent,
         DetailComponent,
+        PaginationComponent,
     ],
     imports: [
         BrowserModule,

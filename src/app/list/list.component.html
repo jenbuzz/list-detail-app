@@ -1,11 +1,4 @@
-<div class="row pagination-row">
-    <div class="col-sm mb-3 mt-3">
-        <a class="page-link d-inline-block ml-2" [class.disabled]="!hasPrevPage()" (click)="prevPage()">&laquo; Previous Page</a>
-    </div>
-    <div class="col-sm mb-3 mt-3 text-right">
-        <a class="page-link d-inline-block mr-2" [class.disabled]="!hasNextPage()" (click)="nextPage()">Next Page &raquo;</a>
-    </div>
-</div>
+<pagination></pagination>
 <div class="row">
     <div class="col-sm" *ngFor="let element of (elements$ | async)">
         <div class="card m-2" [routerLink]="['/', element.id]">
@@ -28,11 +21,4 @@
         <p>Sorry, something went wrong</p>
     </div>
 </div>
-<div class="row pagination-row">
-    <div class="col-sm mb-3 mt-3">
-        <a class="page-link d-inline-block ml-2" [class.disabled]="!hasPrevPage()" (click)="prevPage()">&laquo; Previous Page</a>
-    </div>
-    <div class="col-sm mb-3 mt-3 text-right">
-        <a class="page-link d-inline-block mr-2" [class.disabled]="!hasNextPage()" (click)="nextPage()">Next Page &raquo;</a>
-    </div>
-</div>
+<pagination></pagination>

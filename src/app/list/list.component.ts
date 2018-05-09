@@ -54,20 +54,4 @@ export class ListComponent implements OnInit {
         }
     }
 
-    prevPage() {
-        this.drupalApiService.decrementPage();
-    }
-
-    nextPage() {
-        this.drupalApiService.incrementPage();
-    }
-
-    hasPrevPage() {
-        return this.drupalApiService.hasPrevPage();
-    }
-
-    hasNextPage() {
-        return this.drupalApiService.hasNextPage();
-    }
-
 }
