@@ -79,6 +79,10 @@ detail .card .card-image-container {
     width: 100%;
 }
 
+detail .card .card-body {
+    width: 100%;
+}
+
 detail .btn {
     background: #000000;
     color: #fff;
@@ -148,6 +152,10 @@ list .card-body {
     }
 
     detail .card .card-image-container {
+        width: 50%;
+    }
+
+    detail .card .card-body {
         width: 50%;
     }
 }
