@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DrupalApiService } from './drupal-api.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -17,7 +17,11 @@ export class AppComponent {
 
     searchTerm: string = '';
 
-    constructor(private router: Router, private drupalApiService: DrupalApiService, private config: ConfigService) {
+    constructor(
+        private router: Router, 
+        private drupalApiService: DrupalApiService, 
+        private config: ConfigService
+    ) {
         this.drupalApiService.initSearch();
 
         this.themeMainColor = this.config.get('styling', 'themeMainColor');
