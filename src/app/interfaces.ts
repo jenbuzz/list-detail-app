@@ -9,9 +9,38 @@ export interface Element {
 }
 
 export interface Config {
-    metaTags: any;
+    metaTags: ConfigMetaTags;
     api: any;
-    elementFieldMapping: any;
-    styling: any;
-    text: any;
+    elementFieldMapping: ConfigElementFieldMapping;
+    styling: ConfigStyling;
+    text: ConfigText;
+}
+
+export interface ConfigMetaTags {
+    url?: string;
+    title?: string;
+    titleSuffix?: string;
+    image?: string;
+}
+
+export interface ConfigStyling {
+    themeMainColor?: string;
+}
+
+export interface ConfigText {
+    title?: string;
+    search?: string;
+    goback?: string;
+    readmore?: string;
+    externallink?: string;
+}
+
+export interface ConfigElementFieldMapping {
+    id?: string[];
+    title?: string[];
+    description?: string[];
+    internal_link?: string[];
+    external_link?: string[];
+    image?: string[];
+    source?: string[];
 }
