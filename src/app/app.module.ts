@@ -14,6 +14,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 
 import { ConfigService } from './config.service';
 import { DrupalApiService } from './drupal-api.service';
+import { CardComponent } from './card/card.component';
 
 const appRoutes: Routes = [
     {
@@ -38,6 +39,7 @@ export function loadConfig(configService: ConfigService) {
         ListComponent,
         DetailComponent,
         PaginationComponent,
+        CardComponent,
     ],
     imports: [
         BrowserModule,

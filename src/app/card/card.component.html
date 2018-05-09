@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-image-container" [ngStyle]="getBackgroundImage(element)">
+      <img *ngIf="!useBackgroundImage" class="card-img-top" src="{{ element.image }}" alt="{{ element.title }}">
+      <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ element.source }}</div>
+  </div>
+  <div class="card-body">
+      <h5 class="card-title"><strong>{{ element.title }}</strong></h5>
+      <p class="card-text text-muted" *ngIf="showDescription && element.description">{{ element.description }}</p>
+      <p class="card-text text-muted">
+          <small>Source: {{ element.source }}</small>
+      </p>
+      <div *ngIf="showExternalLinkBtn">
+          <a class="btn" 
+              [style.background]="themeMainColor" 
+              href="{{ element.external_link }}" 
+              target="_blank" 
+              rel="nofollow">{{ readmore }} {{ element.source }} {{ externallink }}</a>
+      </div>
+  </div>
+</div>

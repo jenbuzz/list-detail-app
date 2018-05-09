@@ -1,14 +1,8 @@
 <pagination></pagination>
 <div class="row">
     <div class="col-sm" *ngFor="let element of (elements$ | async)">
-        <div class="card m-2" [routerLink]="['/', element.id]">
-            <div class="card-image-container" [style.backgroundImage]="'url('+element.image+')'">
-                <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ element.source }}</div>
-            </div>
-            <div class="card-body">
-                <h5 class="card-title"><strong>{{ element.title }}</strong></h5>
-                <p class="card-text text-muted"><small>Source: {{ element.source }}</small></p>
-            </div>
+        <div class="m-2" [routerLink]="['/', element.id]">
+            <card [element]="element" [useBackgroundImage]="true"></card>
         </div>
     </div>
     <div class="col-12 text-center" *ngIf="(elements$ | async)?.length == 0">
