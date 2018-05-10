@@ -46,7 +46,7 @@ export class ListComponent implements OnInit {
             this.metafrenzyService.setMetaTag('og:image:url', image);
         }
         if (url) {
-            this.metafrenzyService.setMetaTag('og:url', url);            
+            this.metafrenzyService.setMetaTag('og:url', url);
             this.metafrenzyService.setLinkTag({
                 rel: 'canonical',
                 href: url

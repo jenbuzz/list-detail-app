@@ -40,7 +40,7 @@ export class ConfigService {
         }
 
         const value = config[key];
-      
+
         return args.length ? this.fetchValue(value, args) : value;
     }
 

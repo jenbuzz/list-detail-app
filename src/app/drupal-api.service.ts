@@ -142,8 +142,8 @@ export class DrupalApiService {
         this.hasError$.next(false);
 
         let apiPath = environment.apiUrl + this.config.get('api', 'detail', 'path');
-        apiPath += this.config.get('api', 'detail', 'idPath') ? 
-            '/' + id + '?' : 
+        apiPath += this.config.get('api', 'detail', 'idPath') ?
+            '/' + id + '?' :
             '?' + this.config.get('api', 'detail', 'idParameter') + '=' + id;
         apiPath += '&' + this.config.get('api', 'detail', 'parameters').join('&');
 

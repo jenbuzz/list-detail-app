@@ -50,7 +50,7 @@ export class DetailComponent {
             }
             if (url) {
                 this.metafrenzyService.setMetaTag('og:url', url);
-                
+
                 this.metafrenzyService.setLinkTag({
                     rel: 'canonical',
                     href: url

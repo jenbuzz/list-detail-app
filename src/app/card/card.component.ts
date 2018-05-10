@@ -30,7 +30,9 @@ export class CardComponent {
 
     getBackgroundImage(element: Element): any {
         if (this.useBackgroundImage) {
-            return {'background-image': 'url('+element.image+')'};
+            return {
+                'background-image': 'url(' + element.image + ')'
+            };
         }
     }
 

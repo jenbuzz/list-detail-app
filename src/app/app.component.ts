@@ -18,8 +18,8 @@ export class AppComponent {
     searchTerm: string = '';
 
     constructor(
-        private router: Router, 
-        private drupalApiService: DrupalApiService, 
+        private router: Router,
+        private drupalApiService: DrupalApiService,
         private config: ConfigService
     ) {
         this.drupalApiService.initSearch();
