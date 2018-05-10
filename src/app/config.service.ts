@@ -35,7 +35,7 @@ export class ConfigService {
     private fetchValue(config: any, args: string[]): any {
         const key = args.shift();
 
-        if (!config[key]) {
+        if (config == undefined || !config[key]) {
             return;
         }
 

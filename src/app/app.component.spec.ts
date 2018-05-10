@@ -3,34 +3,29 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { DetailComponent } from './detail/detail.component';
 import { ListComponent } from './list/list.component';
+import { DetailComponent } from './detail/detail.component';
+import { PaginationComponent } from './pagination/pagination.component';
+import { CardComponent } from './card/card.component';
+import { ConfigService } from './config.service';
 import { DrupalApiService } from './drupal-api.service';
-
-const appRoutes: Routes = [
-    {
-        path: ':id',
-        component: DetailComponent,
-    },
-    {
-        path: '',
-        component: ListComponent,
-    },
-];
+import { routes } from './app-routing.module';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientModule,
-                RouterTestingModule.withRoutes(appRoutes),
+                RouterTestingModule.withRoutes(routes),
             ],
             declarations: [
                 AppComponent,
                 ListComponent,
                 DetailComponent,
+                PaginationComponent,
+                CardComponent,
             ],
-            providers: [DrupalApiService],
+            providers: [DrupalApiService, ConfigService],
         }).compileComponents();
     }));
     it('should create the app', async(() => {
