@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Element } from './../interfaces';
 import { ConfigService } from './../config.service';
 
@@ -6,7 +6,7 @@ import { ConfigService } from './../config.service';
     selector: 'card',
     templateUrl: './card.component.html'
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
 
     @Input()
     element: Element;
@@ -28,10 +28,7 @@ export class CardComponent implements OnInit {
         this.externallink = this.config.get('text', 'externallink');
     }
 
-    ngOnInit() {
-    }
-
-    getBackgroundImage(element) {
+    getBackgroundImage(element: Element): any {
         if (this.useBackgroundImage) {
             return {'background-image': 'url('+element.image+')'};
         }

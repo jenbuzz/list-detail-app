@@ -1,6 +1,10 @@
 <div class="card">
   <div class="card-image-container" [ngStyle]="getBackgroundImage(element)">
-      <img *ngIf="!useBackgroundImage" class="card-img-top" src="{{ element.image }}" alt="{{ element.title }}">
+      <img *ngIf="!useBackgroundImage" 
+          class="card-img-top" 
+          src="{{ element.image }}" 
+          alt="{{ element.title }}">
+
       <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ element.source }}</div>
   </div>
   <div class="card-body">
