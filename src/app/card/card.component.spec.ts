@@ -2,18 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CardComponent } from './card.component';
 import { ConfigService } from './../config.service';
-
-class MockConfigService {
-    load(): Promise<any> {
-        return new Promise((resolve, reject) => {
-            resolve(true);
-        });
-    }
-
-    get(...keys: string[]): any {
-       return '';
-    }
-}
+import { MockConfigService } from './../mocks';
 
 describe('CardComponent', () => {
     let component: CardComponent;

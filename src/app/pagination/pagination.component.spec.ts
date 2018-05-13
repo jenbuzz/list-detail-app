@@ -4,22 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
 import { PaginationComponent } from './pagination.component';
-
-class MockConfigService {
-  load(): Promise<any> {
-      return new Promise((resolve, reject) => {
-          resolve(true);
-      });
-  }
-
-  get(...keys: string[]): any {
-      if (keys.length > 0 && (keys[0] === 'text' || keys[0] === 'styling')) {
-          return '';
-      }
-
-      return [];
-  }
-}
+import { MockConfigService } from './../mocks';
 
 describe('PaginationComponent', () => {
     let component: PaginationComponent;

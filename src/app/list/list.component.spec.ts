@@ -9,22 +9,7 @@ import { DetailComponent } from './../detail/detail.component';
 import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
 import { routes } from './../app-routing.module';
-
-class MockConfigService {
-  load(): Promise<any> {
-      return new Promise((resolve, reject) => {
-          resolve(true);
-      });
-  }
-
-  get(...keys: string[]): any {
-      if (keys.length > 0 && (keys[0] === 'text' || keys[0] === 'styling')) {
-          return '';
-      }
-
-      return [];
-  }
-}
+import { MockConfigService } from './../mocks';
 
 describe('ListComponent', () => {
     let component: ListComponent;
