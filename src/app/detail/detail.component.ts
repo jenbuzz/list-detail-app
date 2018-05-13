@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
-import { DrupalApiService } from './../drupal-api.service';
+import { ApiService } from './../api.service';
 import { Element } from './../interfaces';
 
 @Component({
@@ -22,19 +22,19 @@ export class DetailComponent {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private drupalApiService: DrupalApiService,
+        private ApiService: ApiService,
         private config: ConfigService,
         private readonly metafrenzyService: MetafrenzyService
     ) {
         this.themeMainColor = this.config.get('styling', 'themeMainColor');
         this.goback = this.config.get('text', 'goback');
 
-        this.element$ = drupalApiService.getElementSubject();
-        this.isLoading$ = drupalApiService.getIsLoadingSubject();
-        this.hasError$ = drupalApiService.getHasErrorSubject();
+        this.element$ = ApiService.getElementSubject();
+        this.isLoading$ = ApiService.getIsLoadingSubject();
+        this.hasError$ = ApiService.getHasErrorSubject();
 
         this.route.params.subscribe(params => {
-            this.drupalApiService.getElementById(params['id']);
+            this.ApiService.getElementById(params['id']);
         });
 
         this.element$.subscribe(element => {

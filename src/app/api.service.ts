@@ -14,7 +14,7 @@ import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 @Injectable()
-export class DrupalApiService {
+export class ApiService {
 
     isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     hasError$: BehaviorSubject<boolean> = new BehaviorSubject(false);

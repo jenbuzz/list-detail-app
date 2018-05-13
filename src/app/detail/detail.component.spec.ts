@@ -6,7 +6,7 @@ import { Routes } from '@angular/router';
 import { MetafrenzyModule } from 'ngx-metafrenzy';
 import { DetailComponent } from './detail.component';
 import { ListComponent } from './../list/list.component';
-import { DrupalApiService } from './../drupal-api.service';
+import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
 import { routes } from './../app-routing.module';
 
@@ -41,7 +41,7 @@ describe('DetailComponent', () => {
                 DetailComponent,
                 ListComponent,
             ],
-            providers: [DrupalApiService, {provide: ConfigService, useClass: MockConfigService}],
+            providers: [ApiService, {provide: ConfigService, useClass: MockConfigService}],
             schemas: [NO_ERRORS_SCHEMA]
         })
         .compileComponents();

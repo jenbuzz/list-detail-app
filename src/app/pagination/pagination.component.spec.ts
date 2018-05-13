@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { DrupalApiService } from './../drupal-api.service';
+import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
 import { PaginationComponent } from './pagination.component';
 
@@ -31,7 +31,7 @@ describe('PaginationComponent', () => {
                 HttpClientModule,
             ],
             declarations: [ PaginationComponent ],
-            providers: [DrupalApiService, {provide: ConfigService, useClass: MockConfigService}],
+            providers: [ApiService, {provide: ConfigService, useClass: MockConfigService}],
             schemas: [NO_ERRORS_SCHEMA]
         })
         .compileComponents();

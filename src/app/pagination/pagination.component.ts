@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DrupalApiService } from './../drupal-api.service';
+import { ApiService } from './../api.service';
 
 @Component({
     selector: 'pagination',
@@ -7,23 +7,23 @@ import { DrupalApiService } from './../drupal-api.service';
 })
 export class PaginationComponent {
 
-    constructor(private drupalApiService: DrupalApiService) {
+    constructor(private ApiService: ApiService) {
     }
 
     prevPage() {
-        this.drupalApiService.decrementPage();
+        this.ApiService.decrementPage();
     }
 
     nextPage() {
-        this.drupalApiService.incrementPage();
+        this.ApiService.incrementPage();
     }
 
     hasPrevPage() {
-        return this.drupalApiService.hasPrevPage();
+        return this.ApiService.hasPrevPage();
     }
 
     hasNextPage() {
-        return this.drupalApiService.hasNextPage();
+        return this.ApiService.hasNextPage();
     }
 
 }

@@ -15,7 +15,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { CardComponent } from './card/card.component';
 
 import { ConfigService } from './config.service';
-import { DrupalApiService } from './drupal-api.service';
+import { ApiService } from './api.service';
 
 export function loadConfig(configService: ConfigService) {
     return () => {
@@ -42,7 +42,7 @@ export function loadConfig(configService: ConfigService) {
     providers: [
         ConfigService,
         {provide: APP_INITIALIZER, useFactory: loadConfig, deps: [ConfigService], multi: true},
-        DrupalApiService
+        ApiService
     ],
     bootstrap: [AppComponent]
 })

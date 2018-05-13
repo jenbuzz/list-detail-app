@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { DrupalApiService } from './drupal-api.service';
+import { ApiService } from './api.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 import { ConfigService } from './config.service';
@@ -19,10 +19,10 @@ export class AppComponent {
 
     constructor(
         private router: Router,
-        private drupalApiService: DrupalApiService,
+        private ApiService: ApiService,
         private config: ConfigService
     ) {
-        this.drupalApiService.initSearch();
+        this.ApiService.initSearch();
 
         this.themeMainColor = this.config.get('styling', 'themeMainColor');
         this.title = this.config.get('text', 'title');
@@ -31,8 +31,8 @@ export class AppComponent {
 
     setSearchTerm(searchTerm) {
         this.searchTerm = searchTerm;
-        this.drupalApiService.setSearchTerm(searchTerm);
-        this.drupalApiService.resetPage();
+        this.ApiService.setSearchTerm(searchTerm);
+        this.ApiService.resetPage();
         this.router.navigate(['']);
     }
 

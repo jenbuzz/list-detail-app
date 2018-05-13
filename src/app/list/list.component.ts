@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
-import { DrupalApiService } from './../drupal-api.service';
+import { ApiService } from './../api.service';
 import { Element } from './../interfaces';
 
 @Component({
@@ -20,19 +20,19 @@ export class ListComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private drupalApiService: DrupalApiService,
+        private ApiService: ApiService,
         private config: ConfigService,
         private readonly metafrenzyService: MetafrenzyService
     ) {
         this.themeMainColor = this.config.get('styling', 'themeMainColor');
 
-        this.elements$ = drupalApiService.getElementsSubject();
-        this.isLoading$ = drupalApiService.getIsLoadingSubject();
-        this.hasError$ = drupalApiService.getHasErrorSubject();
+        this.elements$ = ApiService.getElementsSubject();
+        this.isLoading$ = ApiService.getIsLoadingSubject();
+        this.hasError$ = ApiService.getHasErrorSubject();
     }
 
     ngOnInit() {
-        this.drupalApiService.getElements();
+        this.ApiService.getElements();
 
         const title = this.config.get('metaTags', 'title') + this.config.get('metaTags', 'titleSuffix');
         const image = this.config.get('metaTags', 'image');

@@ -9,7 +9,7 @@ import { DetailComponent } from './detail/detail.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CardComponent } from './card/card.component';
 import { ConfigService } from './config.service';
-import { DrupalApiService } from './drupal-api.service';
+import { ApiService } from './api.service';
 import { routes } from './app-routing.module';
 
 describe('AppComponent', () => {
@@ -26,7 +26,7 @@ describe('AppComponent', () => {
                 PaginationComponent,
                 CardComponent,
             ],
-            providers: [DrupalApiService, ConfigService],
+            providers: [ApiService, ConfigService],
             schemas: [NO_ERRORS_SCHEMA]
         }).compileComponents();
     }));    
