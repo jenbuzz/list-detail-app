@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { Config } from './interfaces';
 
 @Injectable()

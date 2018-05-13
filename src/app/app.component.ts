@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './api.service';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ConfigService } from './config.service';
 import { routeAnimation } from './animations';
 

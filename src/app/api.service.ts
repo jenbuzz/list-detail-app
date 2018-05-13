@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { environment } from './../environments/environment';
 import { Element } from './interfaces';
@@ -230,7 +230,7 @@ export class ApiService {
         }
     }
 
-    private handleError(error: HttpErrorResponse): ErrorObservable {
-        return new ErrorObservable('Something went wrong; please try again later.');
+    private handleError(error: HttpErrorResponse): ErrorObservable<string> {
+        return ErrorObservable.create('Something went wrong; please try again later.');
     }
 }
