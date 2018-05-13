@@ -26,7 +26,10 @@ describe('ListComponent', () => {
                 ListComponent,
                 DetailComponent,
             ],
-            providers: [ApiService, {provide: ConfigService, useClass: MockConfigService}],
+            providers: [
+                ApiService,
+                {provide: ConfigService, useClass: MockConfigService},
+            ],
             schemas: [NO_ERRORS_SCHEMA]
         })
         .compileComponents();

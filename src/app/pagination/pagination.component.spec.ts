@@ -16,7 +16,10 @@ describe('PaginationComponent', () => {
                 HttpClientModule,
             ],
             declarations: [ PaginationComponent ],
-            providers: [ApiService, {provide: ConfigService, useClass: MockConfigService}],
+            providers: [
+                ApiService,
+                {provide: ConfigService, useClass: MockConfigService},
+            ],
             schemas: [NO_ERRORS_SCHEMA]
         })
         .compileComponents();

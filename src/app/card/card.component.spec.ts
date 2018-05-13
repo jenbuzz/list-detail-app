@@ -10,8 +10,12 @@ describe('CardComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [CardComponent],
-            providers: [{provide: ConfigService, useClass: MockConfigService}],
+            declarations: [
+                CardComponent,
+            ],
+            providers: [
+                {provide: ConfigService, useClass: MockConfigService},
+            ],
             schemas: [NO_ERRORS_SCHEMA]
         })
         .compileComponents();
