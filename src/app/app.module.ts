@@ -3,7 +3,6 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MetafrenzyModule } from 'ngx-metafrenzy';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +35,6 @@ export function loadConfig(configService: ConfigService) {
         FormsModule,
         HttpClientModule,
         AppRoutingModule,
-        NgbModule.forRoot(),
         MetafrenzyModule.forRoot(),
     ],
     providers: [
