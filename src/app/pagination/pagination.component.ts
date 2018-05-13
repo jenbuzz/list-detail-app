@@ -7,23 +7,23 @@ import { ApiService } from './../api.service';
 })
 export class PaginationComponent {
 
-    constructor(private ApiService: ApiService) {
+    constructor(private apiService: ApiService) {
     }
 
     prevPage() {
-        this.ApiService.decrementPage();
+        this.apiService.decrementPage();
     }
 
     nextPage() {
-        this.ApiService.incrementPage();
+        this.apiService.incrementPage();
     }
 
     hasPrevPage() {
-        return this.ApiService.hasPrevPage();
+        return this.apiService.hasPrevPage();
     }
 
     hasNextPage() {
-        return this.ApiService.hasNextPage();
+        return this.apiService.hasNextPage();
     }
 
 }

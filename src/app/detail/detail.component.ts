@@ -22,19 +22,19 @@ export class DetailComponent {
     constructor(
         private router: Router,
         private route: ActivatedRoute,
-        private ApiService: ApiService,
+        private apiService: ApiService,
         private config: ConfigService,
         private readonly metafrenzyService: MetafrenzyService
     ) {
         this.themeMainColor = this.config.get('styling', 'themeMainColor');
         this.goback = this.config.get('text', 'goback');
 
-        this.element$ = ApiService.getElementSubject();
-        this.isLoading$ = ApiService.getIsLoadingSubject();
-        this.hasError$ = ApiService.getHasErrorSubject();
+        this.element$ = this.apiService.getElementSubject();
+        this.isLoading$ = this.apiService.getIsLoadingSubject();
+        this.hasError$ = this.apiService.getHasErrorSubject();
 
         this.route.params.subscribe(params => {
-            this.ApiService.getElementById(params['id']);
+            this.apiService.getElementById(params['id']);
         });
 
         this.element$.subscribe(element => {

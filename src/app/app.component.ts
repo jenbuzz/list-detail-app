@@ -19,10 +19,10 @@ export class AppComponent {
 
     constructor(
         private router: Router,
-        private ApiService: ApiService,
+        private apiService: ApiService,
         private config: ConfigService
     ) {
-        this.ApiService.initSearch();
+        this.apiService.initSearch();
 
         this.themeMainColor = this.config.get('styling', 'themeMainColor');
         this.title = this.config.get('text', 'title');
@@ -31,8 +31,8 @@ export class AppComponent {
 
     setSearchTerm(searchTerm) {
         this.searchTerm = searchTerm;
-        this.ApiService.setSearchTerm(searchTerm);
-        this.ApiService.resetPage();
+        this.apiService.setSearchTerm(searchTerm);
+        this.apiService.resetPage();
         this.router.navigate(['']);
     }
 

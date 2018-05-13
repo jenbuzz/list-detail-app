@@ -20,19 +20,19 @@ export class ListComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private ApiService: ApiService,
+        private apiService: ApiService,
         private config: ConfigService,
         private readonly metafrenzyService: MetafrenzyService
     ) {
         this.themeMainColor = this.config.get('styling', 'themeMainColor');
 
-        this.elements$ = ApiService.getElementsSubject();
-        this.isLoading$ = ApiService.getIsLoadingSubject();
-        this.hasError$ = ApiService.getHasErrorSubject();
+        this.elements$ = this.apiService.getElementsSubject();
+        this.isLoading$ = this.apiService.getIsLoadingSubject();
+        this.hasError$ = this.apiService.getHasErrorSubject();
     }
 
     ngOnInit() {
-        this.ApiService.getElements();
+        this.apiService.getElements();
 
         const title = this.config.get('metaTags', 'title') + this.config.get('metaTags', 'titleSuffix');
         const image = this.config.get('metaTags', 'image');
