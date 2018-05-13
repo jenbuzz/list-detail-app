@@ -34,7 +34,11 @@ export class ListComponent implements OnInit {
     ngOnInit() {
         this.apiService.getElements();
 
-        const title = this.config.get('metaTags', 'title') + this.config.get('metaTags', 'titleSuffix');
+        let title = this.config.get('metaTags', 'title');
+        if (this.config.get('metaTags', 'titleSuffix')) {
+            title += this.config.get('metaTags', 'titleSuffix');
+        }
+
         const image = this.config.get('metaTags', 'image');
         const url = this.config.get('metaTags', 'url');
 

@@ -38,19 +38,22 @@ export class DetailComponent {
         });
 
         this.element$.subscribe(element => {
-            const title = element['title'] + ' ' + this.config.get('metaTags', 'titleSuffix');
-            const url = this.config.get('url') + element['id'];
+            if ('title' in element && element['title']) {
+                let title = element['title'];
+                if (this.config.get('metaTags', 'titleSuffix')) {
+                    title += this.config.get('metaTags', 'titleSuffix');
+                }
 
-            if (title) {
                 this.metafrenzyService.setTitle(title);
                 this.metafrenzyService.setMetaTag('og:title', title);
             }
-            if ('image' in element) {
+            if ('image' in element && element['image']) {
                 this.metafrenzyService.setMetaTag('og:image:url', element['image']);
             }
-            if (url) {
-                this.metafrenzyService.setMetaTag('og:url', url);
+            if (this.config.get('url') && 'id' in element) {
+                const url = this.config.get('url') + element['id'];
 
+                this.metafrenzyService.setMetaTag('og:url', url);
                 this.metafrenzyService.setLinkTag({
                     rel: 'canonical',
                     href: url
