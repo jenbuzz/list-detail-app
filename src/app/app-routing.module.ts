@@ -8,10 +8,12 @@ export const routes: Routes = [
     {
         path: ':id',
         component: DetailComponent,
+        data: { animation: 'detail' },
     },
     {
         path: '',
         component: ListComponent,
+        data: { animation: 'list' },
     },
 ];
 

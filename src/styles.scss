@@ -51,6 +51,16 @@ list-detail-app {
         padding-left: 0;
     }
 
+    .outlet-container {
+        position: relative;
+
+        /deep/ router-outlet~* {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
     list {
         .col-sm {
             max-width: 100%;

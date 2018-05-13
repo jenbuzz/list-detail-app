@@ -4,10 +4,14 @@ import { ApiService } from './api.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
 import { ConfigService } from './config.service';
+import { routeAnimation } from './animations';
 
 @Component({
     selector: 'list-detail-app',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    animations: [
+        routeAnimation,
+    ],
 })
 export class AppComponent {
 
@@ -34,6 +38,10 @@ export class AppComponent {
         this.apiService.setSearchTerm(searchTerm);
         this.apiService.resetPage();
         this.router.navigate(['']);
+    }
+
+    getAnimation(outlet: any) {
+        return outlet.activatedRouteData['animation'] || 'list';
     }
 
 }
