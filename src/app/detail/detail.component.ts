@@ -38,28 +38,36 @@ export class DetailComponent {
         });
 
         this.element$.subscribe(element => {
-            if ('title' in element && element['title']) {
-                let title = element['title'];
-                if (this.config.get('metaTags', 'titleSuffix')) {
-                    title += this.config.get('metaTags', 'titleSuffix');
-                }
-
-                this.metafrenzyService.setTitle(title);
-                this.metafrenzyService.setMetaTag('og:title', title);
-            }
-            if ('image' in element && element['image']) {
-                this.metafrenzyService.setMetaTag('og:image:url', element['image']);
-            }
-            if (this.config.get('url') && 'id' in element) {
-                const url = this.config.get('url') + element['id'];
-
-                this.metafrenzyService.setMetaTag('og:url', url);
-                this.metafrenzyService.setLinkTag({
-                    rel: 'canonical',
-                    href: url
-                });
-            }
+            this.initMetaTags(element);
         });
+    }
+
+    initMetaTags(element) {
+        if (this.config.get('metaTags', 'disableMetaTags') === true) {
+            return;
+        }
+
+        if ('title' in element && element['title']) {
+            let title = element['title'];
+            if (this.config.get('metaTags', 'titleSuffix')) {
+                title += this.config.get('metaTags', 'titleSuffix');
+            }
+
+            this.metafrenzyService.setTitle(title);
+            this.metafrenzyService.setMetaTag('og:title', title);
+        }
+        if ('image' in element && element['image']) {
+            this.metafrenzyService.setMetaTag('og:image:url', element['image']);
+        }
+        if (this.config.get('url') && 'id' in element) {
+            const url = this.config.get('url') + element['id'];
+
+            this.metafrenzyService.setMetaTag('og:url', url);
+            this.metafrenzyService.setLinkTag({
+                rel: 'canonical',
+                href: url
+            });
+        }
     }
 
     back() {

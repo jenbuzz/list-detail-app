@@ -34,6 +34,14 @@ export class ListComponent implements OnInit {
     ngOnInit() {
         this.apiService.getElements();
 
+        this.initMetaTags();
+    }
+
+    initMetaTags() {
+        if (this.config.get('metaTags', 'disableMetaTags') === true) {
+            return;
+        }
+        
         let title = this.config.get('metaTags', 'title');
         if (this.config.get('metaTags', 'titleSuffix')) {
             title += this.config.get('metaTags', 'titleSuffix');
