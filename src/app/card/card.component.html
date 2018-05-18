@@ -8,14 +8,16 @@
         <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ element.source }}</div>
     </div>
     <div class="card-body">
-        <h5 class="card-title"><strong>{{ element.title }}</strong></h5>
-        <div class="card-icons mb-2">
+        <h5 class="card-title" *ngIf="element.title">
+            <strong>{{ element.title }}</strong>
+        </h5>
+        <div class="card-icons mb-2" *ngIf="element.icons && element.icons.length > 0">
             <ng-container *ngFor="let icon of element.icons">
                 <img src="http://192.168.56.101/{{ icon }}">
             </ng-container>
         </div>
         <p class="card-text text-muted" *ngIf="showDescription && element.description">{{ element.description }}</p>
-        <p class="card-text text-muted">
+        <p class="card-text text-muted" *ngIf="element.source">
             <small>Source: {{ element.source }}</small>
         </p>
         <div *ngIf="showExternalLinkBtn">
