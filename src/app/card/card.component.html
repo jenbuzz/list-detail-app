@@ -5,7 +5,8 @@
             src="{{ element.image }}" 
             alt="{{ element.title }}">
 
-        <div [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ element.source }}</div>
+        <div *ngIf="element.source"
+            [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ element.source }}</div>
     </div>
     <div class="card-body">
         <h5 class="card-title" *ngIf="element.title">
