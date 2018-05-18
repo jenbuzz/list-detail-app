@@ -6,6 +6,7 @@ export interface Element {
     external_link?: string;
     image: string;
     source: string;
+    icons: string[];
 }
 
 export interface Config {

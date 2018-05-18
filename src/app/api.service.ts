@@ -202,6 +202,7 @@ export class ApiService {
             external_link: this.getElementDataByMapping(element, 'external_link'),
             image: environment.apiUrl + imagePath,
             source: this.getElementDataByMapping(element, 'source'),
+            icons: this.getElementDataByMapping(element, 'icons'),
         };
     }
 

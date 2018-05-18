@@ -138,6 +138,11 @@ list-detail-app {
             font-weight: bold;
         }
     }
+
+    .card-icons img {
+        width: 32px;
+        height: auto;
+    }
 }
 
 @media (min-width: 335px) {

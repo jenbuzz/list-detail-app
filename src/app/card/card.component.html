@@ -9,6 +9,11 @@
     </div>
     <div class="card-body">
         <h5 class="card-title"><strong>{{ element.title }}</strong></h5>
+        <div class="card-icons mb-2">
+            <ng-container *ngFor="let icon of element.icons">
+                <img src="http://192.168.56.101/{{ icon }}">
+            </ng-container>
+        </div>
         <p class="card-text text-muted" *ngIf="showDescription && element.description">{{ element.description }}</p>
         <p class="card-text text-muted">
             <small>Source: {{ element.source }}</small>
