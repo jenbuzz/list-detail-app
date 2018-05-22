@@ -36,13 +36,19 @@ list-detail-app {
         background: #000000;
         padding: 0 15px 15px 15px;
     
-        .clear {
-            background-image: url(assets/delete.svg);
-            background-repeat: no-repeat;
-            background-position: center;
-            background-color: #fff;
-            padding: 0 20px;
-            cursor: pointer;
+        .input-group-append {
+            background-color: #ffffff;
+            border-radius: 0.25rem;
+
+            .clear {
+                background-image: url(assets/delete.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-color: #ffffff;
+                padding: 0 20px;
+                cursor: pointer;
+                opacity: .5;
+            }
         }
     }
 
@@ -54,7 +60,7 @@ list-detail-app {
     .outlet-container {
         position: relative;
 
-        /deep/ router-outlet~* {
+        router-outlet~* {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -63,7 +69,7 @@ list-detail-app {
 
     list {
         .col-sm {
-            max-width: 100%;
+            max-width: 50%;
         }
 
         .pagination-row .col-sm {
@@ -78,14 +84,6 @@ list-detail-app {
 
         .card {
             cursor: pointer;
-        }
-
-        .page-link {
-            font-size: 0.8rem;
-        
-            &.disabled:hover {
-                background: none;
-            }
         }
 
         .card-image-container {
@@ -123,6 +121,14 @@ list-detail-app {
         }
     }
 
+    .page-link {
+        font-size: 0.8rem;
+    
+        &.disabled:hover {
+            background: none;
+        }
+    }
+
     .card-image-container {
         position: relative;
 
@@ -145,19 +151,13 @@ list-detail-app {
     }
 }
 
-@media (min-width: 335px) {
-    list .page-link {
-        font-size: 0.9rem;
-    }
-}
-
 @media (min-width: 576px) {
     list-detail-app h2 {
         font-size: 1.6rem !important;
     }
 
     list .col-sm {
-        max-width: 50%;
+        max-width: 100%;
         flex: 1 0 50%;
     }
 
@@ -202,11 +202,11 @@ list-detail-app .loader-container {
     height: 11em;
     border-radius: 50%;
     background: #ffffff;
-    background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-    background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-    background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-    background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-    background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+    background: -moz-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
+    background: -webkit-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
+    background: -o-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
+    background: -ms-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
+    background: linear-gradient(to right, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
     position: relative;
     -webkit-animation: animationLoad 1.4s infinite linear;
     animation: animationLoad 1.4s infinite linear;
