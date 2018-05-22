@@ -1,11 +1,13 @@
-<pagination></pagination>
+<div class="pagination-container">
+    <pagination *ngIf="(elements$ | async)?.length > 0 || !(isLoading$ | async)"></pagination>
+</div>
 <div class="row">
     <div class="col-sm" *ngFor="let element of (elements$ | async)">
         <div class="m-2" [routerLink]="['/', element.id]">
             <card [element]="element" [useBackgroundImage]="true"></card>
         </div>
     </div>
-    <div class="col-12 text-center" *ngIf="(elements$ | async)?.length == 0">
+    <div class="col-12 text-center" *ngIf="(elements$ | async)?.length == 0 && !(isLoading$ | async)">
         <p>Sorry, nothing here...</p>
     </div>
     <div class="col-12 loader-container" *ngIf="isLoading$ | async">
@@ -15,4 +17,6 @@
         <p>Sorry, something went wrong</p>
     </div>
 </div>
-<pagination></pagination>
+<div class="pagination-container">
+    <pagination *ngIf="(elements$ | async)?.length > 0 || !(isLoading$ | async)"></pagination>
+</div>
