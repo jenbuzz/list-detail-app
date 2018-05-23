@@ -1,5 +1,5 @@
-<div class="pagination-container">
-    <pagination *ngIf="(elements$ | async)?.length > 0 || !(isLoading$ | async)"></pagination>
+<div class="pagination-container mb-3 mt-4">
+    <pagination *ngIf="(elements$ | async)?.length > 0 && !(isLoading$ | async)"></pagination>
 </div>
 <div class="row">
     <div class="col-sm" *ngFor="let element of (elements$ | async)">
@@ -17,6 +17,6 @@
         <p>Sorry, something went wrong</p>
     </div>
 </div>
-<div class="pagination-container">
-    <pagination *ngIf="(elements$ | async)?.length > 0 || !(isLoading$ | async)"></pagination>
+<div class="pagination-container mb-3 mt-4">
+    <pagination *ngIf="(elements$ | async)?.length > 0 && !(isLoading$ | async)"></pagination>
 </div>
