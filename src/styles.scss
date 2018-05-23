@@ -69,7 +69,7 @@ list-detail-app {
 
     list {
         .col-sm {
-            max-width: 50%;
+            max-width: 100%;
         }
 
         .pagination-container {
@@ -161,7 +161,7 @@ list-detail-app {
     }
 
     list .col-sm {
-        max-width: 100%;
+        max-width: 50% !important;
         flex: 1 0 50%;
     }
 
