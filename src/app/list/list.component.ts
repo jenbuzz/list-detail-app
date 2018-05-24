@@ -41,7 +41,7 @@ export class ListComponent implements OnInit {
         if (this.config.get('metaTags', 'disableMetaTags') === true) {
             return;
         }
-        
+
         let title = this.config.get('metaTags', 'title');
         if (this.config.get('metaTags', 'titleSuffix')) {
             title += this.config.get('metaTags', 'titleSuffix');

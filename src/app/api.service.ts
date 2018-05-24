@@ -105,7 +105,7 @@ export class ApiService {
                 catchError(this.handleError)
             )
             .map(elements => {
-                let preparedElements = [];
+                const preparedElements = [];
 
                 const apiDataPath = this.config.get('api', 'dataPath');
                 const elementData = this.mapData(elements, apiDataPath);
@@ -153,8 +153,8 @@ export class ApiService {
                 catchError(this.handleError)
             )
             .map(element => {
-                let apiDataPath = this.config.get('api', 'dataPath');
-                let elementData = this.mapData(element, apiDataPath);
+                const apiDataPath = this.config.get('api', 'dataPath');
+                const elementData = this.mapData(element, apiDataPath);
 
                 if (elementData && elementData.length > 0) {
                     if (elementData[0] == undefined) {
@@ -181,13 +181,13 @@ export class ApiService {
         let imagePath = this.getElementDataByMapping(element, 'image');
         const apiImagePath = this.config.get('api', 'image', 'path');
         if (imagePath && apiImagePath && apiImagePath.length > 0) {
-            let elementImage = this.mapData(fullElement, apiImagePath);
+            const elementImage = this.mapData(fullElement, apiImagePath);
 
             elementImage.forEach(image => {
                 const apiImageIdPath = this.config.get('api', 'image', 'idPath');
                 const imageId = this.mapData(image, apiImageIdPath);
                 if (imageId == imagePath) {
-                    let apiImageUrlPath = this.config.get('api', 'image', 'urlPath');
+                    const apiImageUrlPath = this.config.get('api', 'image', 'urlPath');
                     imagePath = this.mapData(image, apiImageUrlPath);
                     return;
                 }
