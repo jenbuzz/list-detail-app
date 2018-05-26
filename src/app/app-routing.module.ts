@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
+import { ErrorComponent } from './error/error.component';
 
 export const routes: Routes = [
     {
@@ -14,6 +15,11 @@ export const routes: Routes = [
         path: '',
         component: ListComponent,
         data: { animation: 'list' },
+    },
+    {
+        path: '**',
+        pathMatch: 'full',
+        component: ErrorComponent,
     },
 ];
 

@@ -13,6 +13,7 @@ import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { CardComponent } from './card/card.component';
+import { ErrorComponent } from './error/error.component';
 
 import { ConfigService } from './config.service';
 import { ApiService } from './api.service';
@@ -30,6 +31,7 @@ export function loadConfig(configService: ConfigService) {
         DetailComponent,
         PaginationComponent,
         CardComponent,
+        ErrorComponent,
     ],
     imports: [
         BrowserModule,
