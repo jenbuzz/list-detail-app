@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
@@ -12,6 +12,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/skip';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/observable/of';
 
 @Injectable()
 export class ApiService {
@@ -86,6 +87,19 @@ export class ApiService {
         this.isLastPageLoaded = false;
     }
 
+    getToken(): Observable<any> {
+        const enableAuthentication = this.config.get('api', 'authToken', 'enableAuthentication');
+
+        if (enableAuthentication) {
+            const apiPath = this.config.get('api', 'authToken', 'path');
+            const credentials = this.config.get('api', 'authToken', 'credentials');
+
+            return this.http.post(environment.apiUrl + apiPath, credentials);
+        }
+
+        return Observable.of(null);
+    }
+
     getElements(searchTerm?: string): void {
         this.isLoading$.next(true);
         this.hasError$.next(false);
@@ -99,7 +113,10 @@ export class ApiService {
             apiPath += '&' + this.config.get('api', 'list', 'searchFieldName') + '=' + searchTerm;
         }
 
-        this.http.get(environment.apiUrl + apiPath)
+        this.getToken().subscribe(token => {
+            const requestOptions = token ? {params: new HttpParams().set('token', token.token) } : {};
+
+            this.http.get(environment.apiUrl + apiPath, requestOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
@@ -135,6 +152,7 @@ export class ApiService {
                     this.hasError$.next(true);
                 }
             );
+        });
     }
 
     getElementById(id: number): void {
@@ -147,34 +165,38 @@ export class ApiService {
             '?' + this.config.get('api', 'detail', 'idParameter') + '=' + id;
         apiPath += '&' + this.config.get('api', 'detail', 'parameters').join('&');
 
-        this.http.get(apiPath)
-            .pipe(
-                retry(1),
-                catchError(this.handleError)
-            )
-            .map(element => {
-                const apiDataPath = this.config.get('api', 'dataPath');
-                const elementData = this.mapData(element, apiDataPath);
+        this.getToken().subscribe(token => {
+            const requestOptions = token ? {params: new HttpParams().set('token', token.token) } : {};
 
-                if (elementData && elementData.length > 0) {
-                    if (elementData[0] == undefined) {
-                        return;
+            this.http.get(apiPath, requestOptions)
+                .pipe(
+                    retry(1),
+                    catchError(this.handleError)
+                )
+                .map(element => {
+                    const apiDataPath = this.config.get('api', 'dataPath');
+                    const elementData = this.mapData(element, apiDataPath);
+
+                    if (elementData && elementData.length > 0) {
+                        if (elementData[0] == undefined) {
+                            return;
+                        }
+
+                        return this.prepareElement(elementData[0], element);
                     }
 
-                    return this.prepareElement(elementData[0], element);
-                }
-
-                return;
-            }).subscribe(
-                element => {
-                    this.isLoading$.next(false);
-                    this.element$.next(element);
-                },
-                error => {
-                    this.isLoading$.next(false);
-                    this.hasError$.next(true);
-                }
-            );
+                    return;
+                }).subscribe(
+                    element => {
+                        this.isLoading$.next(false);
+                        this.element$.next(element);
+                    },
+                    error => {
+                        this.isLoading$.next(false);
+                        this.hasError$.next(true);
+                    }
+                );
+        });
     }
 
     private prepareElement(element: any, fullElement?: any): Element {
