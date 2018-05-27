@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Element } from './../interfaces';
 import { ConfigService } from './../config.service';
+import { FontAwesomeService } from './../font-awesome.service';
 
 @Component({
     selector: 'card',
@@ -23,7 +24,7 @@ export class CardComponent {
     readmore: string = '';
     externallink: string = '';
 
-    constructor(private config: ConfigService) {
+    constructor(private config: ConfigService, private fontawesome: FontAwesomeService) {
         this.readmore = this.config.get('text', 'readmore');
         this.externallink = this.config.get('text', 'externallink');
     }
@@ -34,6 +35,10 @@ export class CardComponent {
                 'background-image': 'url(' + element.image + ')'
             };
         }
+    }
+
+    getIcon(name: string): string {
+        return this.fontawesome.getIcon(name);
     }
 
 }

@@ -17,6 +17,7 @@ import { ErrorComponent } from './error/error.component';
 
 import { ConfigService } from './config.service';
 import { ApiService } from './api.service';
+import { FontAwesomeService } from './font-awesome.service';
 
 import solid from '@fortawesome/fontawesome-free-solid';
 import regular from '@fortawesome/fontawesome-free-regular';
@@ -53,7 +54,8 @@ export function loadConfig(configService: ConfigService) {
     providers: [
         ConfigService,
         {provide: APP_INITIALIZER, useFactory: loadConfig, deps: [ConfigService], multi: true},
-        ApiService
+        ApiService,
+        FontAwesomeService,
     ],
     bootstrap: [AppComponent]
 })
