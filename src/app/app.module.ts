@@ -18,6 +18,15 @@ import { ErrorComponent } from './error/error.component';
 import { ConfigService } from './config.service';
 import { ApiService } from './api.service';
 
+import solid from '@fortawesome/fontawesome-free-solid';
+import regular from '@fortawesome/fontawesome-free-regular';
+import brands from '@fortawesome/fontawesome-free-brands';
+import fontawesome from '@fortawesome/fontawesome';
+
+fontawesome.library.add(solid);
+fontawesome.library.add(regular);
+fontawesome.library.add(brands);
+
 export function loadConfig(configService: ConfigService) {
     return () => {
         return configService.load();
