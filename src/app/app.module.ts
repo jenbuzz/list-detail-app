@@ -24,10 +24,6 @@ import regular from '@fortawesome/fontawesome-free-regular';
 import brands from '@fortawesome/fontawesome-free-brands';
 import fontawesome from '@fortawesome/fontawesome';
 
-fontawesome.library.add(solid);
-fontawesome.library.add(regular);
-fontawesome.library.add(brands);
-
 export function loadConfig(configService: ConfigService) {
     return () => {
         return configService.load();
@@ -59,4 +55,10 @@ export function loadConfig(configService: ConfigService) {
     ],
     bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+    constructor() {
+        fontawesome.library.add(solid);
+        fontawesome.library.add(regular);
+        fontawesome.library.add(brands);
+    }
+}
