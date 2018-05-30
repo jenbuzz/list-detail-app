@@ -104,6 +104,10 @@ list-detail-app {
     }
 
     detail {
+        .card {
+            margin-top: 0.2rem;
+        }
+
         .card .card-image-container {
             width: 100%;
         }
