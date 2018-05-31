@@ -26,11 +26,15 @@ export class CardComponent {
 
     showSourceTextOnBtn: boolean = true;
 
+    themeMainColor: string = '#000000';
+
     constructor(private config: ConfigService, private fontawesome: FontAwesomeService) {
         this.readmore = this.config.get('text', 'readmore');
         this.externallink = this.config.get('text', 'externallink');
 
         this.showSourceTextOnBtn = this.config.get('settings', 'hideSourceTextOnBtn');
+
+        this.themeMainColor = this.config.get('styling', 'themeMainColor');
     }
 
     getBackgroundImage(element: Element): any {
