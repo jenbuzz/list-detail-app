@@ -26,12 +26,13 @@
         <div *ngIf="showExternalLinkBtn">
             <div *ngFor="let link of element.external_link">
                 <a class="btn mb-2" 
+                    [class.has-icon]="link.icon"
                     [style.background]="themeMainColor" 
                     href="{{ link.url }}" 
                     target="_blank" 
                     rel="nofollow">
                     <ng-container *ngIf="link.icon && getIcon(link.icon)">
-                        <i [class]="getIcon(link.icon) + ' mr-2'"></i>
+                        <i [class]="getIcon(link.icon) + ' fa-2x mr-icon'"></i>
                     </ng-container>
                     <span>{{ readmore }}</span>
                     <span *ngIf="showSourceTextOnBtn">&nbsp;{{ element.source }}</span>

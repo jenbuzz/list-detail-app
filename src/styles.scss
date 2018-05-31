@@ -120,11 +120,26 @@ list-detail-app {
             background: #000000;
             color: #fff;
             max-width: 100%;
+            min-width: 100%;
             white-space: normal;
         
             &:hover {
                 color: #fff;
                 opacity: 0.8;
+            }
+
+            &.has-icon {
+                span {
+                    vertical-align: super;
+                }
+            }
+
+            .mr-icon {
+                margin-right: 0;
+            }
+
+            span {
+                display: block;
             }
         }
     }
@@ -172,6 +187,18 @@ list-detail-app {
     list .card-body {
         max-height: 150px;
     }
+
+    list-detail-app detail .btn {
+        min-width: 262px;
+    }
+
+    list-detail-app detail .btn span {
+        display: inline-block;
+    }
+
+    list-detail-app detail .btn .mr-icon {
+        margin-right: 0.5rem;
+    }
 }
 
 @media (min-width: 768px) {
@@ -186,12 +213,28 @@ list-detail-app {
     detail .card .card-body {
         width: 50%;
     }
+
+    list-detail-app detail .btn span {
+        display: block;
+    }
+
+    list-detail-app detail .btn .mr-icon {
+        margin-right: 0;
+    }
 }
 
 @media (min-width: 992px) {
     list .card-body {
         min-height: 130px;
         max-height: 130px;
+    }
+
+    list-detail-app detail .btn span {
+        display: inline-block;
+    }
+
+    list-detail-app detail .btn .mr-icon {
+        margin-right: 0.5rem;
     }
 }
 
