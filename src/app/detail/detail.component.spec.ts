@@ -6,6 +6,7 @@ import { Routes } from '@angular/router';
 import { MetafrenzyModule } from 'ngx-metafrenzy';
 import { DetailComponent } from './detail.component';
 import { ListComponent } from './../list/list.component';
+import { ErrorComponent } from './../error/error.component';
 import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
 import { routes } from './../app-routing.module';
@@ -25,6 +26,7 @@ describe('DetailComponent', () => {
             declarations: [
                 DetailComponent,
                 ListComponent,
+                ErrorComponent,
             ],
             providers: [
                 ApiService,

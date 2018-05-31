@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CardComponent } from './card.component';
 import { ConfigService } from './../config.service';
+import { FontAwesomeService } from './../font-awesome.service';
 import { MockConfigService } from './../mocks';
 
 describe('CardComponent', () => {
@@ -15,6 +16,7 @@ describe('CardComponent', () => {
             ],
             providers: [
                 {provide: ConfigService, useClass: MockConfigService},
+                FontAwesomeService,
             ],
             schemas: [NO_ERRORS_SCHEMA]
         })
@@ -30,8 +32,10 @@ describe('CardComponent', () => {
             description: 'Lorem ipsum',
             internal_link: 'test',
             external_link: 'http://asdf',
+            external_link_icon: '',
             image: 'test.jpg',
-            source: 'Test'
+            source: 'Test',
+            icons: [],
         };
         fixture.detectChanges();
     });
