@@ -32,7 +32,7 @@ export class CardComponent {
         this.readmore = this.config.get('text', 'readmore');
         this.externallink = this.config.get('text', 'externallink');
 
-        this.showSourceTextOnBtn = this.config.get('settings', 'hideSourceTextOnBtn');
+        this.showSourceTextOnBtn = this.config.get('settings', 'showSourceTextOnBtn');
 
         this.themeMainColor = this.config.get('styling', 'themeMainColor');
     }
