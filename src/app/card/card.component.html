@@ -22,16 +22,20 @@
             <small>Source: {{ element.source }}</small>
         </p>
         <div *ngIf="showExternalLinkBtn">
-            <a class="btn" 
-                [style.background]="themeMainColor" 
-                href="{{ element.external_link }}" 
-                target="_blank" 
-                rel="nofollow">
-                <ng-container *ngIf="element.external_link_icon && getIcon(element.external_link_icon)">
-                    <i [class]="getIcon(element.external_link_icon) + ' mr-2'"></i>
-                </ng-container>
-                <span>{{ readmore }} {{ element.source }} {{ externallink }}</span>
-            </a>
+            <div *ngFor="let link of element.external_link">
+                <a class="btn mb-2" 
+                    [style.background]="themeMainColor" 
+                    href="{{ link.url }}" 
+                    target="_blank" 
+                    rel="nofollow">
+                    <ng-container *ngIf="link.icon && getIcon(link.icon)">
+                        <i [class]="getIcon(link.icon) + ' mr-2'"></i>
+                    </ng-container>
+                    <span>{{ readmore }}</span>
+                    <span *ngIf="showSourceTextOnBtn">&nbsp;{{ element.source }}</span>
+                    <span>&nbsp;{{ externallink }}</span>
+                </a>
+            </div>
         </div>
     </div>
 </div>

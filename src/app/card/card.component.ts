@@ -24,9 +24,13 @@ export class CardComponent {
     readmore: string = '';
     externallink: string = '';
 
+    showSourceTextOnBtn: boolean = true;
+
     constructor(private config: ConfigService, private fontawesome: FontAwesomeService) {
         this.readmore = this.config.get('text', 'readmore');
         this.externallink = this.config.get('text', 'externallink');
+
+        this.showSourceTextOnBtn = this.config.get('settings', 'hideSourceTextOnBtn');
     }
 
     getBackgroundImage(element: Element): any {

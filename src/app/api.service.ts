@@ -216,23 +216,44 @@ export class ApiService {
             });
         }
 
-        return {
+        let preparedElement: Element = {
             id: this.getElementDataByMapping(element, 'id'),
             title: this.getElementDataByMapping(element, 'title'),
             description: this.getElementDataByMapping(element, 'description'),
             internal_link: this.getElementDataByMapping(element, 'internal_link'),
             external_link: this.getElementDataByMapping(element, 'external_link'),
-            external_link_icon: this.getElementDataByMapping(element, 'external_link_icon'),
             image: environment.apiUrl + imagePath,
             source: this.getElementDataByMapping(element, 'source'),
             icons: this.getElementDataByMapping(element, 'icons'),
         };
+
+        let links = [];
+        if (Array.isArray(preparedElement.external_link)) {
+            preparedElement.external_link.forEach(link => {
+                const icon = this.getElementDataByMapping(link, 'external_link_icon');
+
+                links.push({
+                    url: link['uri'],
+                    icon: icon,
+                });
+            });
+        } else {
+            const icon = this.getElementDataByMapping(preparedElement.external_link, 'external_link_icon');
+
+            links.push({
+                url: preparedElement.external_link,
+                icon: icon,
+            });
+        }
+        preparedElement.external_link = links;
+
+        return preparedElement;
     }
 
     private mapData(element, fields) {
         for (let i = 0; i < fields.length; i++) {
             const field = fields[i];
-            if (element.hasOwnProperty(field)) {
+            if (element && element.hasOwnProperty(field)) {
                 const newFields = fields.slice(1);
 
                 if (newFields.length >= 1) {

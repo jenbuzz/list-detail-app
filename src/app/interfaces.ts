@@ -3,11 +3,16 @@ export interface Element {
     title?: string;
     description?: string;
     internal_link?: string;
-    external_link?: string;
+    external_link?: string | Link[];
     external_link_icon?: string;
     image?: string;
     source?: string;
     icons?: string[];
+}
+
+export interface Link {
+    url?: string;
+    icon?: string;
 }
 
 export interface Config {

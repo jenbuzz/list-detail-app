@@ -55,5 +55,8 @@
         "goback": "",
         "readmore": "",
         "externallink": ""
+    },
+    "settings": {
+        "showSourceTextOnBtn": false
     }
 }
