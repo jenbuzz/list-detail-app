@@ -202,6 +202,25 @@ list-detail-app .loader-container {
     width: 100%;
     right: 0;
     left: 0;
+
+    &:before {
+        content: "";
+        width: 16px;
+        position: absolute;
+        background: #fff;
+        height: 100%;
+        left: -16px;
+        top: 0;
+    }
+    &:after {
+        content: "";
+        width: 16px;
+        position: absolute;
+        background: #fff;
+        height: 100%;
+        right: -16px;
+        top: 0;
+    }
 }
 .loader {
     font-size: 10px;
