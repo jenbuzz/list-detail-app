@@ -17,7 +17,9 @@
                 <img src="http://192.168.56.101/{{ icon }}">
             </ng-container>
         </div>
-        <p class="card-text text-muted" *ngIf="showDescription && element.description">{{ element.description }}</p>
+        <ng-container *ngIf="showDescription && element.description">
+            <p class="card-text text-muted" [innerHTML]="element.description"></p>
+        </ng-container>
         <p class="card-text text-muted" *ngIf="element.source">
             <small>Source: {{ element.source }}</small>
         </p>
