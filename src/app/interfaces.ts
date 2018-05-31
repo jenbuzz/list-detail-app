@@ -4,6 +4,7 @@ export interface Element {
     description?: string;
     internal_link?: string;
     external_link?: string;
+    external_link_icon?: string;
     image: string;
     source: string;
     icons: string[];
@@ -42,6 +43,7 @@ export interface ConfigElementFieldMapping {
     description?: string[];
     internal_link?: string[];
     external_link?: string[];
+    external_link_icon?: string[];
     image?: string[];
     source?: string[];
 }

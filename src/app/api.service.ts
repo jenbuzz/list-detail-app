@@ -222,6 +222,7 @@ export class ApiService {
             description: this.getElementDataByMapping(element, 'description'),
             internal_link: this.getElementDataByMapping(element, 'internal_link'),
             external_link: this.getElementDataByMapping(element, 'external_link'),
+            external_link_icon: this.getElementDataByMapping(element, 'external_link_icon'),
             image: environment.apiUrl + imagePath,
             source: this.getElementDataByMapping(element, 'source'),
             icons: this.getElementDataByMapping(element, 'icons'),

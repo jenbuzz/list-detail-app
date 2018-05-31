@@ -26,7 +26,12 @@
                 [style.background]="themeMainColor" 
                 href="{{ element.external_link }}" 
                 target="_blank" 
-                rel="nofollow">{{ readmore }} {{ element.source }} {{ externallink }}</a>
+                rel="nofollow">
+                <ng-container *ngIf="element.external_link_icon && getIcon(element.external_link_icon)">
+                    <i [class]="getIcon(element.external_link_icon) + ' mr-2'"></i>
+                </ng-container>
+                <span>{{ readmore }} {{ element.source }} {{ externallink }}</span>
+            </a>
         </div>
     </div>
 </div>
