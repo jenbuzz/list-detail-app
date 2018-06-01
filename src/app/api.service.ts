@@ -216,7 +216,7 @@ export class ApiService {
             });
         }
 
-        let preparedElement: Element = {
+        const preparedElement: Element = {
             id: this.getElementDataByMapping(element, 'id'),
             title: this.getElementDataByMapping(element, 'title'),
             description: this.getElementDataByMapping(element, 'description'),
@@ -227,7 +227,7 @@ export class ApiService {
             icons: this.getElementDataByMapping(element, 'icons'),
         };
 
-        let links = [];
+        const links = [];
         if (Array.isArray(preparedElement.external_link)) {
             preparedElement.external_link.forEach(link => {
                 const icon = this.getElementDataByMapping(link, 'external_link_icon');
@@ -250,7 +250,7 @@ export class ApiService {
         return preparedElement;
     }
 
-    private mapData(element, fields) {
+    private mapData(element: any, fields: any): any {
         for (let i = 0; i < fields.length; i++) {
             const field = fields[i];
             if (element && element.hasOwnProperty(field)) {
@@ -267,7 +267,7 @@ export class ApiService {
         return null;
     }
 
-    private getElementDataByMapping(element, field) {
+    private getElementDataByMapping(element: any, field: string): any {
         const fieldMapping = this.config.get('elementFieldMapping');
 
         if (field in fieldMapping) {
