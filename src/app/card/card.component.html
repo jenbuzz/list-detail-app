@@ -6,13 +6,13 @@
             alt="{{ element.title }}">
 
         <div *ngIf="element.source"
-            [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">&copy; {{ element.source }}</div>
+            [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">Source: {{ element.source }}</div>
     </div>
     <div class="card-body">
         <h5 class="card-title" *ngIf="element.title">
             <strong>{{ element.title }}</strong>
         </h5>
-        <div class="card-icons mb-2" *ngIf="element.icons && element.icons.length > 0">
+        <div class="card-icons mb-3" *ngIf="element.icons && element.icons.length > 0">
             <ng-container *ngFor="let icon of element.icons">
                 <img src="http://192.168.56.101/{{ icon }}">
             </ng-container>

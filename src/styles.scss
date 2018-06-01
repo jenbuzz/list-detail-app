@@ -152,6 +152,10 @@ list-detail-app {
         }
     }
 
+    .card .card-text {
+        line-height: 1.5em;
+    }
+
     .card-image-container {
         position: relative;
 
@@ -165,6 +169,7 @@ list-detail-app {
             padding: 25px 5px 5px 5px;
             text-align: center;
             font-weight: bold;
+            font-size: 14px;
         }
     }
 
