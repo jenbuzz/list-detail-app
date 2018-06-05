@@ -3,10 +3,6 @@ list-detail-app {
 }
 
 list-detail-app {
-    font-family: Verdana, Geneva, sans-serif;
-}
-
-list-detail-app {
     .container {
         width: 100% !important;
         min-width: auto !important;
@@ -106,14 +102,14 @@ list-detail-app {
     detail {
         .card {
             margin-top: 0.2rem;
-        }
-
-        .card .card-image-container {
-            width: 100%;
-        }
+            
+            .card-image-container {
+                width: 100%;
+            }
         
-        .card .card-body {
-            width: 100%;
+            .card-body {
+                width: 100%;
+            }
         }
         
         .btn {
@@ -180,138 +176,156 @@ list-detail-app {
 }
 
 @media (min-width: 576px) {
-    list-detail-app h2 {
-        font-size: 1.6rem !important;
-    }
+    list-detail-app {
+        h2 {
+            font-size: 1.6rem !important;
+        }
 
-    list .col-sm {
-        max-width: 50% !important;
-        flex: 1 0 50%;
-    }
+        list {
+            .col-sm {
+                max-width: 50% !important;
+                flex: 1 0 50%;
+            }
 
-    list .card-body {
-        max-height: 150px;
-    }
+            .card-body {
+                max-height: 150px;
+            }
+        }
 
-    list-detail-app detail .btn {
-        min-width: 262px;
-    }
+        detail {
+            .btn {
+                min-width: 262px;
 
-    list-detail-app detail .btn span {
-        display: inline-block;
-    }
+                span {
+                    display: inline-block;
+                }
 
-    list-detail-app detail .btn .mr-icon {
-        margin-right: 0.5rem;
+                .mr-icon {
+                    margin-right: 0.5rem;
+                }
+            }
+        }
     }
 }
 
 @media (min-width: 768px) {
-    detail .card {
-        flex-direction: row;
-    }
+    list-detail-app {
+        detail {
+            .card {
+                flex-direction: row;
 
-    detail .card .card-image-container {
-        width: 50%;
-    }
+                .card-image-container {
+                    width: 50%;
+                }
 
-    detail .card .card-body {
-        width: 50%;
-    }
+                .card-body {
+                    width: 50%;
+                }
+            } 
 
-    list-detail-app detail .btn span {
-        display: block;
-    }
+            .btn {
+                span {
+                    display: block;
+                }
 
-    list-detail-app detail .btn .mr-icon {
-        margin-right: 0;
+                 .mr-icon {
+                    margin-right: 0;
+                }
+            }
+        }
     }
 }
 
 @media (min-width: 992px) {
-    list .card-body {
-        min-height: 130px;
-        max-height: 130px;
-    }
+    list-detail-app {
+        list .card-body {
+            min-height: 130px;
+            max-height: 130px;
+        }
 
-    list-detail-app detail .btn span {
-        display: inline-block;
-    }
+        detail .btn {
+            span {
+                display: inline-block;
+            }
 
-    list-detail-app detail .btn .mr-icon {
-        margin-right: 0.5rem;
+             .mr-icon {
+                margin-right: 0.5rem;
+            }
+        }
     }
 }
 
-list-detail-app .loader-container {
-    position: absolute;
-    background: #fff;
-    height: 100%;
-    width: 100%;
-    right: 0;
-    left: 0;
-
-    &:before {
-        content: "";
-        width: 16px;
+list-detail-app {
+    .loader-container {
         position: absolute;
         background: #fff;
         height: 100%;
-        left: -16px;
-        top: 0;
+        width: 100%;
+        right: 0;
+        left: 0;
+
+        &:before {
+            content: "";
+            width: 16px;
+            position: absolute;
+            background: #fff;
+            height: 100%;
+            left: -16px;
+            top: 0;
+        }
+        &:after {
+            content: "";
+            width: 16px;
+            position: absolute;
+            background: #fff;
+            height: 100%;
+            right: -16px;
+            top: 0;
+        }
     }
-    &:after {
-        content: "";
-        width: 16px;
+    .loader {
+        font-size: 10px;
+        margin: 50px auto;
+        text-indent: -9999em;
+        width: 11em;
+        height: 11em;
+        border-radius: 50%;
+        background: #ffffff;
+        background: -moz-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
+        background: -webkit-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
+        background: -o-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
+        background: -ms-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
+        background: linear-gradient(to right, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
+        position: relative;
+        -webkit-animation: animationLoad 1.4s infinite linear;
+        animation: animationLoad 1.4s infinite linear;
+        -webkit-transform: translateZ(0);
+        -ms-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    .loader:before {
+        width: 50%;
+        height: 50%;
+        background: #dddddd;
+        border-radius: 100% 0 0 0;
         position: absolute;
-        background: #fff;
-        height: 100%;
-        right: -16px;
         top: 0;
+        left: 0;
+        content: '';
     }
-}
-.loader {
-    font-size: 10px;
-    margin: 50px auto;
-    text-indent: -9999em;
-    width: 11em;
-    height: 11em;
-    border-radius: 50%;
-    background: #ffffff;
-    background: -moz-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
-    background: -webkit-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
-    background: -o-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
-    background: -ms-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
-    background: linear-gradient(to right, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
-    position: relative;
-    -webkit-animation: animationLoad 1.4s infinite linear;
-    animation: animationLoad 1.4s infinite linear;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
-}
-.loader:before {
-    width: 50%;
-    height: 50%;
-    background: #dddddd;
-    border-radius: 100% 0 0 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
-}
-.loader:after {
-    background: #ffffff;
-    width: 75%;
-    height: 75%;
-    border-radius: 50%;
-    content: '';
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    .loader:after {
+        background: #ffffff;
+        width: 75%;
+        height: 75%;
+        border-radius: 50%;
+        content: '';
+        margin: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
 }
 @-webkit-keyframes animationLoad {
     0% {
