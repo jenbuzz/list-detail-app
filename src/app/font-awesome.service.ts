@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
+import { faAmazon, faApple, faAndroid, faWindows } from '@fortawesome/fontawesome-free-brands';
 
 @Injectable()
 export class FontAwesomeService {
 
     private icons = {
-        'amazon': 'fab fa-amazon',
-        'apple': 'fab fa-apple',
-        'android': 'fab fa-android',
-        'windows': 'fab fa-windows',
+        'amazon': faAmazon,
+        'apple': faApple,
+        'android': faAndroid,
+        'windows': faWindows,
     };
 
     getIcon(name: string): string {

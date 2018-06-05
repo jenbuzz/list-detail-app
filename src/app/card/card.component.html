@@ -32,7 +32,7 @@
                     target="_blank" 
                     rel="nofollow">
                     <ng-container *ngIf="link.icon && getIcon(link.icon)">
-                        <i [class]="getIcon(link.icon) + ' fa-2x mr-icon'"></i>
+                        <fa-icon [icon]="getIcon(link.icon)" class="fa-2x mr-icon"></fa-icon>
                     </ng-container>
                     <span>{{ readmore }}</span>
                     <span *ngIf="showSourceTextOnBtn">&nbsp;{{ element.source }}</span>

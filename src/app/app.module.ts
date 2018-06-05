@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MetafrenzyModule } from 'ngx-metafrenzy';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -18,11 +19,6 @@ import { ErrorComponent } from './error/error.component';
 import { ConfigService } from './config.service';
 import { ApiService } from './api.service';
 import { FontAwesomeService } from './font-awesome.service';
-
-import solid from '@fortawesome/fontawesome-free-solid';
-import regular from '@fortawesome/fontawesome-free-regular';
-import brands from '@fortawesome/fontawesome-free-brands';
-import fontawesome from '@fortawesome/fontawesome';
 
 export function loadConfig(configService: ConfigService) {
     return () => {
@@ -46,6 +42,7 @@ export function loadConfig(configService: ConfigService) {
         HttpClientModule,
         AppRoutingModule,
         MetafrenzyModule.forRoot(),
+        FontAwesomeModule,
     ],
     providers: [
         ConfigService,
@@ -56,9 +53,4 @@ export function loadConfig(configService: ConfigService) {
     bootstrap: [AppComponent]
 })
 export class AppModule {
-    constructor() {
-        fontawesome.library.add(solid);
-        fontawesome.library.add(regular);
-        fontawesome.library.add(brands);
-    }
 }
