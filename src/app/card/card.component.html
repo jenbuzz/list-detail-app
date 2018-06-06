@@ -14,7 +14,7 @@
         </h5>
         <div class="card-icons mb-3" *ngIf="element.icons && element.icons.length > 0">
             <ng-container *ngFor="let icon of element.icons">
-                <img src="http://192.168.56.101/{{ icon }}">
+                <img src="{{ apiUrl }}{{ icon }}">
             </ng-container>
         </div>
         <ng-container *ngIf="showDescription && element.description">

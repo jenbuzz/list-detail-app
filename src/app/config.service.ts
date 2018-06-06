@@ -3,6 +3,7 @@ import { PlatformLocation } from '@angular/common';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Config } from './interfaces';
+import { environment } from './../environments/environment';
 
 @Injectable()
 export class ConfigService {
@@ -42,6 +43,10 @@ export class ConfigService {
         const value = config[key];
 
         return args.length ? this.fetchValue(value, args) : value;
+    }
+
+    getEnvironmentApiUrl(): string {
+        return environment.apiUrl;
     }
 
 }

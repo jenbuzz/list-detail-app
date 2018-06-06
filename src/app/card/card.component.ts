@@ -21,6 +21,8 @@ export class CardComponent {
     @Input()
     showDescription: boolean;
 
+    apiUrl: string = '';
+
     readmore: string = '';
     externallink: string = '';
 
@@ -29,6 +31,8 @@ export class CardComponent {
     themeMainColor: string = '#000000';
 
     constructor(private config: ConfigService, private fontawesome: FontAwesomeService) {
+        this.apiUrl = this.config.getEnvironmentApiUrl();
+
         this.readmore = this.config.get('text', 'readmore');
         this.externallink = this.config.get('text', 'externallink');
 

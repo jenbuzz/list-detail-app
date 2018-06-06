@@ -4,7 +4,6 @@ import { BehaviorSubject } from 'rxjs';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { environment } from './../environments/environment';
 import { Element } from './interfaces';
 import { ConfigService } from './config.service';
 import { catchError, retry } from 'rxjs/operators';
@@ -91,10 +90,11 @@ export class ApiService {
         const enableAuthentication = this.config.get('api', 'authToken', 'enableAuthentication');
 
         if (enableAuthentication) {
+            const apiUrl = this.config.getEnvironmentApiUrl();
             const apiPath = this.config.get('api', 'authToken', 'path');
             const credentials = this.config.get('api', 'authToken', 'credentials');
 
-            return this.http.post(environment.apiUrl + apiPath, credentials);
+            return this.http.post(apiUrl + apiPath, credentials);
         }
 
         return Observable.of(null);
@@ -114,9 +114,10 @@ export class ApiService {
         }
 
         this.getToken().subscribe(token => {
+            const apiUrl = this.config.getEnvironmentApiUrl();
             const requestOptions = token ? {params: new HttpParams().set('token', token.token) } : {};
 
-            this.http.get(environment.apiUrl + apiPath, requestOptions)
+            this.http.get(apiUrl + apiPath, requestOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
@@ -159,7 +160,9 @@ export class ApiService {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        let apiPath = environment.apiUrl + this.config.get('api', 'detail', 'path');
+        const apiUrl = this.config.getEnvironmentApiUrl();
+
+        let apiPath = apiUrl + this.config.get('api', 'detail', 'path');
         apiPath += this.config.get('api', 'detail', 'idPath') ?
             '/' + id + '?' :
             '?' + this.config.get('api', 'detail', 'idParameter') + '=' + id;
@@ -222,7 +225,7 @@ export class ApiService {
             description: this.getElementDataByMapping(element, 'description'),
             internal_link: this.getElementDataByMapping(element, 'internal_link'),
             external_link: this.getElementDataByMapping(element, 'external_link'),
-            image: environment.apiUrl + imagePath,
+            image: this.config.getEnvironmentApiUrl() + imagePath,
             source: this.getElementDataByMapping(element, 'source'),
             icons: this.getElementDataByMapping(element, 'icons'),
         };
