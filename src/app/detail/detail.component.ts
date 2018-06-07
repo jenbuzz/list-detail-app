@@ -26,8 +26,8 @@ export class DetailComponent {
         private config: ConfigService,
         private readonly metafrenzyService: MetafrenzyService
     ) {
-        this.themeMainColor = this.config.get('styling', 'themeMainColor');
-        this.goback = this.config.get('text', 'goback');
+        this.themeMainColor = this.config.getStyling().themeMainColor;
+        this.goback = this.config.getText().goback;
 
         this.element$ = this.apiService.getElementSubject();
         this.isLoading$ = this.apiService.getIsLoadingSubject();
@@ -43,14 +43,14 @@ export class DetailComponent {
     }
 
     initMetaTags(element) {
-        if (this.config.get('metaTags', 'disableMetaTags') === true) {
+        if (this.config.getMetaTags().disableMetaTags === true) {
             return;
         }
 
         if ('title' in element && element['title']) {
             let title = element['title'];
-            if (this.config.get('metaTags', 'titleSuffix')) {
-                title += this.config.get('metaTags', 'titleSuffix');
+            if (this.config.getMetaTags().titleSuffix) {
+                title += this.config.getMetaTags().titleSuffix;
             }
 
             this.metafrenzyService.setTitle(title);

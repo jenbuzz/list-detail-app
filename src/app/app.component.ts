@@ -28,9 +28,9 @@ export class AppComponent {
     ) {
         this.apiService.initSearch();
 
-        this.themeMainColor = this.config.get('styling', 'themeMainColor');
-        this.title = this.config.get('text', 'title');
-        this.searchPlaceholder = this.config.get('text', 'search');
+        this.themeMainColor = this.config.getStyling().themeMainColor;
+        this.title = this.config.getText().title;
+        this.searchPlaceholder = this.config.getText().search;
     }
 
     setSearchTerm(searchTerm) {

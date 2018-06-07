@@ -33,12 +33,12 @@ export class CardComponent {
     constructor(private config: ConfigService, private fontawesome: FontAwesomeService) {
         this.apiUrl = this.config.getEnvironmentApiUrl();
 
-        this.readmore = this.config.get('text', 'readmore');
-        this.externallink = this.config.get('text', 'externallink');
+        this.readmore = this.config.getText().readmore;
+        this.externallink = this.config.getText().externallink;
 
-        this.showSourceTextOnBtn = this.config.get('settings', 'showSourceTextOnBtn');
+        this.showSourceTextOnBtn = this.config.getSettings().showSourceTextOnBtn;
 
-        this.themeMainColor = this.config.get('styling', 'themeMainColor');
+        this.themeMainColor = this.config.getStyling().themeMainColor;
     }
 
     getBackgroundImage(element: Element): any {

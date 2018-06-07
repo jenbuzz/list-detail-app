@@ -17,17 +17,38 @@ export interface Link {
 
 export interface Config {
     metaTags: ConfigMetaTags;
-    api: any;
+    api: ConfigApi;
     elementFieldMapping: ConfigElementFieldMapping;
     styling: ConfigStyling;
     text: ConfigText;
+    settings: ConfigSettings
 }
 
 export interface ConfigMetaTags {
+    disableMetaTags?: boolean;
     url?: string;
     title?: string;
     titleSuffix?: string;
     image?: string;
+}
+
+export interface ConfigApi {
+    authToken?: any;
+    list?: any;
+    detail?: any;
+    dataPath?: any;
+    image?: any;
+}
+
+export interface ConfigElementFieldMapping {
+    id?: string[];
+    title?: string[];
+    description?: string[];
+    internal_link?: string[];
+    external_link?: string[];
+    external_link_icon?: string[];
+    image?: string[];
+    source?: string[];
 }
 
 export interface ConfigStyling {
@@ -42,13 +63,6 @@ export interface ConfigText {
     externallink?: string;
 }
 
-export interface ConfigElementFieldMapping {
-    id?: string[];
-    title?: string[];
-    description?: string[];
-    internal_link?: string[];
-    external_link?: string[];
-    external_link_icon?: string[];
-    image?: string[];
-    source?: string[];
+export interface ConfigSettings {
+    showSourceTextOnBtn?: boolean;
 }

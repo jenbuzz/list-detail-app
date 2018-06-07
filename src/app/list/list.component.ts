@@ -24,7 +24,7 @@ export class ListComponent implements OnInit {
         private config: ConfigService,
         private readonly metafrenzyService: MetafrenzyService
     ) {
-        this.themeMainColor = this.config.get('styling', 'themeMainColor');
+        this.themeMainColor = this.config.getStyling().themeMainColor;
 
         this.elements$ = this.apiService.getElementsSubject();
         this.isLoading$ = this.apiService.getIsLoadingSubject();
@@ -38,17 +38,17 @@ export class ListComponent implements OnInit {
     }
 
     initMetaTags() {
-        if (this.config.get('metaTags', 'disableMetaTags') === true) {
+        if (this.config.getMetaTags().disableMetaTags === true) {
             return;
         }
 
-        let title = this.config.get('metaTags', 'title');
-        if (this.config.get('metaTags', 'titleSuffix')) {
-            title += this.config.get('metaTags', 'titleSuffix');
+        let title = this.config.getMetaTags().title;
+        if (this.config.getMetaTags().titleSuffix) {
+            title += this.config.getMetaTags().titleSuffix;
         }
 
-        const image = this.config.get('metaTags', 'image');
-        const url = this.config.get('metaTags', 'url');
+        const image = this.config.getMetaTags().image;
+        const url = this.config.getMetaTags().url;
 
         if (title) {
             this.metafrenzyService.setTitle(title);

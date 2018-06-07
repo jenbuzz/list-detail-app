@@ -2,7 +2,15 @@ import { Injectable } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Config } from './interfaces';
+import {
+    Config,
+    ConfigMetaTags,
+    ConfigApi,
+    ConfigElementFieldMapping,
+    ConfigStyling,
+    ConfigText,
+    ConfigSettings
+} from './interfaces';
 import { environment } from './../environments/environment';
 
 @Injectable()
@@ -31,6 +39,30 @@ export class ConfigService {
 
     get(...keys: string[]): any {
         return this.fetchValue(this.config, keys);
+    }
+
+    getMetaTags(): ConfigMetaTags {
+        return this.get('metaTags');
+    }
+
+    getApi(): any {
+        return this.get('api');
+    }
+
+    getElementFieldMapping(): ConfigElementFieldMapping {
+        return this.get('elementFieldMapping');
+    }
+
+    getStyling(): ConfigStyling {
+        return this.get('styling');
+    }
+
+    getText(): ConfigText {
+        return this.get('text');
+    }
+
+    getSettings(): ConfigSettings {
+        return this.get('settings');
     }
 
     private fetchValue(config: any, args: string[]): any {
