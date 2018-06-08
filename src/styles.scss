@@ -37,11 +37,8 @@ list-detail-app {
             border-radius: 0.25rem;
 
             .clear {
-                background-image: url(assets/delete.svg);
-                background-repeat: no-repeat;
-                background-position: center;
-                background-color: #ffffff;
-                padding: 0 20px;
+                vertical-align: middle;
+                padding: 7px 15px;
                 cursor: pointer;
                 opacity: .5;
             }

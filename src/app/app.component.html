@@ -19,7 +19,11 @@
                         (keyup)="setSearchTerm($event.target.value)">
 
                     <div class="input-group-append">
-                        <i class="input-group-text clear" (click)="setSearchTerm('')"></i>
+                        <fa-icon 
+                            [icon]="getIcon('times')" 
+                            class="clear" 
+                            (click)="setSearchTerm('')"
+                        ></fa-icon>
                     </div>
                 </div>    
             </form>

@@ -4,6 +4,7 @@ import { ApiService } from './api.service';
 import { BehaviorSubject } from 'rxjs';
 import { Subject } from 'rxjs';
 import { ConfigService } from './config.service';
+import { FontAwesomeService } from './font-awesome.service';
 import { routeAnimation } from './animations';
 
 @Component({
@@ -24,7 +25,8 @@ export class AppComponent {
     constructor(
         private router: Router,
         private apiService: ApiService,
-        private config: ConfigService
+        private config: ConfigService,
+        private fontawesome: FontAwesomeService
     ) {
         this.apiService.initSearch();
 
@@ -42,6 +44,10 @@ export class AppComponent {
 
     getAnimation(outlet: any) {
         return outlet.activatedRouteData['animation'] || 'list';
+    }
+
+    getIcon(name: string): string {
+        return this.fontawesome.getIcon(name);
     }
 
 }
