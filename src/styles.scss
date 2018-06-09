@@ -1,5 +1,9 @@
 list-detail-app {
-    @import '~bootstrap/dist/css/bootstrap.min.css';
+    @import '~bootstrap/scss/bootstrap';
+}
+
+list-detail-app {
+    font-family: Verdana, Geneva, sans-serif;
 }
 
 list-detail-app {
