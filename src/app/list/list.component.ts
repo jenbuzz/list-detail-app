@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
@@ -19,7 +18,6 @@ export class ListComponent implements OnInit {
     hasError$: Observable<boolean>;
 
     constructor(
-        private route: ActivatedRoute,
         private apiService: ApiService,
         private config: ConfigService,
         private readonly metafrenzyService: MetafrenzyService

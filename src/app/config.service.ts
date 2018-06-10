@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
-import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import {
     Config,
     ConfigMetaTags,

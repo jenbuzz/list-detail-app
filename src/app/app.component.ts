@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './api.service';
-import { BehaviorSubject } from 'rxjs';
-import { Subject } from 'rxjs';
 import { ConfigService } from './config.service';
 import { FontAwesomeService } from './font-awesome.service';
 import { routeAnimation } from './animations';
