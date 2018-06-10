@@ -10,19 +10,19 @@ export class PaginationComponent {
     constructor(private apiService: ApiService) {
     }
 
-    prevPage() {
+    prevPage(): void {
         this.apiService.decrementPage();
     }
 
-    nextPage() {
+    nextPage(): void {
         this.apiService.incrementPage();
     }
 
-    hasPrevPage() {
+    hasPrevPage(): boolean {
         return this.apiService.hasPrevPage();
     }
 
-    hasNextPage() {
+    hasNextPage(): boolean {
         return this.apiService.hasNextPage();
     }
 

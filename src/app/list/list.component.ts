@@ -31,13 +31,13 @@ export class ListComponent implements OnInit {
         this.hasError$ = this.apiService.getHasErrorSubject();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.apiService.getElements();
 
         this.initMetaTags();
     }
 
-    initMetaTags() {
+    initMetaTags(): void {
         if (this.config.getMetaTags().disableMetaTags === true) {
             return;
         }

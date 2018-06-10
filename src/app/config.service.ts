@@ -45,7 +45,7 @@ export class ConfigService {
         return this.get('metaTags');
     }
 
-    getApi(): any {
+    getApi(): ConfigApi {
         return this.get('api');
     }
 

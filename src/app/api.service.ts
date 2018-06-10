@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { Element } from './interfaces';
+import { Element, Link } from './interfaces';
 import { ConfigService } from './config.service';
 import { catchError, retry } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
@@ -28,7 +28,7 @@ export class ApiService {
     constructor(private http: HttpClient, private config: ConfigService) {
     }
 
-    initSearch() {
+    initSearch(): void {
         this.searchTerm$
             .skip(1)
             .debounceTime(400)
@@ -123,7 +123,7 @@ export class ApiService {
                 catchError(this.handleError)
             )
             .map(elements => {
-                const preparedElements = [];
+                const preparedElements: Element[] = [];
 
                 const apiDataPath = this.config.get('api', 'dataPath');
                 const elementData = this.mapData(elements, apiDataPath);
@@ -230,7 +230,7 @@ export class ApiService {
             icons: this.getElementDataByMapping(element, 'icons'),
         };
 
-        const links = [];
+        const links: Link[] = [];
         if (Array.isArray(preparedElement.external_link)) {
             preparedElement.external_link.forEach(link => {
                 const icon = this.getElementDataByMapping(link, 'external_link_icon');
@@ -253,7 +253,7 @@ export class ApiService {
         return preparedElement;
     }
 
-    private mapData(element: any, fields: any): any {
+    private mapData(element: any, fields: any[]): any {
         for (let i = 0; i < fields.length; i++) {
             const field = fields[i];
             if (element && element.hasOwnProperty(field)) {

@@ -42,7 +42,7 @@ export class DetailComponent {
         });
     }
 
-    initMetaTags(element) {
+    initMetaTags(element): void {
         if (this.config.getMetaTags().disableMetaTags === true) {
             return;
         }
@@ -70,7 +70,7 @@ export class DetailComponent {
         }
     }
 
-    back() {
+    back(): void {
         this.router.navigate(['']);
     }
 
