@@ -102,20 +102,21 @@ export class ApiService {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        let apiPath = this.config.get('api', 'list', 'path');
-        apiPath += '?' + this.config.get('api', 'list', 'parameters').join('&');
-        apiPath += '&' + this.config.get('api', 'list', 'paginationOffsetName') + '=' + (this.page * this.limit);
-        apiPath += '&' + this.config.get('api', 'list', 'paginationLimitName') + '=' + this.limit;
+        const params = this.config.get('api', 'list', 'parameters').concat([
+            this.config.get('api', 'list', 'paginationOffsetName') + '=' + (this.page * this.limit),
+            this.config.get('api', 'list', 'paginationLimitName') + '=' + this.limit
+        ]);
 
         if (searchTerm) {
-            apiPath += '&' + this.config.get('api', 'list', 'searchFieldName') + '=' + searchTerm;
+            params.push(this.config.get('api', 'list', 'searchFieldName') + '=' + searchTerm);
         }
 
+        const apiUrl = this.buildApiUrl('list', params);
+
         this.getToken().subscribe(token => {
-            const apiUrl = this.config.getEnvironmentApiUrl();
             const requestOptions = token ? {params: new HttpParams().set('token', token.token) } : {};
 
-            this.http.get(apiUrl + apiPath, requestOptions)
+            this.http.get(apiUrl, requestOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError)
@@ -158,18 +159,17 @@ export class ApiService {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        const apiUrl = this.config.getEnvironmentApiUrl();
+        const params = this.config.get('api', 'detail', 'parameters');
+        if (this.config.get('api', 'detail', 'idParameter') !== undefined) {
+            params.unshift(this.config.get('api', 'detail', 'idParameter') + '=' + id);
+        }
 
-        let apiPath = apiUrl + this.config.get('api', 'detail', 'path');
-        apiPath += this.config.get('api', 'detail', 'idPath') ?
-            '/' + id + '?' :
-            '?' + this.config.get('api', 'detail', 'idParameter') + '=' + id;
-        apiPath += '&' + this.config.get('api', 'detail', 'parameters').join('&');
+        const apiUrl = this.buildApiUrl('detail', params, this.config.get('api', 'detail', 'idPath') ? '/' + id : '');
 
         this.getToken().subscribe(token => {
             const requestOptions = token ? {params: new HttpParams().set('token', token.token) } : {};
 
-            this.http.get(apiPath, requestOptions)
+            this.http.get(apiUrl, requestOptions)
                 .pipe(
                     retry(1),
                     catchError(this.handleError)
@@ -278,5 +278,12 @@ export class ApiService {
 
     private handleError(error: HttpErrorResponse): ErrorObservable<string> {
         return ErrorObservable.create('Something went wrong; please try again later.');
+    }
+
+    private buildApiUrl(type: 'list'|'detail', params: string[], pathExtension: string = ''): string {
+        return this.config.getEnvironmentApiUrl() +
+            this.config.get('api', type, 'path') +
+            pathExtension +
+            '?' + params.join('&');
     }
 }
