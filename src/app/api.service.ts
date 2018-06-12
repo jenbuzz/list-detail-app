@@ -22,6 +22,7 @@ export class ApiService {
     isLastPageLoaded: boolean = false;
     limit: number = 10;
     page: number = 0;
+    searchTerm: string = '';
 
     constructor(private http: HttpClient, private config: ConfigService) {
     }
@@ -32,7 +33,8 @@ export class ApiService {
             .debounceTime(400)
             .distinctUntilChanged()
             .subscribe(term => {
-                this.getElements(term);
+                this.searchTerm = term;
+                this.getElements();
             });
     }
 
@@ -99,7 +101,7 @@ export class ApiService {
         return Observable.of(null);
     }
 
-    getElements(searchTerm?: string): void {
+    getElements(): void {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
@@ -108,8 +110,8 @@ export class ApiService {
             this.config.get('api', 'list', 'paginationLimitName') + '=' + this.limit
         ]);
 
-        if (searchTerm) {
-            params.push(this.config.get('api', 'list', 'searchFieldName') + '=' + searchTerm);
+        if (this.searchTerm) {
+            params.push(this.config.get('api', 'list', 'searchFieldName') + '=' + this.searchTerm);
         }
 
         const apiUrl = this.buildApiUrl('list', params);
