@@ -54,6 +54,7 @@ export class ApiService {
 
     setSearchTerm(term: string): void {
         this.searchTerm$.next(term);
+        this.resetPage();
     }
 
     decrementPage(): void {

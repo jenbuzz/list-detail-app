@@ -18,8 +18,6 @@ export class AppComponent {
     title: string = '';
     searchPlaceholder: string = '';
 
-    searchTerm: string = '';
-
     constructor(
         private router: Router,
         private apiService: ApiService,
@@ -33,10 +31,8 @@ export class AppComponent {
         this.searchPlaceholder = this.config.getText().search;
     }
 
-    setSearchTerm(searchTerm) {
-        this.searchTerm = searchTerm;
+    setSearchTerm(searchTerm: string): void {
         this.apiService.setSearchTerm(searchTerm);
-        this.apiService.resetPage();
         this.router.navigate(['']);
     }
 
