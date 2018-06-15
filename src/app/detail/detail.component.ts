@@ -1,16 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
 import { ApiService } from './../api.service';
 import { Element } from './../interfaces';
+import { switchMap, subscribeOn } from 'rxjs/operators';
 
 @Component({
     selector: 'detail',
     templateUrl: './detail.component.html'
 })
-export class DetailComponent {
+export class DetailComponent implements OnInit {
 
     themeMainColor: string = '#000000';
     goback: string = 'Go back';
@@ -33,13 +34,17 @@ export class DetailComponent {
         this.isLoading$ = this.apiService.getIsLoadingSubject();
         this.hasError$ = this.apiService.getHasErrorSubject();
 
-        this.route.params.subscribe(params => {
-            this.apiService.getElementById(params['id']);
-        });
-
         this.element$.subscribe(element => {
             this.initMetaTags(element);
         });
+    }
+
+    ngOnInit() {
+        this.route.paramMap.pipe(
+            switchMap(params => {
+                return this.apiService.getElementById(+params.get('id'))
+            })
+        ).subscribe();
     }
 
     initMetaTags(element): void {

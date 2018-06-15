@@ -101,7 +101,7 @@ export class ApiService {
         return Observable.of(null);
     }
 
-    getElements(): void {
+    getElements(): Subject<Element[]> {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
@@ -157,9 +157,11 @@ export class ApiService {
                 }
             );
         });
+
+        return this.elements$;
     }
 
-    getElementById(id: number): void {
+    getElementById(id: number): Subject<Element> {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
@@ -203,6 +205,8 @@ export class ApiService {
                     }
                 );
         });
+
+        return this.element$;
     }
 
     private prepareElement(element: any, fullElement?: any): Element {
