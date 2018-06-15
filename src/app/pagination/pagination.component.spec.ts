@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { PaginationComponent } from './pagination.component';
+import { ErrorComponent } from './../error/error.component';
 import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
-import { PaginationComponent } from './pagination.component';
 import { MockConfigService } from './../mocks';
 
 describe('PaginationComponent', () => {
@@ -15,7 +16,10 @@ describe('PaginationComponent', () => {
             imports: [
                 HttpClientModule,
             ],
-            declarations: [ PaginationComponent ],
+            declarations: [
+                PaginationComponent,
+                ErrorComponent,
+            ],
             providers: [
                 ApiService,
                 {provide: ConfigService, useClass: MockConfigService},

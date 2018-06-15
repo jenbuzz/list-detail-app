@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { Routes } from '@angular/router';
 import { MetafrenzyModule } from 'ngx-metafrenzy';
 import { ListComponent } from './list.component';
 import { DetailComponent } from './../detail/detail.component';

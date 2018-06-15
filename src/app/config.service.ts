@@ -29,7 +29,7 @@ export class ConfigService {
         });
     }
 
-    getConfigFilename(): string {
+    private getConfigFilename(): string {
         const baseHref = this.platformLocation.getBaseHrefFromDOM().slice(1).replace('/', '-').replace(/,\s*$/, '');
         const filename = 'config' + (baseHref === '' ? '' : '-' + baseHref) + '.json';
 
