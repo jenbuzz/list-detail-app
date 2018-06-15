@@ -128,7 +128,8 @@ export class ApiService {
                 const preparedElements: Element[] = [];
 
                 const apiDataPath = this.config.get('api', 'dataPath');
-                const elementData = this.mapData(elements, apiDataPath);
+                const elementData = (apiDataPath && apiDataPath.length > 0)
+                    ? this.mapData(elements, apiDataPath) : elements;
 
                 if (elementData && elementData.length > 0) {
                     elementData.forEach(element => {
@@ -179,7 +180,8 @@ export class ApiService {
                 )
                 .map(element => {
                     const apiDataPath = this.config.get('api', 'dataPath');
-                    const elementData = this.mapData(element, apiDataPath);
+                    const elementData = (apiDataPath && apiDataPath.length > 0)
+                        ? this.mapData(element, apiDataPath) : element;
 
                     if (elementData && elementData.length > 0) {
                         if (elementData[0] == undefined) {
