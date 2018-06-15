@@ -5,10 +5,8 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import { Element, Link } from './interfaces';
 import { ConfigService } from './config.service';
+import { skip, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/skip';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/observable/of';
 
 @Injectable()
@@ -28,14 +26,14 @@ export class ApiService {
     }
 
     initSearch(): void {
-        this.searchTerm$
-            .skip(1)
-            .debounceTime(400)
-            .distinctUntilChanged()
-            .subscribe(term => {
-                this.searchTerm = term;
-                this.getElements();
-            });
+        this.searchTerm$.pipe(
+            skip(1),
+            debounceTime(400),
+            distinctUntilChanged()
+        ).subscribe(term => {
+            this.searchTerm = term;
+            this.getElements();
+        });
     }
 
     getHasErrorSubject(): BehaviorSubject<boolean> {
