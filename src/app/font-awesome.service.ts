@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { faAmazon, faApple, faAndroid, faWindows } from '@fortawesome/fontawesome-free-brands';
 import { faTimes } from '@fortawesome/fontawesome-free-solid';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class FontAwesomeService {
 
     private icons = {

@@ -9,7 +9,9 @@ import { skip, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/of';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class ApiService {
 
     isLoading$: BehaviorSubject<boolean> = new BehaviorSubject(false);

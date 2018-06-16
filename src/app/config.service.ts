@@ -12,7 +12,9 @@ import {
 } from './interfaces';
 import { environment } from './../environments/environment';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+})
 export class ConfigService {
 
     private config: Config;
