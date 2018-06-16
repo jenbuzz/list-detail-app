@@ -87,18 +87,26 @@ export class ApiService {
         this.isLastPageLoaded = false;
     }
 
-    getToken(): Observable<any> {
+    getToken(): BehaviorSubject<string|null> {
         const enableAuthentication = this.config.get('api', 'authToken', 'enableAuthentication');
 
-        if (enableAuthentication) {
-            const apiUrl = this.config.getEnvironmentApiUrl();
-            const apiPath = this.config.get('api', 'authToken', 'path');
-            const credentials = this.config.get('api', 'authToken', 'credentials');
+        const token$ = new BehaviorSubject(null);
 
-            return this.http.post(apiUrl + apiPath, credentials);
+        if (enableAuthentication) {
+            if (localStorage.getItem('authentication')) {
+                token$.next(localStorage.getItem('authentication'));
+            } else {
+                const apiUrl = this.config.getEnvironmentApiUrl() + this.config.get('api', 'authToken', 'path');
+                const credentials = this.config.get('api', 'authToken', 'credentials');
+
+                this.http.post(apiUrl, credentials).subscribe(result => {
+                    token$.next(result['token']);
+                    localStorage.setItem('authentication', result['token']);
+                });
+            }
         }
 
-        return Observable.of(null);
+        return token$;
     }
 
     getElements(): Subject<Element[]> {
@@ -117,7 +125,7 @@ export class ApiService {
         const apiUrl = this.buildApiUrl('list', params);
 
         this.getToken().subscribe(token => {
-            const requestOptions = token ? {params: new HttpParams().set('token', token.token) } : {};
+            const requestOptions = token ? {params: new HttpParams().set('token', token)} : {};
 
             this.http.get(apiUrl, requestOptions)
             .pipe(
@@ -173,7 +181,7 @@ export class ApiService {
         const apiUrl = this.buildApiUrl('detail', params, this.config.get('api', 'detail', 'idPath') ? '/' + id : '');
 
         this.getToken().subscribe(token => {
-            const requestOptions = token ? {params: new HttpParams().set('token', token.token) } : {};
+            const requestOptions = token ? {params: new HttpParams().set('token', token) } : {};
 
             this.http.get(apiUrl, requestOptions)
                 .pipe(
