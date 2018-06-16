@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { ApiService } from './api.service';
 import { ConfigService } from './config.service';
 import { FontAwesomeService } from './font-awesome.service';
@@ -14,7 +14,7 @@ import { routeAnimation } from './animations';
 })
 export class AppComponent {
 
-    themeMainColor: string = '#ffffff';
+    themeMainColor: string = '';
     title: string = '';
     searchPlaceholder: string = '';
 
@@ -39,7 +39,7 @@ export class AppComponent {
         this.router.navigate(['']);
     }
 
-    getAnimation(outlet: any) {
+    getAnimation(outlet: RouterOutlet) {
         return outlet.activatedRouteData['animation'] || 'list';
     }
 

@@ -5,7 +5,7 @@ import { FontAwesomeService } from './../font-awesome.service';
 
 @Component({
     selector: 'card',
-    templateUrl: './card.component.html'
+    templateUrl: './card.component.html',
 })
 export class CardComponent {
 
@@ -22,13 +22,10 @@ export class CardComponent {
     showDescription: boolean;
 
     apiUrl: string = '';
-
     readmore: string = '';
     externallink: string = '';
-
+    themeMainColor: string = '';
     showSourceTextOnBtn: boolean = true;
-
-    themeMainColor: string = '#000000';
 
     constructor(private config: ConfigService, private fontawesome: FontAwesomeService) {
         this.apiUrl = this.config.getEnvironmentApiUrl();
@@ -41,7 +38,7 @@ export class CardComponent {
         this.themeMainColor = this.config.getStyling().themeMainColor;
     }
 
-    getBackgroundImage(element: Element): any {
+    getBackgroundImage(element: Element): Object {
         if (this.useBackgroundImage) {
             return {
                 'background-image': 'url(' + element.image + ')'

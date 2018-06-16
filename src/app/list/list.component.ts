@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
     constructor(
         private apiService: ApiService,
         private config: ConfigService,
-        private readonly metafrenzyService: MetafrenzyService
+        private metafrenzyService: MetafrenzyService
     ) {
         this.themeMainColor = this.config.getStyling().themeMainColor;
 
@@ -59,7 +59,7 @@ export class ListComponent implements OnInit {
             this.metafrenzyService.setMetaTag('og:url', url);
             this.metafrenzyService.setLinkTag({
                 rel: 'canonical',
-                href: url
+                href: url,
             });
         }
     }

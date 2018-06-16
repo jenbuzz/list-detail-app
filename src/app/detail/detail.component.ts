@@ -5,11 +5,11 @@ import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
 import { ApiService } from './../api.service';
 import { Element } from './../interfaces';
-import { switchMap, subscribeOn } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
     selector: 'detail',
-    templateUrl: './detail.component.html'
+    templateUrl: './detail.component.html',
 })
 export class DetailComponent implements OnInit {
 
@@ -25,7 +25,7 @@ export class DetailComponent implements OnInit {
         private route: ActivatedRoute,
         private apiService: ApiService,
         private config: ConfigService,
-        private readonly metafrenzyService: MetafrenzyService
+        private metafrenzyService: MetafrenzyService
     ) {
         this.themeMainColor = this.config.getStyling().themeMainColor;
         this.goback = this.config.getText().goback;
@@ -33,10 +33,6 @@ export class DetailComponent implements OnInit {
         this.element$ = this.apiService.getElementSubject();
         this.isLoading$ = this.apiService.getIsLoadingSubject();
         this.hasError$ = this.apiService.getHasErrorSubject();
-
-        this.element$.subscribe(element => {
-            this.initMetaTags(element);
-        });
     }
 
     ngOnInit() {
@@ -45,6 +41,10 @@ export class DetailComponent implements OnInit {
                 return this.apiService.getElementById(+params.get('id'))
             })
         ).subscribe();
+
+        this.element$.subscribe(element => {
+            this.initMetaTags(element);
+        });
     }
 
     initMetaTags(element): void {
@@ -70,7 +70,7 @@ export class DetailComponent implements OnInit {
             this.metafrenzyService.setMetaTag('og:url', url);
             this.metafrenzyService.setLinkTag({
                 rel: 'canonical',
-                href: url
+                href: url,
             });
         }
     }

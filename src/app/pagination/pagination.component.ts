@@ -3,7 +3,7 @@ import { ApiService } from './../api.service';
 
 @Component({
     selector: 'pagination',
-    templateUrl: './pagination.component.html'
+    templateUrl: './pagination.component.html',
 })
 export class PaginationComponent {
 
