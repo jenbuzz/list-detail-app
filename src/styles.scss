@@ -97,6 +97,10 @@ list-detail-app {
         .card-body {
             min-height: 150px;
             overflow: hidden;
+
+            &.card-body-large {
+                min-height: 180px;
+            }
         }
     }
 
@@ -176,7 +180,7 @@ list-detail-app {
 
     .card-labels span {
         color: #ffffff;
-        background-color: #000000;
+        background: #000000;
         padding: 2px 5px 3px 5px;
         border-radius: 5px;
     }
@@ -201,6 +205,10 @@ list-detail-app {
 
             .card-body {
                 max-height: 150px;
+
+                &.card-body-large {
+                    max-height: 190px;
+                }
             }
         }
 
@@ -253,6 +261,11 @@ list-detail-app {
         list .card-body {
             min-height: 130px;
             max-height: 130px;
+
+            &.card-body-large {
+                min-height: 180px;
+                max-height: 180px;
+            }
         }
 
         detail .btn {

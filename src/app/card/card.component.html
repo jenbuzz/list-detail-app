@@ -8,7 +8,7 @@
         <div *ngIf="element.source"
             [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">Source: {{ element.source }}</div>
     </div>
-    <div class="card-body">
+    <div class="card-body" [class.card-body-large]="element.title && element.icons && element.icons.length > 0 && element.labels && element.labels.length > 0">
         <h5 class="card-title" *ngIf="element.title">
             <strong>{{ element.title }}</strong>
         </h5>
