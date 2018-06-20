@@ -8,6 +8,7 @@ export interface Element {
     image?: string;
     source?: string;
     icons?: string[];
+    labels?: string[];
 }
 
 export interface Link {

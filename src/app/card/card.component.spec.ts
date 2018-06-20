@@ -38,6 +38,7 @@ describe('CardComponent', () => {
             image: 'test.jpg',
             source: 'Test',
             icons: [],
+            labels: [],
         };
         fixture.detectChanges();
     });

@@ -44,7 +44,8 @@
         "external_link_icon": [],
         "image": [],
         "source": [],
-        "icons": []
+        "icons": [],
+        "labels": []
     },
     "styling": {
         "themeMainColor": ""

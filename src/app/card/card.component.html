@@ -20,9 +20,14 @@
         <ng-container *ngIf="showDescription && element.description">
             <p class="card-text text-muted" [innerHTML]="element.description"></p>
         </ng-container>
-        <p class="card-text text-muted" *ngIf="element.source">
+        <p class="card-text card-source text-muted" *ngIf="element.source">
             <small>Source: {{ element.source }}</small>
         </p>
+        <div class="card-text card-labels mb-3" *ngIf="element.labels && element.labels.length > 0">
+            <span class="mr-2" 
+                [style.background-color]="themeMainColor" 
+                *ngFor="let label of element.labels">{{ label }}</span>
+        </div>
         <div *ngIf="showExternalLinkBtn">
             <div *ngFor="let link of element.external_link">
                 <a class="btn mb-2" 

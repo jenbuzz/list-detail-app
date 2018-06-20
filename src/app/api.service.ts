@@ -243,6 +243,7 @@ export class ApiService {
             image: this.config.getEnvironmentApiUrl() + imagePath,
             source: this.getElementDataByMapping(element, 'source'),
             icons: this.getElementDataByMapping(element, 'icons'),
+            labels: this.getElementDataByMapping(element, 'labels'),
         };
 
         const links: Link[] = [];

@@ -170,6 +170,17 @@ list-detail-app {
         }
     }
 
+    .card-source {
+        margin-top: -0.8rem;
+    }
+
+    .card-labels span {
+        color: #ffffff;
+        background-color: #000000;
+        padding: 2px 5px 3px 5px;
+        border-radius: 5px;
+    }
+
     .card-icons img {
         width: 32px;
         height: auto;
