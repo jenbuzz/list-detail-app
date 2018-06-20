@@ -21,6 +21,9 @@ export class CardComponent {
     @Input()
     showDescription: boolean;
 
+    @Input()
+    showSource: boolean;
+
     apiUrl: string = '';
     readmore: string = '';
     externallink: string = '';
