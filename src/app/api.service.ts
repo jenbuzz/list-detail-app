@@ -173,9 +173,9 @@ export class ApiService {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        const params = this.config.get('api', 'detail', 'parameters');
+        let params = this.config.get('api', 'detail', 'parameters');
         if (this.config.get('api', 'detail', 'idParameter') !== undefined) {
-            params.unshift(this.config.get('api', 'detail', 'idParameter') + '=' + id);
+            params = [this.config.get('api', 'detail', 'idParameter') + '=' + id].concat(params);
         }
 
         const apiUrl = this.buildApiUrl('detail', params, this.config.get('api', 'detail', 'idPath') ? '/' + id : '');
