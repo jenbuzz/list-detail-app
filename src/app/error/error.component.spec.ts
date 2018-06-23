@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ErrorComponent } from './error.component';
 
 describe('ErrorComponent', () => {
@@ -8,12 +7,9 @@ describe('ErrorComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            imports: [],
             declarations: [
                 ErrorComponent,
             ],
-            providers: [],
-            schemas: [NO_ERRORS_SCHEMA]
         })
         .compileComponents();
     }));
