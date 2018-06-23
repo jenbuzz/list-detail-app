@@ -6,6 +6,13 @@ list-detail-app {
     font-family: Verdana, Geneva, sans-serif;
 }
 
+$default-theme-background-color: #000000;
+$default-theme-color: #ffffff;
+
+$size-sm: 576px;
+$size-md: 768px;
+$size-lg: 992px;
+
 list-detail-app {
     .container {
         width: 100% !important;
@@ -17,12 +24,12 @@ list-detail-app {
     }
 
     .header {
-        background: #000000;
+        background: $default-theme-background-color;
         padding: 10px;
         margin-top: 10px;
 
         a, a:hover {
-            color: #ffffff;
+            color: $default-theme-color;
             text-decoration: none;
         }
     }
@@ -33,7 +40,7 @@ list-detail-app {
     }
 
     .searchbar {
-        background: #000000;
+        background: $default-theme-background-color;
         padding: 0 15px 15px 15px;
     
         .input-group-append {
@@ -57,7 +64,7 @@ list-detail-app {
     .outlet-container {
         position: relative;
 
-        router-outlet>* {
+        router-outlet > * {
             display: block;
             width: 100%;
             height: 100%;
@@ -118,14 +125,14 @@ list-detail-app {
         }
         
         .btn {
-            background: #000000;
-            color: #fff;
+            background: $default-theme-background-color;
+            color: $default-theme-color;
             max-width: 100%;
             min-width: 100%;
             white-space: normal;
         
             &:hover {
-                color: #fff;
+                color: $default-theme-color;
                 opacity: 0.8;
             }
 
@@ -153,45 +160,47 @@ list-detail-app {
         }
     }
 
-    .card .card-text {
-        line-height: 1.5em;
-    }
-
-    .card-image-container {
-        position: relative;
-
-        div {
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            background: linear-gradient(transparent, #000000);
-            color: #fff;
-            padding: 25px 5px 5px 5px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 14px;
+    .card {
+        .card-text {
+            line-height: 1.5em;
         }
-    }
 
-    .card-source {
-        margin-top: -0.8rem;
-    }
+        .card-image-container {
+            position: relative;
 
-    .card-labels span {
-        color: #ffffff;
-        background: #000000;
-        padding: 2px 5px 3px 5px;
-        border-radius: 5px;
-    }
+            div {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                left: 0;
+                background: linear-gradient(transparent, $default-theme-background-color);
+                color: $default-theme-color;
+                padding: 25px 5px 5px 5px;
+                text-align: center;
+                font-weight: bold;
+                font-size: 14px;
+            }
+        }
 
-    .card-icons img {
-        width: 32px;
-        height: auto;
+        .card-source {
+            margin-top: -0.8rem;
+        }
+
+        .card-labels span {
+            color: $default-theme-color;
+            background: $default-theme-background-color;
+            padding: 2px 5px 3px 5px;
+            border-radius: 5px;
+        }
+
+        .card-icons img {
+            width: 32px;
+            height: auto;
+        }
     }
 }
 
-@media (min-width: 576px) {
+@media (min-width: $size-sm) {
     list-detail-app {
         h2 {
             font-size: 1.6rem !important;
@@ -228,7 +237,7 @@ list-detail-app {
     }
 }
 
-@media (min-width: 768px) {
+@media (min-width: $size-md) {
     list-detail-app {
         detail {
             .card {
@@ -256,7 +265,7 @@ list-detail-app {
     }
 }
 
-@media (min-width: 992px) {
+@media (min-width: $size-lg) {
     list-detail-app {
         list .card-body {
             min-height: 130px;
