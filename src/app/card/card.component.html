@@ -24,9 +24,11 @@
             <small>Source: {{ element.source }}</small>
         </p>
         <div class="card-text card-labels mb-3" *ngIf="element.labels && element.labels.length > 0">
-            <span class="mr-2" 
-                [style.background-color]="themeMainColor" 
-                *ngFor="let label of element.labels">{{ label }}</span>
+            <ng-container *ngFor="let label of element.labels">
+            <span *ngIf="label !== ''"
+                class="mr-2" 
+                [style.background-color]="themeMainColor">{{ label }}</span>
+            </ng-container>
         </div>
         <div *ngIf="showExternalLinkBtn">
             <div *ngFor="let link of element.external_link">
