@@ -9,7 +9,7 @@ import { ErrorComponent } from './../error/error.component';
 import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
 import { routes } from './../app-routing.module';
-import { MockConfigService } from './../mocks';
+import { MockConfigService, MockApiService } from './../mocks';
 
 describe('DetailComponent', () => {
     let component: DetailComponent;
@@ -28,7 +28,7 @@ describe('DetailComponent', () => {
                 ErrorComponent,
             ],
             providers: [
-                ApiService,
+                {provide: ApiService, useClass: MockApiService},
                 {provide: ConfigService, useClass: MockConfigService},
                 MetafrenzyService,
             ],
