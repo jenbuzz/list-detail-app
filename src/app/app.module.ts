@@ -19,6 +19,7 @@ import { ErrorComponent } from './error/error.component';
 import { ConfigService } from './config.service';
 import { ApiService } from './api.service';
 import { FontAwesomeService } from './font-awesome.service';
+import { SearchComponent } from './search/search.component';
 
 export function loadConfig(configService: ConfigService) {
     return () => {
@@ -34,6 +35,7 @@ export function loadConfig(configService: ConfigService) {
         PaginationComponent,
         CardComponent,
         ErrorComponent,
+        SearchComponent,
     ],
     imports: [
         BrowserModule,
