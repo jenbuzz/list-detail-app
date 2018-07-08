@@ -5,8 +5,7 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import { Element, Link } from './interfaces';
 import { ConfigService } from './config.service';
-import { skip, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import 'rxjs/add/operator/map';
+import { map, skip, debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import 'rxjs/add/observable/of';
 
 @Injectable({
@@ -130,31 +129,31 @@ export class ApiService {
             this.http.get(apiUrl, requestOptions)
             .pipe(
                 retry(1),
-                catchError(this.handleError)
-            )
-            .map(elements => {
-                const preparedElements: Element[] = [];
-
-                const apiDataPath = this.config.get('api', 'dataPath');
-                const elementData = (apiDataPath && apiDataPath.length > 0)
-                    ? this.mapData(elements, apiDataPath) : elements;
-
-                if (elementData && elementData.length > 0) {
-                    elementData.forEach(element => {
-                        if (element == undefined) {
-                            return;
-                        }
-
-                        preparedElements.push(this.prepareElement(element, elements));
-                    });
-                }
-
-                if (elementData.length < this.limit) {
-                    this.isLastPageLoaded = true;
-                }
-
-                return preparedElements;
-            }).subscribe(
+                catchError(this.handleError),
+                map(elements => {
+                    const preparedElements: Element[] = [];
+    
+                    const apiDataPath = this.config.get('api', 'dataPath');
+                    const elementData = (apiDataPath && apiDataPath.length > 0)
+                        ? this.mapData(elements, apiDataPath) : elements;
+    
+                    if (elementData && elementData.length > 0) {
+                        elementData.forEach(element => {
+                            if (element == undefined) {
+                                return;
+                            }
+    
+                            preparedElements.push(this.prepareElement(element, elements));
+                        });
+                    }
+    
+                    if (elementData.length < this.limit) {
+                        this.isLastPageLoaded = true;
+                    }
+    
+                    return preparedElements;
+                })
+            ).subscribe(
                 elements => {
                     this.isLoading$.next(false);
                     this.elements$.next(elements);
@@ -186,23 +185,23 @@ export class ApiService {
             this.http.get(apiUrl, requestOptions)
                 .pipe(
                     retry(1),
-                    catchError(this.handleError)
-                )
-                .map(element => {
-                    const apiDataPath = this.config.get('api', 'dataPath');
-                    const elementData = (apiDataPath && apiDataPath.length > 0)
-                        ? this.mapData(element, apiDataPath) : element;
-
-                    if (elementData && elementData.length > 0) {
-                        if (elementData[0] == undefined) {
-                            return;
+                    catchError(this.handleError),
+                    map(element => {
+                        const apiDataPath = this.config.get('api', 'dataPath');
+                        const elementData = (apiDataPath && apiDataPath.length > 0)
+                            ? this.mapData(element, apiDataPath) : element;
+    
+                        if (elementData && elementData.length > 0) {
+                            if (elementData[0] == undefined) {
+                                return;
+                            }
+    
+                            return this.prepareElement(elementData[0], element);
                         }
-
-                        return this.prepareElement(elementData[0], element);
-                    }
-
-                    return;
-                }).subscribe(
+    
+                        return;
+                    })
+                ).subscribe(
                     element => {
                         this.isLoading$.next(false);
                         this.element$.next(element);
