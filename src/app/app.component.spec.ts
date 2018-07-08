@@ -10,8 +10,8 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { CardComponent } from './card/card.component';
 import { ErrorComponent } from './error/error.component';
 import { ConfigService } from './config.service';
-import { MockConfigService } from './mocks';
 import { ApiService } from './api.service';
+import { MockConfigService, MockApiService } from './mocks';
 import { FontAwesomeService } from './font-awesome.service';
 import { routes } from './app-routing.module';
 
@@ -32,7 +32,7 @@ describe('AppComponent', () => {
                 ErrorComponent,
             ],
             providers: [
-                ApiService,
+                {provide: ApiService, useClass: MockApiService},
                 {provide: ConfigService, useClass: MockConfigService},
                 FontAwesomeService,
             ],

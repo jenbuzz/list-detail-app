@@ -4,11 +4,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { MetafrenzyModule, MetafrenzyService } from 'ngx-metafrenzy';
 import { DetailComponent } from './detail.component';
-import { ListComponent } from './../list/list.component';
-import { ErrorComponent } from './../error/error.component';
 import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
-import { routes } from './../app-routing.module';
 import { MockConfigService, MockApiService } from './../mocks';
 
 describe('DetailComponent', () => {
@@ -19,13 +16,11 @@ describe('DetailComponent', () => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientModule,
-                RouterTestingModule.withRoutes(routes),
+                RouterTestingModule,
                 MetafrenzyModule.forRoot(),
             ],
             declarations: [
                 DetailComponent,
-                ListComponent,
-                ErrorComponent,
             ],
             providers: [
                 {provide: ApiService, useClass: MockApiService},
