@@ -66,4 +66,5 @@ export interface ConfigText {
 
 export interface ConfigSettings {
     showSourceTextOnBtn?: boolean;
+    showSquareImage?: boolean;
 }

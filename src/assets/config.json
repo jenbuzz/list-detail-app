@@ -58,6 +58,7 @@
         "externallink": ""
     },
     "settings": {
-        "showSourceTextOnBtn": false
+        "showSourceTextOnBtn": false,
+        "showSquareImage": false
     }
 }

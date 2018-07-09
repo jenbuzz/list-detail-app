@@ -99,6 +99,11 @@ list-detail-app {
             background-position: center;
             background-color: #222;
             background-size: cover;
+
+            &.card-image-square {
+                height: auto;
+                padding-bottom: 100%;
+            }
         }
         
         .card-body {

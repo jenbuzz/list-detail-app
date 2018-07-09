@@ -29,6 +29,7 @@ export class CardComponent {
     externallink: string = '';
     themeMainColor: string = '';
     showSourceTextOnBtn: boolean = true;
+    showSquareImage: boolean = false;
 
     constructor(private config: ConfigService, private fontawesome: FontAwesomeService) {
         this.apiUrl = this.config.getEnvironmentApiUrl();
@@ -37,6 +38,7 @@ export class CardComponent {
         this.externallink = this.config.getText().externallink;
 
         this.showSourceTextOnBtn = this.config.getSettings().showSourceTextOnBtn;
+        this.showSquareImage = this.config.getSettings().showSquareImage;
 
         this.themeMainColor = this.config.getStyling().themeMainColor;
     }
