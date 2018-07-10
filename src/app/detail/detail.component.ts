@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
 import { ApiService } from './../api.service';
@@ -11,7 +11,9 @@ import { switchMap } from 'rxjs/operators';
     selector: 'detail',
     templateUrl: './detail.component.html',
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit, OnDestroy {
+
+    private subscriptions: Subscription = new Subscription();
 
     themeMainColor: string = '#000000';
     goback: string = 'Go back';
@@ -36,15 +38,23 @@ export class DetailComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.route.paramMap.pipe(
-            switchMap(params => {
-                return this.apiService.getElementById(+params.get('id'))
-            })
-        ).subscribe();
+        this.subscriptions.add(
+            this.route.paramMap.pipe(
+                switchMap(params => {
+                    return this.apiService.getElementById(+params.get('id'));
+                })
+            ).subscribe()
+        );
 
-        this.element$.subscribe(element => {
-            this.initMetaTags(element);
-        });
+        this.subscriptions.add(
+            this.element$.subscribe(element => {
+                this.initMetaTags(element);
+            })
+        );
+    }
+
+    ngOnDestroy() {
+        this.subscriptions.unsubscribe();
     }
 
     initMetaTags(element): void {
