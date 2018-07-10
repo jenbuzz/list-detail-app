@@ -114,7 +114,7 @@ export class ApiService {
             if (this.config.get('api', 'detail', 'idParameter') !== undefined) {
                 params = [this.config.get('api', 'detail', 'idParameter') + '=' + id].concat(params);
             }
-    
+
             apiUrl = this.buildApiUrl('detail', params, this.config.get('api', 'detail', 'idPath') ? '/' + id : '');
         } else {
             const params = this.config.get('api', 'list', 'parameters').concat([
@@ -138,25 +138,25 @@ export class ApiService {
                 catchError(this.handleError),
                 map(elements => {
                     const preparedElements: Element[] = [];
-    
+
                     const apiDataPath = this.config.get('api', 'dataPath');
                     const elementData = (apiDataPath && apiDataPath.length > 0)
                         ? this.mapData(elements, apiDataPath) : elements;
-    
+
                     if (elementData && elementData.length > 0) {
                         elementData.forEach(element => {
                             if (element == undefined) {
                                 return;
                             }
-    
+
                             preparedElements.push(this.prepareElement(element, elements));
                         });
                     }
-    
+
                     if (id === null && elementData.length < this.limit) {
                         this.isLastPageLoaded = true;
                     }
-    
+
                     return preparedElements;
                 })
             ).subscribe(

@@ -14,7 +14,7 @@ export class AppComponent {
 
     themeMainColor: string = '';
     title: string = '';
-    
+
     constructor(
         private config: ConfigService,
     ) {

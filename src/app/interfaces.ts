@@ -22,7 +22,7 @@ export interface Config {
     elementFieldMapping: ConfigElementFieldMapping;
     styling: ConfigStyling;
     text: ConfigText;
-    settings: ConfigSettings
+    settings: ConfigSettings;
 }
 
 export interface ConfigMetaTags {

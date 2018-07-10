@@ -81,7 +81,7 @@ export class MockApiService {
             source: 'Test',
             icons: [],
             labels: [],
-        }
+        };
 
         return new BehaviorSubject(element);
     }
@@ -126,7 +126,7 @@ export class MockApiService {
             source: 'Test',
             icons: [],
             labels: [],
-        }
+        };
 
         return new BehaviorSubject(element);
     }
