@@ -5,7 +5,7 @@ import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
 import { ApiService } from './../api.service';
 import { Element } from './../interfaces';
-import { switchMap } from 'rxjs/operators';
+import { switchMap, map } from 'rxjs/operators';
 
 @Component({
     selector: 'detail',
@@ -18,7 +18,8 @@ export class DetailComponent implements OnInit, OnDestroy {
     themeMainColor: string = '#000000';
     goback: string = 'Go back';
 
-    element$: Observable<Element>;
+    activeElement$: Observable<Element>;
+    elements$: Observable<Element[]>;
     isLoading$: Observable<boolean>;
     hasError$: Observable<boolean>;
 
@@ -32,7 +33,7 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.themeMainColor = this.config.getStyling().themeMainColor;
         this.goback = this.config.getText().goback;
 
-        this.element$ = this.apiService.getElementSubject();
+        this.elements$ = this.apiService.getElementsSubject();
         this.isLoading$ = this.apiService.getIsLoadingSubject();
         this.hasError$ = this.apiService.getHasErrorSubject();
     }
@@ -41,14 +42,22 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.subscriptions.add(
             this.route.paramMap.pipe(
                 switchMap(params => {
-                    return this.apiService.getElementById(+params.get('id'));
+                    return this.apiService.getElements(+params.get('id'));
                 })
             ).subscribe()
         );
 
         this.subscriptions.add(
-            this.element$.subscribe(element => {
-                this.initMetaTags(element);
+            this.elements$.subscribe(elements => {
+                if (Array.isArray(elements)) {
+                    this.initMetaTags(elements[0]);
+                }
+            })
+        );
+
+        this.activeElement$ = this.elements$.pipe(
+            map(elements => {
+                return Array.isArray(elements) ? elements[0] : null;
             })
         );
     }

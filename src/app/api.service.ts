@@ -17,7 +17,6 @@ export class ApiService {
     hasError$: BehaviorSubject<boolean> = new BehaviorSubject(false);
     searchTerm$: BehaviorSubject<string> = new BehaviorSubject('');
     elements$: Subject<Element[]> = new Subject<Element[]>();
-    element$: Subject<Element> = new Subject<Element>();
     isLastPageLoaded: boolean = false;
     limit: number = 10;
     page: number = 0;
@@ -47,10 +46,6 @@ export class ApiService {
 
     getElementsSubject(): Subject<Element[]> {
         return this.elements$;
-    }
-
-    getElementSubject(): Subject<Element> {
-        return this.element$;
     }
 
     setSearchTerm(term: string): void {
@@ -108,20 +103,31 @@ export class ApiService {
         return token$;
     }
 
-    getElements(): Subject<Element[]> {
+    getElements(id: number = null): Subject<Element[]> {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        const params = this.config.get('api', 'list', 'parameters').concat([
-            this.config.get('api', 'list', 'paginationOffsetName') + '=' + (this.page * this.limit),
-            this.config.get('api', 'list', 'paginationLimitName') + '=' + this.limit
-        ]);
+        let apiUrl: string = null;
 
-        if (this.searchTerm) {
-            params.push(this.config.get('api', 'list', 'searchFieldName') + '=' + this.searchTerm);
+        if (id !== null) {
+            let params = this.config.get('api', 'detail', 'parameters');
+            if (this.config.get('api', 'detail', 'idParameter') !== undefined) {
+                params = [this.config.get('api', 'detail', 'idParameter') + '=' + id].concat(params);
+            }
+    
+            apiUrl = this.buildApiUrl('detail', params, this.config.get('api', 'detail', 'idPath') ? '/' + id : '');
+        } else {
+            const params = this.config.get('api', 'list', 'parameters').concat([
+                this.config.get('api', 'list', 'paginationOffsetName') + '=' + (this.page * this.limit),
+                this.config.get('api', 'list', 'paginationLimitName') + '=' + this.limit
+            ]);
+
+            if (this.searchTerm) {
+                params.push(this.config.get('api', 'list', 'searchFieldName') + '=' + this.searchTerm);
+            }
+
+            apiUrl = this.buildApiUrl('list', params);
         }
-
-        const apiUrl = this.buildApiUrl('list', params);
 
         this.getToken().subscribe(token => {
             const requestOptions = token ? {params: new HttpParams().set('token', token)} : {};
@@ -147,7 +153,7 @@ export class ApiService {
                         });
                     }
     
-                    if (elementData.length < this.limit) {
+                    if (id === null && elementData.length < this.limit) {
                         this.isLastPageLoaded = true;
                     }
     
@@ -166,54 +172,6 @@ export class ApiService {
         });
 
         return this.elements$;
-    }
-
-    getElementById(id: number): Subject<Element> {
-        this.isLoading$.next(true);
-        this.hasError$.next(false);
-
-        let params = this.config.get('api', 'detail', 'parameters');
-        if (this.config.get('api', 'detail', 'idParameter') !== undefined) {
-            params = [this.config.get('api', 'detail', 'idParameter') + '=' + id].concat(params);
-        }
-
-        const apiUrl = this.buildApiUrl('detail', params, this.config.get('api', 'detail', 'idPath') ? '/' + id : '');
-
-        this.getToken().subscribe(token => {
-            const requestOptions = token ? {params: new HttpParams().set('token', token) } : {};
-
-            this.http.get(apiUrl, requestOptions)
-                .pipe(
-                    retry(1),
-                    catchError(this.handleError),
-                    map(element => {
-                        const apiDataPath = this.config.get('api', 'dataPath');
-                        const elementData = (apiDataPath && apiDataPath.length > 0)
-                            ? this.mapData(element, apiDataPath) : element;
-    
-                        if (elementData && elementData.length > 0) {
-                            if (elementData[0] == undefined) {
-                                return;
-                            }
-    
-                            return this.prepareElement(elementData[0], element);
-                        }
-    
-                        return;
-                    })
-                ).subscribe(
-                    element => {
-                        this.isLoading$.next(false);
-                        this.element$.next(element);
-                    },
-                    error => {
-                        this.isLoading$.next(false);
-                        this.hasError$.next(true);
-                    }
-                );
-        });
-
-        return this.element$;
     }
 
     private prepareElement(element: any, fullElement?: any): Element {
