@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
-import { BehaviorSubject, Subject, Observable } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { catchError, retry } from 'rxjs/operators';
+import { map, skip, debounceTime, distinctUntilChanged, catchError, retry } from 'rxjs/operators';
 import { Element, Link } from './interfaces';
 import { ConfigService } from './config.service';
-import { map, skip, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import 'rxjs/add/observable/of';
 
 @Injectable({
     providedIn: 'root',
