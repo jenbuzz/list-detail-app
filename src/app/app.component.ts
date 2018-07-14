@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { ConfigService } from './config.service';
 import { routeAnimation } from './animations';
 
@@ -17,9 +17,20 @@ export class AppComponent {
 
     constructor(
         private config: ConfigService,
+        private router: Router
     ) {
         this.themeMainColor = this.config.getStyling().themeMainColor;
         this.title = this.config.getText().title;
+    }
+
+    ngOnInit() {
+        this.router.events.subscribe((event: any) => {
+            if (!(event instanceof NavigationEnd)) {
+                return;
+            }
+
+            window.scrollTo(0, 0);
+        });
     }
 
     getAnimation(outlet: RouterOutlet) {
