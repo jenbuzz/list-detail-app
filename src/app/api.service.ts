@@ -52,7 +52,7 @@ export class ApiService {
     }
 
     decrementPage(): void {
-        if (this.page > 0) {
+        if (this.hasPrevPage()) {
             this.page--;
             this.isLastPageLoaded = false;
             this.getElements();
@@ -60,7 +60,7 @@ export class ApiService {
     }
 
     incrementPage(): void {
-        if (!this.isLastPageLoaded) {
+        if (this.hasNextPage()) {
             this.page++;
             this.getElements();
         }
@@ -105,32 +105,10 @@ export class ApiService {
         this.isLoading$.next(true);
         this.hasError$.next(false);
 
-        let apiUrl: string = null;
-
-        if (id !== null) {
-            let params = this.config.get('api', 'detail', 'parameters');
-            if (this.config.get('api', 'detail', 'idParameter') !== undefined) {
-                params = [this.config.get('api', 'detail', 'idParameter') + '=' + id].concat(params);
-            }
-
-            apiUrl = this.buildApiUrl('detail', params, this.config.get('api', 'detail', 'idPath') ? '/' + id : '');
-        } else {
-            const params = this.config.get('api', 'list', 'parameters').concat([
-                this.config.get('api', 'list', 'paginationOffsetName') + '=' + (this.page * this.limit),
-                this.config.get('api', 'list', 'paginationLimitName') + '=' + this.limit
-            ]);
-
-            if (this.searchTerm) {
-                params.push(this.config.get('api', 'list', 'searchFieldName') + '=' + this.searchTerm);
-            }
-
-            apiUrl = this.buildApiUrl('list', params);
-        }
-
         this.getToken().subscribe(token => {
             const requestOptions = token ? {params: new HttpParams().set('token', token)} : {};
 
-            this.http.get(apiUrl, requestOptions)
+            this.http.get(this.buildApiUrl(id), requestOptions)
             .pipe(
                 retry(1),
                 catchError(this.handleError),
@@ -253,7 +231,32 @@ export class ApiService {
         return ErrorObservable.create('Something went wrong; please try again later.');
     }
 
-    private buildApiUrl(type: 'list'|'detail', params: string[], pathExtension: string = ''): string {
+    private buildApiUrl(id: number = null): string {
+        let type: string = 'list';
+        let pathExtension: string = '';
+        let params: Array<string> = [];
+
+        if (id !== null) {
+            type = 'detail';
+
+            params = this.config.get('api', type, 'parameters');
+
+            if (this.config.get('api', type, 'idParameter') !== undefined) {
+                params = [this.config.get('api', type, 'idParameter') + '=' + id].concat(params);
+            }
+
+            pathExtension = this.config.get('api', type, 'idPath') ? '/' + id : '';
+        } else {
+            params = this.config.get('api', type, 'parameters').concat([
+                this.config.get('api', type, 'paginationOffsetName') + '=' + (this.page * this.limit),
+                this.config.get('api', type, 'paginationLimitName') + '=' + this.limit
+            ]);
+
+            if (this.searchTerm) {
+                params.push(this.config.get('api', type, 'searchFieldName') + '=' + this.searchTerm);
+            }
+        }
+
         return this.config.getEnvironmentApiUrl() +
             this.config.get('api', type, 'path') +
             pathExtension +
