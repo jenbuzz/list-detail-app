@@ -49,18 +49,16 @@ export class ListComponent implements OnInit {
         const url = this.config.getMetaTags().url;
 
         if (title) {
-            this.metafrenzyService.setTitle(title);
-            this.metafrenzyService.setMetaTag('og:title', title);
+            this.metafrenzyService.setAllTitleTags(title);
         }
+
         if (image) {
             this.metafrenzyService.setMetaTag('og:image:url', image);
         }
+
         if (url) {
             this.metafrenzyService.setMetaTag('og:url', url);
-            this.metafrenzyService.setLinkTag({
-                rel: 'canonical',
-                href: url,
-            });
+            this.metafrenzyService.setCanonical(url);
         }
     }
 
