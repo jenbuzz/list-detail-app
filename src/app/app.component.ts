@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterOutlet, Router, NavigationEnd, Event } from '@angular/router';
 import { ConfigService } from './config.service';
 import { routeAnimation } from './animations';
 
@@ -10,7 +10,7 @@ import { routeAnimation } from './animations';
         routeAnimation,
     ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
     themeMainColor: string = '';
     title: string = '';
@@ -24,7 +24,7 @@ export class AppComponent {
     }
 
     ngOnInit() {
-        this.router.events.subscribe((event: any) => {
+        this.router.events.subscribe((event: Event) => {
             if (!(event instanceof NavigationEnd)) {
                 return;
             }

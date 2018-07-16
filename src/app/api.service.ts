@@ -150,7 +150,7 @@ export class ApiService {
         return this.elements$;
     }
 
-    private prepareElement(element: any, fullElement?: any): Element {
+    private prepareElement(element: Object, fullElement?: Object): Element {
         let imagePath = this.getElementDataByMapping(element, 'image');
         const apiImagePath = this.config.get('api', 'image', 'path');
         if (imagePath && apiImagePath && apiImagePath.length > 0) {
@@ -202,7 +202,7 @@ export class ApiService {
         return preparedElement;
     }
 
-    private mapData(element: any, fields: any[]): any {
+    private mapData(element: Object, fields: string[]): any {
         for (let i = 0; i < fields.length; i++) {
             const field = fields[i];
             if (element && element.hasOwnProperty(field)) {
@@ -219,7 +219,7 @@ export class ApiService {
         return null;
     }
 
-    private getElementDataByMapping(element: any, field: string): any {
+    private getElementDataByMapping(element: Object, field: string): any {
         const fieldMapping = this.config.get('elementFieldMapping');
 
         if (field in fieldMapping) {
