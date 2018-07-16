@@ -41,21 +41,18 @@ export class ListComponent implements OnInit {
         }
 
         let title = this.config.getMetaTags().title;
-        if (this.config.getMetaTags().titleSuffix) {
-            title += this.config.getMetaTags().titleSuffix;
-        }
-
-        const image = this.config.getMetaTags().image;
-        const url = this.config.getMetaTags().url;
-
         if (title) {
+            title += this.config.getMetaTags().titleSuffix;
+
             this.metafrenzyService.setAllTitleTags(title);
         }
 
+        const image = this.config.getMetaTags().image;
         if (image) {
             this.metafrenzyService.setMetaTag('og:image:url', image);
         }
 
+        const url = this.config.getMetaTags().url;
         if (url) {
             this.metafrenzyService.setMetaTag('og:url', url);
             this.metafrenzyService.setCanonical(url);

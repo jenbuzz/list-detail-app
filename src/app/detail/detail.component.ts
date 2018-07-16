@@ -72,11 +72,7 @@ export class DetailComponent implements OnInit, OnDestroy {
         }
 
         if ('title' in element && element['title']) {
-            let title = element['title'];
-            if (this.config.getMetaTags().titleSuffix) {
-                title += this.config.getMetaTags().titleSuffix;
-            }
-
+            const title = element['title'] + this.config.getMetaTags().titleSuffix;
             this.metafrenzyService.setAllTitleTags(title);
         }
 
@@ -84,8 +80,9 @@ export class DetailComponent implements OnInit, OnDestroy {
             this.metafrenzyService.setMetaTag('og:image:url', element['image']);
         }
 
-        if (this.config.getMetaTags().url && 'id' in element) {
-            const url = this.config.getMetaTags().url + element['id'];
+        let url = this.config.getMetaTags().url;
+        if (url && 'id' in element) {
+            url += element['id'];
 
             this.metafrenzyService.setMetaTag('og:url', url);
             this.metafrenzyService.setCanonical(url);
