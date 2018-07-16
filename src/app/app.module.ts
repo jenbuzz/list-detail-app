@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MetafrenzyModule } from 'ngx-metafrenzy';
@@ -40,7 +39,6 @@ export function loadConfig(configService: ConfigService) {
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        FormsModule,
         HttpClientModule,
         AppRoutingModule,
         MetafrenzyModule.forRoot(),
