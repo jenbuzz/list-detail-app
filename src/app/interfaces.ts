@@ -21,8 +21,8 @@ export interface Config {
     api: ConfigApi;
     elementFieldMapping: ConfigElementFieldMapping;
     styling: ConfigStyling;
-    text: ConfigText;
     settings: ConfigSettings;
+    translation: ConfigTranslation;
 }
 
 export interface ConfigMetaTags {
@@ -56,15 +56,14 @@ export interface ConfigStyling {
     themeMainColor?: string;
 }
 
-export interface ConfigText {
-    title?: string;
-    search?: string;
-    goback?: string;
-    readmore?: string;
-    externallink?: string;
-}
-
 export interface ConfigSettings {
     showSourceTextOnBtn?: boolean;
     showSquareImage?: boolean;
+}
+
+export interface ConfigTranslation {
+    fallbackLanguage?: string;
+    useLocalStorage?: boolean;
+    useHtmlLang?: boolean;
+    translations?: any;
 }

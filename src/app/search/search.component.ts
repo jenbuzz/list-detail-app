@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from './../api.service';
-import { ConfigService } from './../config.service';
 import { FontAwesomeService } from './../font-awesome.service';
+import { TranslationService } from './../translation.service';
 
 @Component({
     selector: 'search',
@@ -17,12 +17,12 @@ export class SearchComponent {
     constructor(
         private router: Router,
         private apiService: ApiService,
-        private config: ConfigService,
-        private fontawesome: FontAwesomeService
+        private fontawesome: FontAwesomeService,
+        private translationService: TranslationService
     ) {
         this.apiService.initSearch();
 
-        this.searchPlaceholder = this.config.getText().search;
+        this.searchPlaceholder = this.translationService.translate('search');
     }
 
     setSearchTerm(searchTerm: string): void {

@@ -50,15 +50,29 @@
     "styling": {
         "themeMainColor": ""
     },
-    "text": {
-        "title": "",
-        "search": "",
-        "goback": "",
-        "readmore": "",
-        "externallink": ""
-    },
     "settings": {
         "showSourceTextOnBtn": false,
         "showSquareImage": false
+    },
+    "translation": {
+        "fallbackLanguage": "en",
+        "useLocalStorage": false,
+        "useHtmlLang": false,
+        "translations": {
+            "en": {
+                "title": "",
+                "search": "",
+                "goback": "",
+                "readmore": "",
+                "externallink": ""
+            },
+            "de": {
+                "title": "",
+                "search": "",
+                "goback": "",
+                "readmore": "",
+                "externallink": ""
+            }
+        }
     }
 }

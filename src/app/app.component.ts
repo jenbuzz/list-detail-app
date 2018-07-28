@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd, Event } from '@angular/router';
 import { ConfigService } from './config.service';
+import { TranslationService } from './translation.service';
 import { routeAnimation } from './animations';
 
 @Component({
@@ -17,10 +18,11 @@ export class AppComponent implements OnInit {
 
     constructor(
         private config: ConfigService,
+        private translationService: TranslationService,
         private router: Router
     ) {
         this.themeMainColor = this.config.getStyling().themeMainColor;
-        this.title = this.config.getText().title;
+        this.title = this.translationService.translate('title');
     }
 
     ngOnInit() {

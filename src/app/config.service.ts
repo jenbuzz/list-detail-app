@@ -7,8 +7,8 @@ import {
     ConfigApi,
     ConfigElementFieldMapping,
     ConfigStyling,
-    ConfigText,
-    ConfigSettings
+    ConfigSettings,
+    ConfigTranslation
 } from './interfaces';
 import { environment } from './../environments/environment';
 
@@ -58,12 +58,12 @@ export class ConfigService {
         return this.get('styling');
     }
 
-    getText(): ConfigText {
-        return this.get('text');
-    }
-
     getSettings(): ConfigSettings {
         return this.get('settings');
+    }
+
+    getTranslation(): ConfigTranslation {
+        return this.get('translation');
     }
 
     private fetchValue(config: any, args: string[]): any {

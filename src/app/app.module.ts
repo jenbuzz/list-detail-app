@@ -18,6 +18,7 @@ import { ErrorComponent } from './error/error.component';
 import { ConfigService } from './config.service';
 import { ApiService } from './api.service';
 import { FontAwesomeService } from './font-awesome.service';
+import { TranslationService } from './translation.service';
 import { SearchComponent } from './search/search.component';
 
 export function loadConfig(configService: ConfigService) {
@@ -49,6 +50,7 @@ export function loadConfig(configService: ConfigService) {
         {provide: APP_INITIALIZER, useFactory: loadConfig, deps: [ConfigService], multi: true},
         ApiService,
         FontAwesomeService,
+        TranslationService,
     ],
     bootstrap: [AppComponent]
 })

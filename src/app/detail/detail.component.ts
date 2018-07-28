@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
 import { ApiService } from './../api.service';
+import { TranslationService } from './../translation.service';
 import { Element } from './../interfaces';
 import { switchMap, map } from 'rxjs/operators';
 
@@ -16,7 +17,7 @@ export class DetailComponent implements OnInit, OnDestroy {
     private subscriptions: Subscription = new Subscription();
 
     themeMainColor: string = '#000000';
-    goback: string = 'Go back';
+    goback: string;
 
     activeElement$: Observable<Element>;
     elements$: Observable<Element[]>;
@@ -28,10 +29,11 @@ export class DetailComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private apiService: ApiService,
         private config: ConfigService,
-        private metafrenzyService: MetafrenzyService
+        private metafrenzyService: MetafrenzyService,
+        private translationService: TranslationService
     ) {
         this.themeMainColor = this.config.getStyling().themeMainColor;
-        this.goback = this.config.getText().goback;
+        this.goback = this.translationService.translate('goback');
 
         this.elements$ = this.apiService.getElementsSubject();
         this.isLoading$ = this.apiService.getIsLoadingSubject();
