@@ -111,10 +111,6 @@ export class MockApiService {
     }
 
     getElements(): Subject<Element[]> {
-        return new BehaviorSubject([]);
-    }
-
-    getElementById(id: number): Subject<Element> {
         const element: Element = {
             id: 123,
             title: 'Test',
@@ -128,6 +124,12 @@ export class MockApiService {
             labels: [],
         };
 
-        return new BehaviorSubject(element);
+        return new BehaviorSubject([element]);
+    }
+}
+
+export class MockTranslationService {
+    translate(text: string): string {
+        return text;
     }
 }

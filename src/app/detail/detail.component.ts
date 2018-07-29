@@ -51,7 +51,7 @@ export class DetailComponent implements OnInit, OnDestroy {
 
         this.subscriptions.add(
             this.elements$.subscribe(elements => {
-                if (Array.isArray(elements)) {
+                if (Array.isArray(elements) && elements.length > 0) {
                     this.initMetaTags(elements[0]);
                 }
             })

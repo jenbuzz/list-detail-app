@@ -3,8 +3,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConfigService } from './../config.service';
 import { ApiService } from './../api.service';
+import { TranslationService } from './../translation.service';
 import { FontAwesomeService } from './../font-awesome.service';
-import { MockConfigService, MockApiService } from './../mocks';
+import { MockConfigService, MockApiService, MockTranslationService } from './../mocks';
 import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
@@ -23,6 +24,7 @@ describe('SearchComponent', () => {
             providers: [
                 {provide: ApiService, useClass: MockApiService},
                 {provide: ConfigService, useClass: MockConfigService},
+                {provide: TranslationService, useClass: MockTranslationService},
                 FontAwesomeService,
             ],
         })

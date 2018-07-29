@@ -11,7 +11,8 @@ import { CardComponent } from './card/card.component';
 import { ErrorComponent } from './error/error.component';
 import { ConfigService } from './config.service';
 import { ApiService } from './api.service';
-import { MockConfigService, MockApiService } from './mocks';
+import { TranslationService } from './translation.service';
+import { MockConfigService, MockApiService, MockTranslationService } from './mocks';
 import { FontAwesomeService } from './font-awesome.service';
 import { routes } from './app-routing.module';
 
@@ -34,6 +35,7 @@ describe('AppComponent', () => {
             providers: [
                 {provide: ApiService, useClass: MockApiService},
                 {provide: ConfigService, useClass: MockConfigService},
+                {provide: TranslationService, useClass: MockTranslationService},
                 FontAwesomeService,
             ],
             schemas: [NO_ERRORS_SCHEMA]
