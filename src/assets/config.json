@@ -60,18 +60,32 @@
         "useHtmlLang": false,
         "translations": {
             "en": {
-                "title": "",
-                "search": "",
-                "goback": "",
-                "readmore": "",
-                "externallink": ""
+                "title": "App",
+                "search": "search for something here...",
+                "goback": "Go back",
+                "readmore": "Read more at",
+                "externallink": "(link)",
+                "source": "Source: ",
+                "error": "Sorry, something went wrong...",
+                "notfound": "Error 404",
+                "notfoundtext": "Sorry, this page does not exist!",
+                "emptyresult": "Sorry, nothing here...",
+                "prevpage": "Previous Page",
+                "nextpage": "Next Page"
             },
             "de": {
-                "title": "",
-                "search": "",
-                "goback": "",
-                "readmore": "",
-                "externallink": ""
+                "title": "App auf Deutsch",
+                "search": "Suchbegriff eingeben...",
+                "goback": "Zurück",
+                "readmore": "Mehr auf ",
+                "externallink": "(Link)",
+                "source": "Quelle: ",
+                "error": "Tut uns leid, da ist etwas schiefgelaufen...",
+                "notfound": "Fehler 404",
+                "notfoundtext": "Tut uns leid, diese Seite gibt es nicht!",
+                "emptyresult": "Tut uns leid, nichts gefunden...",
+                "prevpage": "Vorherige Seite",
+                "nextpage": "Nächste Seite"
             }
         }
     }
