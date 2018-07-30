@@ -6,7 +6,8 @@ import { MetafrenzyModule } from 'ngx-metafrenzy';
 import { ListComponent } from './list.component';
 import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
-import { MockConfigService, MockApiService } from './../mocks';
+import { TranslationService } from './../translation.service';
+import { MockConfigService, MockApiService, MockTranslationService } from './../mocks';
 
 describe('ListComponent', () => {
     let component: ListComponent;
@@ -25,6 +26,7 @@ describe('ListComponent', () => {
             providers: [
                 {provide: ApiService, useClass: MockApiService},
                 {provide: ConfigService, useClass: MockConfigService},
+                {provide: TranslationService, useClass: MockTranslationService},
             ],
             schemas: [NO_ERRORS_SCHEMA]
         })

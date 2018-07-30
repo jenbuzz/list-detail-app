@@ -2,11 +2,11 @@
     <div class="col-sm">
         <a class="page-link d-inline-block ml-2" 
             [class.disabled]="!hasPrevPage()" 
-            (click)="prevPage()">&laquo; Previous Page</a>
+            (click)="prevPage()">&laquo; {{ prevpage }}</a>
     </div>
     <div class="col-sm text-right">
         <a class="page-link d-inline-block mr-2" 
             [class.disabled]="!hasNextPage()" 
-            (click)="nextPage()">Next Page &raquo;</a>
+            (click)="nextPage()">{{ nextpage }} &raquo;</a>
     </div>
 </div>

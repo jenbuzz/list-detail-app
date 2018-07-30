@@ -28,6 +28,7 @@ export class CardComponent {
     apiUrl: string = '';
     readmore: string = '';
     externallink: string = '';
+    source: string = '';
     themeMainColor: string = '';
     showSourceTextOnBtn: boolean = true;
     showSquareImage: boolean = false;
@@ -41,6 +42,7 @@ export class CardComponent {
 
         this.readmore = this.translationService.translate('readmore');
         this.externallink = this.translationService.translate('externallink');
+        this.source = this.translationService.translate('source');
 
         this.showSourceTextOnBtn = this.config.getSettings().showSourceTextOnBtn;
         this.showSquareImage = this.config.getSettings().showSquareImage;

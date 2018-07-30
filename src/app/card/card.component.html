@@ -6,7 +6,7 @@
             alt="{{ element.title }}">
 
         <div *ngIf="element.source"
-            [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">Source: {{ element.source }}</div>
+            [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">{{ source }}{{ element.source }}</div>
     </div>
     <div class="card-body" [class.card-body-large]="element.title && element.icons && element.icons.length > 0 && element.labels && element.labels.length > 0">
         <h5 class="card-title" *ngIf="element.title">
@@ -21,7 +21,7 @@
             <p class="card-text text-muted" [innerHTML]="element.description"></p>
         </ng-container>
         <p class="card-text card-source text-muted" *ngIf="showSource && element.source">
-            <small>Source: {{ element.source }}</small>
+            <small>{{ source }}{{ element.source }}</small>
         </p>
         <div class="card-text card-labels mb-3" *ngIf="element.labels && element.labels.length > 0">
             <ng-container *ngFor="let label of element.labels">

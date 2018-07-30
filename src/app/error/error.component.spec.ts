@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { TranslationService } from './../translation.service';
+import { MockTranslationService } from './../mocks';
 import { ErrorComponent } from './error.component';
 
 describe('ErrorComponent', () => {
@@ -9,6 +11,9 @@ describe('ErrorComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 ErrorComponent,
+            ],
+            providers: [
+                {provide: TranslationService, useClass: MockTranslationService},
             ],
         })
         .compileComponents();

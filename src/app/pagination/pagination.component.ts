@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from './../api.service';
+import { TranslationService } from './../translation.service';
 
 @Component({
     selector: 'pagination',
@@ -7,7 +8,12 @@ import { ApiService } from './../api.service';
 })
 export class PaginationComponent {
 
-    constructor(private apiService: ApiService) {
+    prevpage: string;
+    nextpage: string;
+
+    constructor(private apiService: ApiService, private translationService: TranslationService) {
+        this.prevpage = this.translationService.translate('prevpage');
+        this.nextpage = this.translationService.translate('nextpage');
     }
 
     prevPage(): void {

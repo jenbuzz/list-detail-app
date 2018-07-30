@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService } from './../config.service';
 import { ApiService } from './../api.service';
+import { TranslationService } from './../translation.service';
 import { Element } from './../interfaces';
 
 @Component({
@@ -13,6 +14,9 @@ export class ListComponent implements OnInit {
 
     themeMainColor: string = '#000000';
 
+    error: string;
+    emptyresult: string;
+
     elements$: Observable<Element[]>;
     isLoading$: Observable<boolean>;
     hasError$: Observable<boolean>;
@@ -20,9 +24,13 @@ export class ListComponent implements OnInit {
     constructor(
         private apiService: ApiService,
         private config: ConfigService,
+        private translationService: TranslationService,
         private metafrenzyService: MetafrenzyService
     ) {
         this.themeMainColor = this.config.getStyling().themeMainColor;
+
+        this.error = this.translationService.translate('error');
+        this.emptyresult = this.translationService.translate('emptyresult');
 
         this.elements$ = this.apiService.getElementsSubject();
         this.isLoading$ = this.apiService.getIsLoadingSubject();

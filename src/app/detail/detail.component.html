@@ -10,7 +10,7 @@
     <div class="col-12">
         <div class="loader" *ngIf="isLoading$ | async"></div>
         <div class="text-center" *ngIf="hasError$ | async">
-            <p>Sorry, something went wrong...</p>
+            <p>{{ error }}</p>
         </div>
     </div>
 </div>

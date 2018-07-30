@@ -18,6 +18,7 @@ export class DetailComponent implements OnInit, OnDestroy {
 
     themeMainColor: string = '#000000';
     goback: string;
+    error: string;
 
     activeElement$: Observable<Element>;
     elements$: Observable<Element[]>;
@@ -34,6 +35,7 @@ export class DetailComponent implements OnInit, OnDestroy {
     ) {
         this.themeMainColor = this.config.getStyling().themeMainColor;
         this.goback = this.translationService.translate('goback');
+        this.error = this.translationService.translate('error');
 
         this.elements$ = this.apiService.getElementsSubject();
         this.isLoading$ = this.apiService.getIsLoadingSubject();
