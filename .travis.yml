@@ -9,5 +9,5 @@ before_script:
   - npm install -g @angular/cli
 
 script:
-  - ng build
-  - ng test
+  - npm run build
+  - npm run test
