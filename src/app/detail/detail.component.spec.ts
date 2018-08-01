@@ -7,6 +7,7 @@ import { DetailComponent } from './detail.component';
 import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
 import { TranslationService } from './../translation.service';
+import { TranslatePipe } from './../translate.pipe';
 import { MockConfigService, MockApiService, MockTranslationService } from './../mocks';
 
 describe('DetailComponent', () => {
@@ -22,6 +23,7 @@ describe('DetailComponent', () => {
             ],
             declarations: [
                 DetailComponent,
+                TranslatePipe,
             ],
             providers: [
                 {provide: ApiService, useClass: MockApiService},

@@ -12,6 +12,7 @@ import { ErrorComponent } from './error/error.component';
 import { ConfigService } from './config.service';
 import { ApiService } from './api.service';
 import { TranslationService } from './translation.service';
+import { TranslatePipe } from './translate.pipe';
 import { MockConfigService, MockApiService, MockTranslationService } from './mocks';
 import { FontAwesomeService } from './font-awesome.service';
 import { routes } from './app-routing.module';
@@ -31,6 +32,7 @@ describe('AppComponent', () => {
                 PaginationComponent,
                 CardComponent,
                 ErrorComponent,
+                TranslatePipe,
             ],
             providers: [
                 {provide: ApiService, useClass: MockApiService},

@@ -6,7 +6,7 @@
             alt="{{ element.title }}">
 
         <div *ngIf="element.source"
-            [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">{{ source }}{{ element.source }}</div>
+            [style.background]="'linear-gradient(transparent, '+themeMainColor+')'">{{ 'source' | translate }}{{ element.source }}</div>
     </div>
     <div class="card-body" [class.card-body-large]="element.title && element.icons && element.icons.length > 0 && element.labels && element.labels.length > 0">
         <h5 class="card-title" *ngIf="element.title">
@@ -21,7 +21,7 @@
             <p class="card-text text-muted" [innerHTML]="element.description"></p>
         </ng-container>
         <p class="card-text card-source text-muted" *ngIf="showSource && element.source">
-            <small>{{ source }}{{ element.source }}</small>
+            <small>{{ 'source' | translate }}{{ element.source }}</small>
         </p>
         <div class="card-text card-labels mb-3" *ngIf="element.labels && element.labels.length > 0">
             <ng-container *ngFor="let label of element.labels">
@@ -41,9 +41,9 @@
                     <ng-container *ngIf="link.icon && getIcon(link.icon)">
                         <fa-icon [icon]="getIcon(link.icon)" class="fa-2x mr-icon"></fa-icon>
                     </ng-container>
-                    <span>{{ readmore }}</span>
+                    <span>{{ 'readmore' | translate }}</span>
                     <span *ngIf="showSourceTextOnBtn">&nbsp;{{ element.source }}</span>
-                    <span>&nbsp;{{ externallink }}</span>
+                    <span>&nbsp;{{ 'externallink' | translate }}</span>
                 </a>
             </div>
         </div>

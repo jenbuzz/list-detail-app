@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12 mb-3 mt-4 text-center">
-        <a class="page-link d-inline-block" (click)="back()">&laquo; {{ goback }}</a>
+        <a class="page-link d-inline-block" (click)="back()">&laquo; {{ 'goback' | translate }}</a>
     </div>
 </div>
 <div class="row">
@@ -10,12 +10,12 @@
     <div class="col-12">
         <div class="loader" *ngIf="isLoading$ | async"></div>
         <div class="text-center" *ngIf="hasError$ | async">
-            <p>{{ error }}</p>
+            <p>{{ 'error' | translate }}</p>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-12 mb-3 mt-4 text-center">
-        <a class="page-link d-inline-block" (click)="back()">&laquo; {{ goback }}</a>
+        <a class="page-link d-inline-block" (click)="back()">&laquo; {{ 'goback' | translate }}</a>
     </div>
 </div>

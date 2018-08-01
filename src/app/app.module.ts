@@ -8,6 +8,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { TranslatePipe } from './translate.pipe';
+
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
@@ -36,6 +38,7 @@ export function loadConfig(configService: ConfigService) {
         CardComponent,
         ErrorComponent,
         SearchComponent,
+        TranslatePipe,
     ],
     imports: [
         BrowserModule,

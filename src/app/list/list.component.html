@@ -8,13 +8,13 @@
         </div>
     </div>
     <div class="col-12 text-center" *ngIf="(elements$ | async)?.length == 0 && !(isLoading$ | async)">
-        <p>{{ emptyresult }}</p>
+        <p>{{ 'emptyresult' | translate }}</p>
     </div>
     <div class="col-12 loader-container" *ngIf="isLoading$ | async">
         <div class="loader"></div>
     </div>
     <div class="col-12 text-center" *ngIf="hasError$ | async">
-        <p>{{ error }}</p>
+        <p>{{ 'error' | translate }}</p>
     </div>
 </div>
 <div class="pagination-container mb-3 mt-4">

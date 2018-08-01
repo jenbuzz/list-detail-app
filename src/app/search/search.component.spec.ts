@@ -6,6 +6,7 @@ import { ApiService } from './../api.service';
 import { TranslationService } from './../translation.service';
 import { FontAwesomeService } from './../font-awesome.service';
 import { MockConfigService, MockApiService, MockTranslationService } from './../mocks';
+import { TranslatePipe } from './../translate.pipe';
 import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {
@@ -16,6 +17,7 @@ describe('SearchComponent', () => {
         TestBed.configureTestingModule({
             declarations: [
                 SearchComponent,
+                TranslatePipe,
             ],
             imports: [
                 RouterTestingModule,

@@ -6,6 +6,7 @@ import { ApiService } from './../api.service';
 import { ConfigService } from './../config.service';
 import { TranslationService } from './../translation.service';
 import { MockConfigService, MockApiService, MockTranslationService } from './../mocks';
+import { TranslatePipe } from './../translate.pipe';
 
 describe('PaginationComponent', () => {
     let component: PaginationComponent;
@@ -18,6 +19,7 @@ describe('PaginationComponent', () => {
             ],
             declarations: [
                 PaginationComponent,
+                TranslatePipe,
             ],
             providers: [
                 {provide: ApiService, useClass: MockApiService},
