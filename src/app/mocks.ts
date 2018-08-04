@@ -33,7 +33,9 @@ export class MockConfigService {
     }
 
     getElementFieldMapping(): ConfigElementFieldMapping {
-        return this.get('elementFieldMapping');
+        return {
+            id: ['id'],
+        };
     }
 
     getStyling(): ConfigStyling {
