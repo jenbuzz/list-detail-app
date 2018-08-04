@@ -23,7 +23,7 @@ describe('ApiService', () => {
             httpMock: HttpTestingController,
             apiService: ApiService
         ) => {
-            let response = [
+            const response = [
                 {
                     id: 4,
                     title: 'Aliquid dolore voluptas quidem est.',
@@ -42,7 +42,7 @@ describe('ApiService', () => {
                     ]
                 },
             ];
-        
+
             apiService.getElements().subscribe(result => {
                 expect(result[0].id).toBe(response[0].id);
             });
@@ -50,7 +50,7 @@ describe('ApiService', () => {
             apiService.getHasErrorSubject().subscribe(error => {
                 expect(error).toBeFalsy();
             });
-        
+
             const mockReq = httpMock.expectOne(req => true);
 
             mockReq.flush(response);
