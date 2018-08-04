@@ -220,7 +220,7 @@ export class ApiService {
     }
 
     private getElementDataByMapping(element: Object, field: string): any {
-        const fieldMapping = this.config.get('elementFieldMapping');
+        const fieldMapping = this.config.getElementFieldMapping();
 
         if (field in fieldMapping) {
             return this.mapData(element, fieldMapping[field]);
