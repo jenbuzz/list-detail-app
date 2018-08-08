@@ -51,9 +51,9 @@ describe('ApiService', () => {
                 expect(error).toBeFalsy();
             });
 
-            const mockReq = httpMock.expectOne(req => true);
+            const mockReq = httpMock.match(req => true);
 
-            mockReq.flush(response);
+            mockReq[0].flush(response);
 
             httpMock.verify();
         }
