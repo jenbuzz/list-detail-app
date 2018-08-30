@@ -54,8 +54,6 @@ describe('ApiService', () => {
             const mockReq = httpMock.match(req => true);
 
             mockReq[0].flush(response);
-
-            httpMock.verify();
         }
     ));
 });
