@@ -203,20 +203,9 @@ export class ApiService {
     }
 
     private mapData(element: Object, fields: string[]): any {
-        for (let i = 0; i < fields.length; i++) {
-            const field = fields[i];
-            if (element && element.hasOwnProperty(field)) {
-                const newFields = fields.slice(1);
-
-                if (newFields.length >= 1) {
-                    return this.mapData(element[field], newFields);
-                } else {
-                    return element[field];
-                }
-            }
-        }
-
-        return null;
+        return fields.reduce((partialElement, key) => 
+            (partialElement && partialElement[key] !== 'undefined') ? partialElement[key] : undefined, element
+        );
     }
 
     private getElementDataByMapping(element: Object, field: string): any {
