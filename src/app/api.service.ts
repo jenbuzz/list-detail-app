@@ -203,7 +203,7 @@ export class ApiService {
     }
 
     private mapData(element: Object, fields: string[]): any {
-        return fields.reduce((partialElement, key) => 
+        return fields.reduce((partialElement, key) =>
             (partialElement && partialElement[key] !== 'undefined') ? partialElement[key] : undefined, element
         );
     }
