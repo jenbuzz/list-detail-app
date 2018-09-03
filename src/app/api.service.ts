@@ -19,6 +19,7 @@ export class ApiService {
     limit: number = 10;
     page: number = 0;
     searchTerm: string = '';
+    filter: string = '';
 
     constructor(private http: HttpClient, private config: ConfigService) {
     }
@@ -48,6 +49,12 @@ export class ApiService {
 
     setSearchTerm(term: string): void {
         this.searchTerm$.next(term);
+        this.resetPage();
+    }
+
+    setFilter(name: string): void {
+        this.filter = name;
+        this.getElements();
         this.resetPage();
     }
 
@@ -243,6 +250,10 @@ export class ApiService {
 
             if (this.searchTerm) {
                 params.push(this.config.get('api', type, 'searchFieldName') + '=' + this.searchTerm);
+            }
+
+            if (this.filter) {
+                params.push(this.config.get('api', type, 'filterFieldName') + '=' + this.filter);
             }
         }
 

@@ -20,6 +20,7 @@ export interface Config {
     metaTags: ConfigMetaTags;
     api: ConfigApi;
     elementFieldMapping: ConfigElementFieldMapping;
+    filters: ConfigFilters,
     styling: ConfigStyling;
     settings: ConfigSettings;
     translation: ConfigTranslation;
@@ -50,6 +51,10 @@ export interface ConfigElementFieldMapping {
     external_link_icon?: string[];
     image?: string[];
     source?: string[];
+}
+
+export interface ConfigFilters {
+    filter?: string[];
 }
 
 export interface ConfigStyling {

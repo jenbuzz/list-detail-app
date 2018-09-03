@@ -5,11 +5,20 @@
         </div>
     </div>
     <div class="row searchbar" [style.background-color]="themeMainColor">
-        <div class="col-md-12">
+        <div [class.col-sm-1]="filters.length > 0"  [class.hidden]="filters.length === 0">
+            <div class="dropdown">
+                <button class="btn">Filter</button>
+                <div class="dropdown-content">
+                    <ng-container *ngFor="let filterName of filters">
+                        <div (click)="filter(filterName)">{{ filterName }}</div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <div [class.col-sm-11]="filters.length > 0"  [class.col-sm-12]="filters.length === 0">
             <search></search>
         </div>
     </div>
-    
     <div class="outlet-container" [@routeAnimation]="getAnimation(routerOutlet)">
         <router-outlet #routerOutlet="outlet"></router-outlet>
     <div>

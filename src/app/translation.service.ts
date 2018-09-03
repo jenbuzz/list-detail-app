@@ -19,6 +19,10 @@ export class TranslationService {
         }
     }
 
+    getLanguage(): string {
+        return this.language;
+    }
+
     translate(text: string): string {
         const translations = this.configService.getTranslation().translations;
 

@@ -6,6 +6,7 @@ import {
     ConfigMetaTags,
     ConfigApi,
     ConfigElementFieldMapping,
+    ConfigFilters,
     ConfigStyling,
     ConfigSettings,
     ConfigTranslation
@@ -52,6 +53,10 @@ export class ConfigService {
 
     getElementFieldMapping(): ConfigElementFieldMapping {
         return this.get('elementFieldMapping');
+    }
+
+    getFilters(): ConfigFilters {
+        return this.get('filters');
     }
 
     getStyling(): ConfigStyling {
