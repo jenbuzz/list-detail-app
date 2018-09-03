@@ -5,7 +5,7 @@
         </div>
     </div>
     <div class="row searchbar" [style.background-color]="themeMainColor">
-        <div [class.col-sm-1]="filters.length > 0"  [class.hidden]="filters.length === 0">
+        <div class="p-0" [class.col-sm-2]="filters.length > 0"  [class.hidden]="filters.length === 0">
             <div class="dropdown">
                 <button class="btn">Filter</button>
                 <div class="dropdown-content">
@@ -15,7 +15,7 @@
                 </div>
             </div>
         </div>
-        <div [class.col-sm-11]="filters.length > 0"  [class.col-sm-12]="filters.length === 0">
+        <div class="p-0" [class.col-sm-10]="filters.length > 0"  [class.col-sm-12]="filters.length === 0">
             <search></search>
         </div>
     </div>
