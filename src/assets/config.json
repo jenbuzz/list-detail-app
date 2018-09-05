@@ -19,6 +19,7 @@
             "path": "",
             "parameters": [],
             "searchFieldName": "",
+            "filterFieldName": "",
             "paginationOffsetName": "",
             "paginationLimitName": ""
         },
@@ -46,6 +47,9 @@
         "source": [],
         "icons": [],
         "labels": []
+    },
+    "filters": {
+        "filter": []
     },
     "styling": {
         "themeMainColor": ""
