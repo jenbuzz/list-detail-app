@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
 import { DetailComponent } from './detail/detail.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { FilterComponent } from './filter/filter.component';
 import { CardComponent } from './card/card.component';
 import { ErrorComponent } from './error/error.component';
 import { ConfigService } from './config.service';
@@ -30,6 +31,7 @@ describe('AppComponent', () => {
                 ListComponent,
                 DetailComponent,
                 PaginationComponent,
+                FilterComponent,
                 CardComponent,
                 ErrorComponent,
                 TranslatePipe,

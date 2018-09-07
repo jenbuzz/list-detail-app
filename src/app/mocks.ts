@@ -4,6 +4,7 @@ import {
     ConfigMetaTags,
     ConfigApi,
     ConfigElementFieldMapping,
+    ConfigFilters,
     ConfigStyling,
     ConfigSettings,
     ConfigTranslation
@@ -36,6 +37,10 @@ export class MockConfigService {
         return {
             id: ['id'],
         };
+    }
+
+    getFilters(): ConfigFilters {
+        return this.get('filters');
     }
 
     getStyling(): ConfigStyling {
@@ -89,6 +94,9 @@ export class MockApiService {
     }
 
     setSearchTerm(term: string): void {
+    }
+
+    setFilter(name: string): void {
     }
 
     decrementPage(): void {

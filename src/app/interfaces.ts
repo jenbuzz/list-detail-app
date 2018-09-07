@@ -20,7 +20,7 @@ export interface Config {
     metaTags: ConfigMetaTags;
     api: ConfigApi;
     elementFieldMapping: ConfigElementFieldMapping;
-    filters: ConfigFilters,
+    filters: ConfigFilters;
     styling: ConfigStyling;
     settings: ConfigSettings;
     translation: ConfigTranslation;
@@ -54,7 +54,7 @@ export interface ConfigElementFieldMapping {
 }
 
 export interface ConfigFilters {
-    filter?: string[];
+    filters?: string[];
 }
 
 export interface ConfigStyling {

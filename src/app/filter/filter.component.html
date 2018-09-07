@@ -1,0 +1,8 @@
+<div class="dropdown">
+  <button class="btn">Filter</button>
+  <div class="dropdown-content">
+      <ng-container *ngFor="let filterName of filters">
+          <div (click)="filter(filterName)">{{ filterName }}</div>
+      </ng-container>
+  </div>
+</div>

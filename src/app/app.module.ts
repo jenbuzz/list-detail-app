@@ -22,6 +22,7 @@ import { ApiService } from './api.service';
 import { FontAwesomeService } from './font-awesome.service';
 import { TranslationService } from './translation.service';
 import { SearchComponent } from './search/search.component';
+import { FilterComponent } from './filter/filter.component';
 
 export function loadConfig(configService: ConfigService) {
     return () => {
@@ -39,6 +40,7 @@ export function loadConfig(configService: ConfigService) {
         ErrorComponent,
         SearchComponent,
         TranslatePipe,
+        FilterComponent,
     ],
     imports: [
         BrowserModule,
