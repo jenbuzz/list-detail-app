@@ -1,11 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { CardComponent } from './card.component';
-import { ConfigService } from './../config.service';
-import { TranslationService } from './../translation.service';
-import { TranslatePipe } from './../translate.pipe';
-import { FontAwesomeService } from './../font-awesome.service';
-import { MockConfigService, MockTranslationService } from './../mocks';
+import { ConfigService } from './../../services/config.service';
+import { TranslationService } from './../../services/translation.service';
+import { TranslatePipe } from './../../translate.pipe';
+import { FontAwesomeService } from './../../services/font-awesome.service';
+import { MockConfigService, MockTranslationService } from './../../mocks';
 
 describe('CardComponent', () => {
     let component: CardComponent;

@@ -3,7 +3,7 @@ import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http'
 import { BehaviorSubject, Subject } from 'rxjs';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { map, skip, debounceTime, distinctUntilChanged, catchError, retry } from 'rxjs/operators';
-import { Element, Link } from './interfaces';
+import { Element, Link } from '../interfaces';
 import { ConfigService } from './config.service';
 
 @Injectable({

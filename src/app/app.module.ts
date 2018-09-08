@@ -11,18 +11,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslatePipe } from './translate.pipe';
 
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
-import { DetailComponent } from './detail/detail.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { CardComponent } from './card/card.component';
-import { ErrorComponent } from './error/error.component';
+import { ListComponent } from './components/list/list.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { CardComponent } from './components/card/card.component';
+import { ErrorComponent } from './components/error/error.component';
 
-import { ConfigService } from './config.service';
-import { ApiService } from './api.service';
-import { FontAwesomeService } from './font-awesome.service';
-import { TranslationService } from './translation.service';
-import { SearchComponent } from './search/search.component';
-import { FilterComponent } from './filter/filter.component';
+import { ConfigService } from './services/config.service';
+import { ApiService } from './services/api.service';
+import { FontAwesomeService } from './services/font-awesome.service';
+import { TranslationService } from './services/translation.service';
+import { SearchComponent } from './components/search/search.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 export function loadConfig(configService: ConfigService) {
     return () => {

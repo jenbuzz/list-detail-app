@@ -1,35 +1,30 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { MetafrenzyModule, MetafrenzyService } from 'ngx-metafrenzy';
-import { DetailComponent } from './detail.component';
-import { ApiService } from './../api.service';
-import { ConfigService } from './../config.service';
-import { TranslationService } from './../translation.service';
-import { TranslatePipe } from './../translate.pipe';
-import { MockConfigService, MockApiService, MockTranslationService } from './../mocks';
+import { PaginationComponent } from './pagination.component';
+import { ApiService } from './../../services/api.service';
+import { ConfigService } from './../../services/config.service';
+import { TranslationService } from './../../services/translation.service';
+import { MockConfigService, MockApiService, MockTranslationService } from './../../mocks';
+import { TranslatePipe } from './../../translate.pipe';
 
-describe('DetailComponent', () => {
-    let component: DetailComponent;
-    let fixture: ComponentFixture<DetailComponent>;
+describe('PaginationComponent', () => {
+    let component: PaginationComponent;
+    let fixture: ComponentFixture<PaginationComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientModule,
-                RouterTestingModule,
-                MetafrenzyModule.forRoot(),
             ],
             declarations: [
-                DetailComponent,
+                PaginationComponent,
                 TranslatePipe,
             ],
             providers: [
                 {provide: ApiService, useClass: MockApiService},
                 {provide: ConfigService, useClass: MockConfigService},
                 {provide: TranslationService, useClass: MockTranslationService},
-                MetafrenzyService,
             ],
             schemas: [NO_ERRORS_SCHEMA]
         })
@@ -37,7 +32,7 @@ describe('DetailComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(DetailComponent);
+        fixture = TestBed.createComponent(PaginationComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

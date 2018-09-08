@@ -2,17 +2,17 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
-import { MetafrenzyModule } from 'ngx-metafrenzy';
-import { ListComponent } from './list.component';
-import { ApiService } from './../api.service';
-import { ConfigService } from './../config.service';
-import { TranslationService } from './../translation.service';
-import { TranslatePipe } from './../translate.pipe';
-import { MockConfigService, MockApiService, MockTranslationService } from './../mocks';
+import { MetafrenzyModule, MetafrenzyService } from 'ngx-metafrenzy';
+import { DetailComponent } from './detail.component';
+import { ApiService } from './../../services/api.service';
+import { ConfigService } from './../../services/config.service';
+import { TranslationService } from './../../services/translation.service';
+import { TranslatePipe } from './../../translate.pipe';
+import { MockConfigService, MockApiService, MockTranslationService } from './../../mocks';
 
-describe('ListComponent', () => {
-    let component: ListComponent;
-    let fixture: ComponentFixture<ListComponent>;
+describe('DetailComponent', () => {
+    let component: DetailComponent;
+    let fixture: ComponentFixture<DetailComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -22,13 +22,14 @@ describe('ListComponent', () => {
                 MetafrenzyModule.forRoot(),
             ],
             declarations: [
-                ListComponent,
+                DetailComponent,
                 TranslatePipe,
             ],
             providers: [
                 {provide: ApiService, useClass: MockApiService},
                 {provide: ConfigService, useClass: MockConfigService},
                 {provide: TranslationService, useClass: MockTranslationService},
+                MetafrenzyService,
             ],
             schemas: [NO_ERRORS_SCHEMA]
         })
@@ -36,7 +37,7 @@ describe('ListComponent', () => {
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ListComponent);
+        fixture = TestBed.createComponent(DetailComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

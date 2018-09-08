@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { ConfigService } from './../config.service';
-import { ApiService } from './../api.service';
+import { ConfigService } from './../../services/config.service';
+import { ApiService } from './../../services/api.service';
 
 @Component({
     selector: 'filter',

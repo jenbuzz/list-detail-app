@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Element } from './../interfaces';
-import { ConfigService } from './../config.service';
-import { FontAwesomeService } from './../font-awesome.service';
+import { Element } from './../../interfaces';
+import { ConfigService } from './../../services/config.service';
+import { FontAwesomeService } from './../../services/font-awesome.service';
 
 @Component({
     selector: 'card',

@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ConfigService } from './config.service';
-import { MockConfigService } from './mocks';
+import { MockConfigService } from './../mocks';
 import { ApiService } from './api.service';
 
 describe('ApiService', () => {

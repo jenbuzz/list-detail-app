@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd, Event } from '@angular/router';
-import { ConfigService } from './config.service';
-import { TranslationService } from './translation.service';
+import { ConfigService } from './services/config.service';
+import { TranslationService } from './services/translation.service';
 import { routeAnimation } from './animations';
 
 @Component({

@@ -10,8 +10,8 @@ import {
     ConfigStyling,
     ConfigSettings,
     ConfigTranslation
-} from './interfaces';
-import { environment } from './../environments/environment';
+} from '../interfaces';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root',

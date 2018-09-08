@@ -4,18 +4,18 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
-import { ListComponent } from './list/list.component';
-import { DetailComponent } from './detail/detail.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { FilterComponent } from './filter/filter.component';
-import { CardComponent } from './card/card.component';
-import { ErrorComponent } from './error/error.component';
-import { ConfigService } from './config.service';
-import { ApiService } from './api.service';
-import { TranslationService } from './translation.service';
+import { ListComponent } from './components/list/list.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { CardComponent } from './components/card/card.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ConfigService } from './services/config.service';
+import { ApiService } from './services/api.service';
+import { TranslationService } from './services/translation.service';
 import { TranslatePipe } from './translate.pipe';
 import { MockConfigService, MockApiService, MockTranslationService } from './mocks';
-import { FontAwesomeService } from './font-awesome.service';
+import { FontAwesomeService } from './services/font-awesome.service';
 import { routes } from './app-routing.module';
 
 describe('AppComponent', () => {
