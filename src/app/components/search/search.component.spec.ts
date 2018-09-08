@@ -1,10 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { ConfigService } from './../../services/config.service';
-import { ApiService } from './../../services/api.service';
-import { TranslationService } from './../../services/translation.service';
-import { FontAwesomeService } from './../../services/font-awesome.service';
+import { ConfigService, ApiService, TranslationService, FontAwesomeService } from './../../services';
 import { MockConfigService, MockApiService, MockTranslationService } from './../../mocks';
 import { TranslatePipe } from './../../translate.pipe';
 import { SearchComponent } from './search.component';

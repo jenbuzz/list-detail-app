@@ -1,8 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FilterComponent } from './filter.component';
-import { ConfigService } from './../../services/config.service';
-import { ApiService } from './../../services/api.service';
+import { ConfigService, ApiService } from './../../services';
 import { MockConfigService, MockApiService } from './../../mocks';
 
 describe('FilterComponent', () => {

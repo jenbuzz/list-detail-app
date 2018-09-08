@@ -16,13 +16,10 @@ import { DetailComponent } from './components/detail/detail.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { CardComponent } from './components/card/card.component';
 import { ErrorComponent } from './components/error/error.component';
-
-import { ConfigService } from './services/config.service';
-import { ApiService } from './services/api.service';
-import { FontAwesomeService } from './services/font-awesome.service';
-import { TranslationService } from './services/translation.service';
 import { SearchComponent } from './components/search/search.component';
 import { FilterComponent } from './components/filter/filter.component';
+
+import { ConfigService, ApiService, FontAwesomeService, TranslationService } from './services';
 
 export function loadConfig(configService: ConfigService) {
     return () => {

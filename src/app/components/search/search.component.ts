@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from './../../services/api.service';
-import { FontAwesomeService } from './../../services/font-awesome.service';
+import { ApiService, FontAwesomeService } from './../../services';
 
 @Component({
     selector: 'search',

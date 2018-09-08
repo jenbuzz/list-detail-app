@@ -10,12 +10,9 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { FilterComponent } from './components/filter/filter.component';
 import { CardComponent } from './components/card/card.component';
 import { ErrorComponent } from './components/error/error.component';
-import { ConfigService } from './services/config.service';
-import { ApiService } from './services/api.service';
-import { TranslationService } from './services/translation.service';
+import { ConfigService, ApiService, TranslationService, FontAwesomeService } from './services';
 import { TranslatePipe } from './translate.pipe';
 import { MockConfigService, MockApiService, MockTranslationService } from './mocks';
-import { FontAwesomeService } from './services/font-awesome.service';
 import { routes } from './app-routing.module';
 
 describe('AppComponent', () => {

@@ -2,9 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './pagination.component';
-import { ApiService } from './../../services/api.service';
-import { ConfigService } from './../../services/config.service';
-import { TranslationService } from './../../services/translation.service';
+import { ApiService, ConfigService, TranslationService } from './../../services';
 import { MockConfigService, MockApiService, MockTranslationService } from './../../mocks';
 import { TranslatePipe } from './../../translate.pipe';
 

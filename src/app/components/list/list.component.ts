@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
-import { ConfigService } from './../../services/config.service';
-import { ApiService } from './../../services/api.service';
+import { ConfigService, ApiService } from './../../services';
 import { Element } from './../../interfaces';
 
 @Component({

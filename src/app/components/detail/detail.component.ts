@@ -2,8 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
-import { ConfigService } from './../../services/config.service';
-import { ApiService } from './../../services/api.service';
+import { ConfigService, ApiService } from './../../services';
 import { Element } from './../../interfaces';
 import { switchMap, map } from 'rxjs/operators';
 
