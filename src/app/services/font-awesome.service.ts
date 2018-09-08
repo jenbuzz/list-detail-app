@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { faAmazon, faApple, faAndroid, faWindows } from '@fortawesome/fontawesome-free-brands';
-import { faTimes, faExternalLinkAlt } from '@fortawesome/fontawesome-free-solid';
+import { faTimes, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faAmazon, faApple, faAndroid, faWindows } from '@fortawesome/free-brands-svg-icons';
 
 @Injectable({
     providedIn: 'root',
