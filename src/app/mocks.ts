@@ -43,6 +43,10 @@ export class MockConfigService {
         return this.get('filters');
     }
 
+    getFilter(): string[] {
+        return [];
+    }
+
     getStyling(): ConfigStyling {
         return this.get('styling');
     }

@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     ) {
         this.themeMainColor = this.config.getStyling().themeMainColor;
         this.title = this.translationService.translate('title');
-        this.filters = this.config.getFilters().filters || [];
+        this.filters = this.config.getFilter('mainFilter');
     }
 
     ngOnInit() {

@@ -54,7 +54,7 @@ export interface ConfigElementFieldMapping {
 }
 
 export interface ConfigFilters {
-    filters?: string[];
+    mainFilter?: string[];
 }
 
 export interface ConfigStyling {

@@ -11,7 +11,7 @@ export class FilterComponent {
     filters: string[];
 
     constructor(private config: ConfigService, private apiService: ApiService) {
-        this.filters = this.config.getFilters().filters || [];
+        this.filters = this.config.getFilter('mainFilter');
     }
 
     filter(name: string) {

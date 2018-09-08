@@ -59,6 +59,16 @@ export class ConfigService {
         return this.get('filters');
     }
 
+    getFilter(name?: string): string[] {
+        const filters = this.getFilters();
+
+        if (name && filters && filters.hasOwnProperty(name)) {
+            return filters[name];
+        }
+
+        return [];
+    }
+
     getStyling(): ConfigStyling {
         return this.get('styling');
     }
