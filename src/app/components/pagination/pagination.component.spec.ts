@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './pagination.component';
 import { ApiService, ConfigService, TranslationService } from './../../services';
 import { MockConfigService, MockApiService, MockTranslationService } from './../../mocks';
-import { TranslatePipe } from './../../translate.pipe';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 describe('PaginationComponent', () => {
     let component: PaginationComponent;

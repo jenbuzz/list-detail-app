@@ -11,7 +11,7 @@ import { FilterComponent } from './components/filter/filter.component';
 import { CardComponent } from './components/card/card.component';
 import { ErrorComponent } from './components/error/error.component';
 import { ConfigService, ApiService, TranslationService, FontAwesomeService } from './services';
-import { TranslatePipe } from './translate.pipe';
+import { TranslatePipe } from './pipes/translate.pipe';
 import { MockConfigService, MockApiService, MockTranslationService } from './mocks';
 import { routes } from './app-routing.module';
 
