@@ -75,7 +75,8 @@
                 "notfoundtext": "Sorry, this page does not exist!",
                 "emptyresult": "Sorry, nothing here...",
                 "prevpage": "Previous Page",
-                "nextpage": "Next Page"
+                "nextpage": "Next Page",
+                "filter": "Filter"
             },
             "de": {
                 "title": "App auf Deutsch",
@@ -89,7 +90,8 @@
                 "notfoundtext": "Tut uns leid, diese Seite gibt es nicht!",
                 "emptyresult": "Tut uns leid, nichts gefunden...",
                 "prevpage": "Vorherige Seite",
-                "nextpage": "Nächste Seite"
+                "nextpage": "Nächste Seite",
+                "filter": "Filter"
             }
         }
     }
