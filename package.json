@@ -8,7 +8,7 @@
     "start-local": "ng serve --host=dev01.local --disable-host-check",
     "build": "ng build --prod --output-hashing none",
     "test": "ng test --watch=false",
-    "test:coverage": "ng test --watch=false --code-coverage && cat ./coverage/*/lcov.info | coveralls",
+    "test:coverage": "ng test --watch=false --code-coverage && cat ./coverage/lcov.info | coveralls",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
