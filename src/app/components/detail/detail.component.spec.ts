@@ -6,7 +6,7 @@ import { MetafrenzyModule, MetafrenzyService } from 'ngx-metafrenzy';
 import { DetailComponent } from './detail.component';
 import { ApiService, ConfigService, TranslationService } from './../../services';
 import { MockConfigService, MockApiService, MockTranslationService } from './../../mocks';
-import { TranslatePipe } from '../../pipes/translate.pipe';
+import { TranslatePipe } from '../../pipes';
 
 describe('DetailComponent', () => {
     let component: DetailComponent;

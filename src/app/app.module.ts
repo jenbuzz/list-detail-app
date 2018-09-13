@@ -8,7 +8,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import { TranslatePipe } from './pipes/translate.pipe';
+import { TranslatePipe } from './pipes';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';

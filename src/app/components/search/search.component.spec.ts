@@ -3,7 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConfigService, ApiService, TranslationService, FontAwesomeService } from './../../services';
 import { MockConfigService, MockApiService, MockTranslationService } from './../../mocks';
-import { TranslatePipe } from '../../pipes/translate.pipe';
+import { TranslatePipe } from '../../pipes';
 import { SearchComponent } from './search.component';
 
 describe('SearchComponent', () => {

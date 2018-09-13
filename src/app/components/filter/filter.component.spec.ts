@@ -3,7 +3,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { FilterComponent } from './filter.component';
 import { ConfigService, ApiService, TranslationService } from './../../services';
 import { MockConfigService, MockApiService, MockTranslationService } from './../../mocks';
-import { TranslatePipe } from '../../pipes/translate.pipe';
+import { TranslatePipe } from '../../pipes';
 
 describe('FilterComponent', () => {
     let component: FilterComponent;

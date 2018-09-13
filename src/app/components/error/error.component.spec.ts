@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { TranslationService } from './../../services';
-import { TranslatePipe } from '../../pipes/translate.pipe';
+import { TranslatePipe } from '../../pipes';
 import { MockTranslationService } from './../../mocks';
 import { ErrorComponent } from './error.component';
 
