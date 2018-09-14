@@ -19,10 +19,7 @@ describe('ApiService', () => {
 
     it('getElements should return elements', inject(
         [HttpTestingController, ApiService],
-        (
-            httpMock: HttpTestingController,
-            apiService: ApiService
-        ) => {
+        (httpMock: HttpTestingController, apiService: ApiService) => {
             const response = [
                 {
                     id: 4,

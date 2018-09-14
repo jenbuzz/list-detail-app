@@ -54,7 +54,9 @@ export function loadConfig(configService: ConfigService) {
         FontAwesomeService,
         TranslationService,
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent,
+    ]
 })
 export class AppModule {
 }
