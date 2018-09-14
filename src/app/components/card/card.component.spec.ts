@@ -46,4 +46,27 @@ describe('CardComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should return background image css', () => {
+        component.useBackgroundImage = true;
+        const bgImage = component.getBackgroundImage(component.element);
+
+        expect(typeof(bgImage)).toBe('object');
+        expect(bgImage.hasOwnProperty('background-image')).toBeTruthy();
+        expect(bgImage['background-image']).toEqual('url(test.jpg)');
+    });
+
+    it('should not return background image css', () => {
+        component.useBackgroundImage = false;
+        const bgImage = component.getBackgroundImage(component.element);
+
+        expect(typeof(bgImage)).toBe('undefined');
+    });
+
+    it('should return an icon', () => {
+        const icon = component.getIcon('link');
+
+        expect(typeof(icon)).toBe('object');
+        expect(icon['iconName']).toEqual('external-link-alt');
+    });
 });
