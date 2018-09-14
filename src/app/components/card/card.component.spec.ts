@@ -49,7 +49,7 @@ describe('CardComponent', () => {
 
     it('should return background image css', () => {
         component.useBackgroundImage = true;
-        const bgImage = component.getBackgroundImage(component.element);
+        const bgImage = component.getBackgroundImage();
 
         expect(typeof(bgImage)).toBe('object');
         expect(bgImage.hasOwnProperty('background-image')).toBeTruthy();
@@ -58,9 +58,10 @@ describe('CardComponent', () => {
 
     it('should not return background image css', () => {
         component.useBackgroundImage = false;
-        const bgImage = component.getBackgroundImage(component.element);
+        const bgImage = component.getBackgroundImage();
 
-        expect(typeof(bgImage)).toBe('undefined');
+        expect(typeof(bgImage)).toBe('object');
+        expect(bgImage.hasOwnProperty('background-image')).toBeFalsy();
     });
 
     it('should return an icon', () => {

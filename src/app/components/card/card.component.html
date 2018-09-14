@@ -1,5 +1,5 @@
 <div class="card">
-    <div class="card-image-container" [class.card-image-square]="showSquareImage" [ngStyle]="getBackgroundImage(element)">
+    <div class="card-image-container" [class.card-image-square]="showSquareImage" [ngStyle]="getBackgroundImage()">
         <img *ngIf="!useBackgroundImage" 
             class="card-img-top" 
             src="{{ element.image }}" 

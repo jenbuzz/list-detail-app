@@ -40,12 +40,14 @@ export class CardComponent {
         this.themeMainColor = this.config.getStyling().themeMainColor;
     }
 
-    getBackgroundImage(element: Element): Object {
+    getBackgroundImage(): Object {
         if (this.useBackgroundImage) {
             return {
-                'background-image': 'url(' + element.image + ')'
+                'background-image': 'url(' + this.element.image + ')'
             };
         }
+
+        return {};
     }
 
     getIcon(name: string): Object {
