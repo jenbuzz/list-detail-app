@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd, Event } from '@angular/router';
 import { ConfigService, TranslationService } from './services';
 import { routeAnimation } from './animations';
@@ -19,7 +19,8 @@ export class AppComponent implements OnInit {
     constructor(
         private config: ConfigService,
         private translationService: TranslationService,
-        private router: Router
+        private router: Router,
+        private element: ElementRef
     ) {
         this.themeMainColor = this.config.getStyling().themeMainColor;
         this.title = this.translationService.translate('title');
@@ -32,7 +33,10 @@ export class AppComponent implements OnInit {
                 return;
             }
 
-            window.scrollTo(0, 0);
+            window.scrollTo({
+                top: this.element.nativeElement.offsetTop,
+                behavior: 'smooth',
+            });
         });
     }
 
