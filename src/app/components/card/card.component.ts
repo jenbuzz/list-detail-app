@@ -48,7 +48,7 @@ export class CardComponent {
         }
     }
 
-    getIcon(name: string): string {
+    getIcon(name: string): Object {
         return this.fontawesome.getIcon(name);
     }
 

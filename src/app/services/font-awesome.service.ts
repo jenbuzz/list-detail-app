@@ -16,7 +16,7 @@ export class FontAwesomeService {
         'link': faExternalLinkAlt,
     };
 
-    getIcon(name: string): string {
+    getIcon(name: string): Object {
         return this.icons[name];
     }
 
