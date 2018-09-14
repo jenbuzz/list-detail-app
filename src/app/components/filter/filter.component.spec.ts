@@ -34,4 +34,9 @@ describe('FilterComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should be able to set filter', () => {
+        expect(component.filter('')).toBeFalsy();
+        expect(component.filter('name')).toBeTruthy();
+    });
 });

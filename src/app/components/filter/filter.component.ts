@@ -13,12 +13,14 @@ export class FilterComponent {
         this.filters = this.config.getFilter('mainFilter');
     }
 
-    filter(name: string) {
+    filter(name: string): boolean {
         if (!name) {
-            return;
+            return false;
         }
 
         this.apiService.setFilter(name);
+
+        return true;
     }
 
 }
