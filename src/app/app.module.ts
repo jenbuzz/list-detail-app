@@ -58,5 +58,4 @@ export function loadConfig(configService: ConfigService) {
         AppComponent,
     ]
 })
-export class AppModule {
-}
+export class AppModule {}

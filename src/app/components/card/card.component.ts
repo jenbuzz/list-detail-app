@@ -43,7 +43,7 @@ export class CardComponent {
     getBackgroundImage(): Object {
         if (this.useBackgroundImage) {
             return {
-                'background-image': 'url(' + this.element.image + ')'
+                'background-image': 'url(' + this.element.image + ')',
             };
         }
 
