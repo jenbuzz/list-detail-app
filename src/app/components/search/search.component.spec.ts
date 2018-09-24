@@ -39,4 +39,11 @@ describe('SearchComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should return an icon', () => {
+        const icon = component.getIcon('times');
+
+        expect(typeof(icon)).toBe('object');
+        expect(icon['iconName']).toEqual('times');
+    });
 });

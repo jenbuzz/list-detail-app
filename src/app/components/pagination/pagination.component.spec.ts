@@ -38,4 +38,12 @@ describe('PaginationComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should check for previous page', () => {
+        expect(component.hasPrevPage()).toBeTruthy();
+    });
+
+    it('should check for next page', () => {
+        expect(component.hasNextPage()).toBeTruthy();
+    });
 });
