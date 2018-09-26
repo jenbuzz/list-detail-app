@@ -56,7 +56,8 @@
     },
     "settings": {
         "showSourceTextOnBtn": false,
-        "showSquareImage": false
+        "showSquareImage": false,
+        "useHtmlImage": false
     },
     "translation": {
         "fallbackLanguage": "en",

@@ -208,7 +208,7 @@ list-detail-app {
         .card-image-container {
             position: relative;
 
-            div {
+            div.image-overlay {
                 position: absolute;
                 bottom: 0;
                 right: 0;
@@ -219,6 +219,16 @@ list-detail-app {
                 text-align: center;
                 font-weight: bold;
                 font-size: 14px;
+            }
+
+            div.image-html {
+                overflow: hidden;
+                max-height: 100%;
+
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
             }
         }
 

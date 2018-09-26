@@ -64,6 +64,7 @@ export interface ConfigStyling {
 export interface ConfigSettings {
     showSourceTextOnBtn?: boolean;
     showSquareImage?: boolean;
+    useHtmlImage?: boolean;
 }
 
 export interface ConfigTranslation {

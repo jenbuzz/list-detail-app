@@ -27,6 +27,7 @@ export class CardComponent {
     themeMainColor: string = '';
     showSourceTextOnBtn: boolean = true;
     showSquareImage: boolean = false;
+    useHtmlImage: boolean = false;
 
     constructor(
         private config: ConfigService,
@@ -36,6 +37,7 @@ export class CardComponent {
 
         this.showSourceTextOnBtn = this.config.getSettings().showSourceTextOnBtn;
         this.showSquareImage = this.config.getSettings().showSquareImage;
+        this.useHtmlImage = this.config.getSettings().useHtmlImage;
 
         this.themeMainColor = this.config.getStyling().themeMainColor;
     }

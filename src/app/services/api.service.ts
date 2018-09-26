@@ -159,19 +159,24 @@ export class ApiService {
 
     private prepareElement(element: Object, fullElement?: Object): Element {
         let imagePath = this.getElementDataByMapping(element, 'image');
-        const apiImagePath = this.config.get('api', 'image', 'path');
-        if (imagePath && apiImagePath && apiImagePath.length > 0) {
-            const elementImage = this.mapData(fullElement, apiImagePath);
 
-            elementImage.forEach(image => {
-                const apiImageIdPath = this.config.get('api', 'image', 'idPath');
-                const imageId = this.mapData(image, apiImageIdPath);
-                if (imageId == imagePath) {
-                    const apiImageUrlPath = this.config.get('api', 'image', 'urlPath');
-                    imagePath = this.mapData(image, apiImageUrlPath);
-                    return;
-                }
-            });
+        if (!this.config.getSettings().useHtmlImage) {
+            const apiImagePath = this.config.get('api', 'image', 'path');
+            if (imagePath && apiImagePath && apiImagePath.length > 0) {
+                const elementImage = this.mapData(fullElement, apiImagePath);
+
+                elementImage.forEach(image => {
+                    const apiImageIdPath = this.config.get('api', 'image', 'idPath');
+                    const imageId = this.mapData(image, apiImageIdPath);
+                    if (imageId == imagePath) {
+                        const apiImageUrlPath = this.config.get('api', 'image', 'urlPath');
+                        imagePath = this.mapData(image, apiImageUrlPath);
+                        return;
+                    }
+                });
+            }
+
+            imagePath = this.config.getEnvironmentApiUrl() + imagePath;
         }
 
         const preparedElement: Element = {
@@ -180,7 +185,7 @@ export class ApiService {
             description: this.getElementDataByMapping(element, 'description'),
             internal_link: this.getElementDataByMapping(element, 'internal_link'),
             external_link: this.getElementDataByMapping(element, 'external_link'),
-            image: this.config.getEnvironmentApiUrl() + imagePath,
+            image: imagePath,
             source: this.getElementDataByMapping(element, 'source'),
             icons: this.getElementDataByMapping(element, 'icons'),
             labels: this.getElementDataByMapping(element, 'labels'),
