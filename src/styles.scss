@@ -132,7 +132,6 @@ list-detail-app {
         .card-image-container {
             height: 300px;
             background-position: center;
-            background-color: #222;
             background-size: cover;
 
             &.card-image-square {
@@ -224,6 +223,7 @@ list-detail-app {
             div.image-html {
                 overflow: hidden;
                 max-height: 100%;
+                text-align: center;
 
                 img {
                     max-width: 100%;
