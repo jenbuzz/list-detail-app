@@ -10,8 +10,8 @@ export class FilterComponent {
     filters: string[];
 
     constructor(
-        private config: ConfigService, 
-        private apiService: ApiService, 
+        private config: ConfigService,
+        private apiService: ApiService,
         private fontawesome: FontAwesomeService
     ) {
         this.filters = this.config.getFilter('mainFilter');
