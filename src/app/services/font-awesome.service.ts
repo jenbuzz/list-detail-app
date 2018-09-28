@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { faTimes, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faExternalLinkAlt, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faAmazon, faApple, faAndroid, faWindows } from '@fortawesome/free-brands-svg-icons';
 
 @Injectable({
@@ -14,6 +14,7 @@ export class FontAwesomeService {
         'windows': faWindows,
         'times': faTimes,
         'link': faExternalLinkAlt,
+        'dropdown': faCaretDown,
     };
 
     getIcon(name: string): Object {

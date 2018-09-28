@@ -1,5 +1,7 @@
 <div class="dropdown">
-  <button class="btn">{{ 'filter' | translate }}</button>
+  <button class="btn">{{ 'filter' | translate }}
+    <fa-icon [icon]="getIcon('dropdown')"></fa-icon>
+  </button>
   <div class="dropdown-content">
       <ng-container *ngFor="let filterName of filters">
           <div (click)="filter(filterName)">{{ filterName }}</div>

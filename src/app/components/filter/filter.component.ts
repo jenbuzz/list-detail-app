@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConfigService, ApiService } from './../../services';
+import { ConfigService, ApiService, FontAwesomeService } from './../../services';
 
 @Component({
     selector: 'filter',
@@ -9,7 +9,7 @@ export class FilterComponent {
 
     filters: string[];
 
-    constructor(private config: ConfigService, private apiService: ApiService) {
+    constructor(private config: ConfigService, private apiService: ApiService, private fontawesome: FontAwesomeService) {
         this.filters = this.config.getFilter('mainFilter');
     }
 
@@ -21,6 +21,10 @@ export class FilterComponent {
         this.apiService.setFilter(name);
 
         return true;
+    }
+
+    getIcon(name: string): Object {
+        return this.fontawesome.getIcon(name);
     }
 
 }
