@@ -56,7 +56,14 @@ export class MockConfigService {
     }
 
     getTranslation(): ConfigTranslation {
-        return this.get('translation');
+        return {
+            "fallbackLanguage": "en",
+            "translations": {
+                "en": {
+                    "title": "Lorem ipsum",
+                },
+            },
+        };
     }
 
     getEnvironmentApiUrl(): string {
