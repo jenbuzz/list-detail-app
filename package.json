@@ -9,8 +9,9 @@
     "build": "ng build --prod --output-hashing none",
     "test": "ng test --watch=false",
     "test:coverage": "ng test --watch=false --code-coverage && cat ./coverage/lcov.info | coveralls",
+    "e2e": "ng e2e",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "stylelint": "stylelint src/styles.scss"
   },
   "private": true,
   "dependencies": {
@@ -54,6 +55,8 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "phantomjs-prebuilt": "^2.1.16",
     "protractor": "~5.4.0",
+    "stylelint": "^9.6.0",
+    "stylelint-config-standard": "^18.2.0",
     "ts-node": "~7.0.1",
     "tslint": "~5.11.0",
     "typescript": "~3.0.1",
