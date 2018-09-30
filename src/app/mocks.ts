@@ -57,10 +57,10 @@ export class MockConfigService {
 
     getTranslation(): ConfigTranslation {
         return {
-            "fallbackLanguage": "en",
-            "translations": {
-                "en": {
-                    "title": "Lorem ipsum",
+            'fallbackLanguage': 'en',
+            'translations': {
+                'en': {
+                    'title': 'Lorem ipsum',
                 },
             },
         };
