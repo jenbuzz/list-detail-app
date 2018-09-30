@@ -3,7 +3,8 @@
   "rules": {
     "indentation": 4,
     "color-hex-length": "long",
-    "selector-type-no-unknown": false,
-    "no-duplicate-selectors": false
+    "selector-type-no-unknown": null,
+    "no-duplicate-selectors": null,
+    "no-descending-specificity": null
   }
 }
