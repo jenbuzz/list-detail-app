@@ -40,6 +40,13 @@ describe('SearchComponent', () => {
         expect(component).toBeTruthy();
     });
 
+    it('should set a new search term', () => {
+        const searchTerm = 'lorem';
+        component.setSearchTerm(searchTerm);
+
+        expect(component.searchTerm).toEqual(searchTerm);
+    });
+
     it('should return an icon', () => {
         const icon = component.getIcon('times');
 

@@ -43,4 +43,8 @@ describe('DetailComponent', () => {
     it('should create', () => {
         expect(component).toBeTruthy();
     });
+
+    it('should not add meta tags', () => {
+        expect(component.initMetaTags({})).toBeUndefined();
+    });
 });
