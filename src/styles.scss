@@ -75,7 +75,7 @@ list-detail-app {
     }
 
     .dropdown {
-        padding-right: 1rem;
+        padding-bottom: 1rem;
 
         .btn {
             width: 100%;
@@ -262,6 +262,11 @@ list-detail-app {
     list-detail-app {
         h2 {
             font-size: 1.6rem !important;
+        }
+
+        .dropdown {
+            padding-right: 1rem;
+            padding-bottom: 0;
         }
 
         list {
