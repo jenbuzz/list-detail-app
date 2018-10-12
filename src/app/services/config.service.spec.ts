@@ -3,7 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ConfigService } from './config.service';
 
 describe('ConfigService', () => {
-    let config = {
+    const config = {
         metaTags: {
             'disableMetaTags': true,
             'url': 'https://test',
