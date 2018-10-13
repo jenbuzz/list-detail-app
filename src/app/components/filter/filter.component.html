@@ -1,6 +1,11 @@
 <div class="dropdown">
-    <button class="btn">{{ 'filter' | translate }}
+    <button class="btn" *ngIf="!currentFilter">
+        <span class="mr-1">{{ 'filter' | translate }}</span>
         <fa-icon [icon]="getIcon('dropdown')"></fa-icon>
+    </button>
+    <button class="btn" *ngIf="currentFilter">
+        <span class="mr-1">{{ currentFilter }}</span>
+        <fa-icon [icon]="getIcon('times')" (click)="reset()"></fa-icon>
     </button>
     <div class="dropdown-content">
         <ng-container *ngFor="let filterName of filters">

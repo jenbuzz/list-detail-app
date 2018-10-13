@@ -8,6 +8,7 @@ import { ConfigService, ApiService, FontAwesomeService } from '@listdetailapp/se
 export class FilterComponent {
 
     filters: string[];
+    currentFilter: string;
 
     constructor(
         private config: ConfigService,
@@ -22,9 +23,15 @@ export class FilterComponent {
             return false;
         }
 
+        this.currentFilter = name;
         this.apiService.setFilter(name);
 
         return true;
+    }
+
+    reset() {
+        this.currentFilter = '';
+        this.apiService.setFilter('');
     }
 
     getIcon(name: string): Object {
