@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ConfigService, ApiService, FontAwesomeService } from './../../services';
+import { ConfigService, ApiService, FontAwesomeService } from '@listdetailapp/services';
 
 @Component({
     selector: 'filter',

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import { TranslationService } from './translation.service';
-import { ConfigService } from './config.service';
-import { MockConfigService } from './../mocks';
+import { TranslationService } from '@listdetailapp/services/translation.service';
+import { ConfigService } from '@listdetailapp/services/config.service';
+import { MockConfigService } from '@listdetailapp/mocks';
 
 describe('TranslationService', () => {
     beforeEach(() => {

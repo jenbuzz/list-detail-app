@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { RouterOutlet, Router, NavigationEnd, Event } from '@angular/router';
-import { ConfigService, TranslationService } from './services';
-import { routeAnimation } from './animations';
+import { ConfigService, TranslationService } from '@listdetailapp/services';
+import { routeAnimation } from '@listdetailapp/animations';
 
 @Component({
     selector: 'list-detail-app',

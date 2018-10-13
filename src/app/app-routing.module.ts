@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ListComponent } from './components/list/list.component';
-import { DetailComponent } from './components/detail/detail.component';
-import { ErrorComponent } from './components/error/error.component';
+import { ListComponent } from '@listdetailapp/components/list/list.component';
+import { DetailComponent } from '@listdetailapp/components/detail/detail.component';
+import { ErrorComponent } from '@listdetailapp/components/error/error.component';
 
 export const routes: Routes = [
     {

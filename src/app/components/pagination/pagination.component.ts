@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ApiService } from './../../services';
+import { ApiService } from '@listdetailapp/services';
 
 @Component({
     selector: 'pagination',

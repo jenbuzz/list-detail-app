@@ -10,7 +10,7 @@ import {
     ConfigStyling,
     ConfigSettings,
     ConfigTranslation
-} from '../interfaces';
+} from '@listdetailapp/interfaces';
 import { environment } from '../../environments/environment';
 
 @Injectable({

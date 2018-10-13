@@ -4,9 +4,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { MetafrenzyModule, MetafrenzyService } from 'ngx-metafrenzy';
 import { DetailComponent } from './detail.component';
-import { ApiService, ConfigService, TranslationService } from './../../services';
-import { MockConfigService, MockApiService, MockTranslationService } from './../../mocks';
-import { TranslatePipe } from '../../pipes';
+import { ApiService, ConfigService, TranslationService } from '@listdetailapp/services';
+import { MockConfigService, MockApiService, MockTranslationService } from '@listdetailapp/mocks';
+import { TranslatePipe } from '@listdetailapp/pipes';
 
 describe('DetailComponent', () => {
     let component: DetailComponent;

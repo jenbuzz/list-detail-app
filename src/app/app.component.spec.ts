@@ -3,17 +3,17 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppComponent } from './app.component';
-import { ListComponent } from './components/list/list.component';
-import { DetailComponent } from './components/detail/detail.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
-import { FilterComponent } from './components/filter/filter.component';
-import { CardComponent } from './components/card/card.component';
-import { ErrorComponent } from './components/error/error.component';
-import { ConfigService, ApiService, TranslationService, FontAwesomeService } from './services';
-import { TranslatePipe } from './pipes';
-import { MockConfigService, MockApiService, MockTranslationService } from './mocks';
-import { routes } from './app-routing.module';
+import { AppComponent } from '@listdetailapp/app.component';
+import { ListComponent } from '@listdetailapp/components/list/list.component';
+import { DetailComponent } from '@listdetailapp/components/detail/detail.component';
+import { PaginationComponent } from '@listdetailapp/components/pagination/pagination.component';
+import { FilterComponent } from '@listdetailapp/components/filter/filter.component';
+import { CardComponent } from '@listdetailapp/components/card/card.component';
+import { ErrorComponent } from '@listdetailapp/components/error/error.component';
+import { ConfigService, ApiService, TranslationService, FontAwesomeService } from '@listdetailapp/services';
+import { TranslatePipe } from '@listdetailapp/pipes';
+import { MockConfigService, MockApiService, MockTranslationService } from '@listdetailapp/mocks';
+import { routes } from '@listdetailapp/app-routing.module';
 
 describe('AppComponent', () => {
     beforeEach(async(() => {

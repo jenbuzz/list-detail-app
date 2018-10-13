@@ -1,8 +1,8 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { ApiService } from './api.service';
-import { ConfigService } from './config.service';
-import { MockConfigService } from './../mocks';
+import { ApiService } from '@listdetailapp/services/api.service';
+import { ConfigService } from '@listdetailapp/services/config.service';
+import { MockConfigService } from '@listdetailapp/mocks';
 
 describe('ApiService', () => {
     beforeEach(() => {

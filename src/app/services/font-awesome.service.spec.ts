@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { FontAwesomeService } from './font-awesome.service';
+import { FontAwesomeService } from '@listdetailapp/services/font-awesome.service';
 
 describe('FontAwesomeService', () => {
     beforeEach(() => {

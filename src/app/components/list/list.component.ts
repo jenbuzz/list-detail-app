@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
-import { ConfigService, ApiService } from './../../services';
-import { Element } from './../../interfaces';
+import { ConfigService, ApiService } from '@listdetailapp/services';
+import { Element } from '@listdetailapp/interfaces';
 
 @Component({
     selector: 'list',
