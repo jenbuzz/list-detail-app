@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { PaginationComponent } from './pagination.component';
 import { ApiService, ConfigService, TranslationService } from '@listdetailapp/services';
 import { MockConfigService, MockApiService, MockTranslationService } from '@listdetailapp/mocks';
 import { TranslatePipe } from '@listdetailapp/pipes';
+import { PaginationComponent } from './pagination.component';
 
 describe('PaginationComponent', () => {
     let component: PaginationComponent;

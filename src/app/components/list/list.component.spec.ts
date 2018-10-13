@@ -3,10 +3,10 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { MetafrenzyModule } from 'ngx-metafrenzy';
-import { ListComponent } from './list.component';
 import { ApiService, ConfigService, TranslationService } from '@listdetailapp/services';
 import { MockConfigService, MockApiService, MockTranslationService } from '@listdetailapp/mocks';
 import { TranslatePipe } from '@listdetailapp/pipes';
+import { ListComponent } from './list.component';
 
 describe('ListComponent', () => {
     let component: ListComponent;

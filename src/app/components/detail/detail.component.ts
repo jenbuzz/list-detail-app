@@ -1,10 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService, ApiService } from '@listdetailapp/services';
 import { Element } from '@listdetailapp/interfaces';
-import { switchMap, map } from 'rxjs/operators';
 
 @Component({
     selector: 'detail',

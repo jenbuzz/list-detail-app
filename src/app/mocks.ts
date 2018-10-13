@@ -8,7 +8,7 @@ import {
     ConfigStyling,
     ConfigSettings,
     ConfigTranslation
-} from './interfaces';
+} from '@listdetailapp/interfaces';
 
 export class MockConfigService {
     load(): Promise<any> {

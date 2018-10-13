@@ -3,10 +3,10 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientModule } from '@angular/common/http';
 import { MetafrenzyModule, MetafrenzyService } from 'ngx-metafrenzy';
-import { DetailComponent } from './detail.component';
 import { ApiService, ConfigService, TranslationService } from '@listdetailapp/services';
 import { MockConfigService, MockApiService, MockTranslationService } from '@listdetailapp/mocks';
 import { TranslatePipe } from '@listdetailapp/pipes';
+import { DetailComponent } from './detail.component';
 
 describe('DetailComponent', () => {
     let component: DetailComponent;
