@@ -68,22 +68,25 @@ export class DetailComponent implements OnInit, OnDestroy {
             return;
         }
 
+        let tags = {};
+
         if ('title' in element && element['title']) {
             const title = element['title'] + this.config.getMetaTags().titleSuffix;
-            this.metafrenzyService.setAllTitleTags(title);
+            tags = Object.assign({}, tags, {title});
         }
 
         if ('image' in element && element['image']) {
-            this.metafrenzyService.setMetaTag('og:image:url', element['image']);
+            tags = Object.assign({}, tags, {image: element['image']});
         }
 
         let url = this.config.getMetaTags().url;
         if (url && 'id' in element) {
             url += element['id'];
 
-            this.metafrenzyService.setMetaTag('og:url', url);
-            this.metafrenzyService.setCanonical(url);
+            tags = Object.assign({}, tags, {url});
         }
+
+        this.metafrenzyService.setTags(tags);
     }
 
     back(): void {
