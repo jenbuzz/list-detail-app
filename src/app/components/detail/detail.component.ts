@@ -4,13 +4,13 @@ import { Observable, Subscription } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService, ApiService } from '@listdetailapp/services';
-import { Element } from '@listdetailapp/interfaces';
+import { Element, HasMetaTags } from '@listdetailapp/interfaces';
 
 @Component({
     selector: 'detail',
     templateUrl: './detail.component.html',
 })
-export class DetailComponent implements OnInit, OnDestroy {
+export class DetailComponent implements OnInit, OnDestroy, HasMetaTags {
 
     private subscriptions: Subscription = new Subscription();
 
@@ -63,7 +63,7 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.subscriptions.unsubscribe();
     }
 
-    initMetaTags(element): void {
+    initMetaTags(element: Element): void {
         if (this.config.getMetaTags().disableMetaTags === true) {
             return;
         }

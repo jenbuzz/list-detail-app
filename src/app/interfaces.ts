@@ -73,3 +73,7 @@ export interface ConfigTranslation {
     useHtmlLang?: boolean;
     translations?: any;
 }
+
+export interface HasMetaTags {
+    initMetaTags(element?: Element): void;
+}

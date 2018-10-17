@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService, ApiService } from '@listdetailapp/services';
-import { Element } from '@listdetailapp/interfaces';
+import { Element, HasMetaTags } from '@listdetailapp/interfaces';
 
 @Component({
     selector: 'list',
     templateUrl: './list.component.html',
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, HasMetaTags {
 
     themeMainColor: string = '#000000';
 

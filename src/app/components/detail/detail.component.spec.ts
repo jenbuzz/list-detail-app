@@ -45,6 +45,8 @@ describe('DetailComponent', () => {
     });
 
     it('should not add meta tags', () => {
-        expect(component.initMetaTags({})).toBeUndefined();
+        expect(component.initMetaTags({
+            id: 1,
+        })).toBeUndefined();
     });
 });
