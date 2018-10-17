@@ -39,26 +39,14 @@ export class ListComponent implements OnInit, HasMetaTags {
             return;
         }
 
-        let tags = {};
+        const title = this.config.getMetaTags().title !== '' ?
+            this.config.getMetaTags().title + this.config.getMetaTags().titleSuffix : '';
 
-        let title = this.config.getMetaTags().title;
-        if (title) {
-            title += this.config.getMetaTags().titleSuffix;
-
-            tags = Object.assign({}, tags, {title});
-        }
-
-        const image = this.config.getMetaTags().image;
-        if (image) {
-            tags = Object.assign({}, tags, {image});
-        }
-
-        const url = this.config.getMetaTags().url;
-        if (url) {
-            tags = Object.assign({}, tags, {url});
-        }
-
-        this.metafrenzyService.setTags(tags);
+        this.metafrenzyService.setTags({
+            title,
+            image: this.config.getMetaTags().image,
+            url: this.config.getMetaTags().url,
+        });
     }
 
 }
