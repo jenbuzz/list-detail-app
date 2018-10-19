@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-sm" *ngFor="let element of (elements$ | async)">
         <div class="m-2" [routerLink]="['/', element.id]">
-            <card [element]="element" [useBackgroundImage]="true"></card>
+            <card [element]="element" [useBackgroundImage]="true" [disableImageClick]="true"></card>
         </div>
     </div>
     <div class="col-12 text-center" *ngIf="(elements$ | async)?.length == 0 && !(isLoading$ | async)">

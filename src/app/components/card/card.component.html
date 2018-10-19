@@ -11,7 +11,7 @@
             alt="{{ element.title }}">
 
         <ng-container *ngIf="useHtmlImage">
-            <div class="image-html" [innerHTML]="element.image"></div>
+            <div class="image-html" [innerHTML]="element.image" (click)="onClickImage($event)"></div>
         </ng-container>
 
         <div *ngIf="element.source" class="image-overlay"

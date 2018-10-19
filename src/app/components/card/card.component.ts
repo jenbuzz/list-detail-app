@@ -23,6 +23,9 @@ export class CardComponent {
     @Input()
     showSource: boolean;
 
+    @Input()
+    disableImageClick: boolean;
+
     apiUrl: string = '';
     themeMainColor: string = '';
     showSourceTextOnBtn: boolean = true;
@@ -54,6 +57,12 @@ export class CardComponent {
 
     getIcon(name: string): Object {
         return this.fontawesome.getIcon(name);
+    }
+
+    onClickImage(event: Event) {
+        if (this.useHtmlImage && this.disableImageClick) {
+            event.preventDefault();
+        }
     }
 
 }
