@@ -75,7 +75,7 @@ export class DetailComponent implements OnInit, OnDestroy, HasMetaTags {
             tags = Object.assign({}, tags, {title});
         }
 
-        if ('image' in element && element['image']) {
+        if ('image' in element && element['image'] && !/<[a-z][\s\S]*>/i.test(element['image'])) {
             tags = Object.assign({}, tags, {image: element['image']});
         }
 
