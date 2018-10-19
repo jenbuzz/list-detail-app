@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfigService, ApiService, FontAwesomeService } from '@listdetailapp/services';
 
 @Component({
@@ -11,6 +12,7 @@ export class FilterComponent {
     currentFilter: string;
 
     constructor(
+        private router: Router,
         private config: ConfigService,
         private apiService: ApiService,
         private fontawesome: FontAwesomeService
@@ -25,6 +27,7 @@ export class FilterComponent {
 
         this.currentFilter = name;
         this.apiService.setFilter(name);
+        this.router.navigate(['']);
 
         return true;
     }
