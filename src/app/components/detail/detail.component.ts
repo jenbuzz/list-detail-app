@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 import { MetafrenzyService } from 'ngx-metafrenzy';
@@ -38,14 +38,14 @@ export class DetailComponent implements OnInit, OnDestroy, HasMetaTags {
     ngOnInit() {
         this.subscriptions.add(
             this.route.paramMap.pipe(
-                switchMap(params => {
+                switchMap((params: ParamMap) => {
                     return this.apiService.getElements(+params.get('id'));
                 })
             ).subscribe()
         );
 
         this.subscriptions.add(
-            this.elements$.subscribe(elements => {
+            this.elements$.subscribe((elements: Element[]) => {
                 if (Array.isArray(elements) && elements.length > 0) {
                     this.initMetaTags(elements[0]);
                 }
@@ -53,7 +53,7 @@ export class DetailComponent implements OnInit, OnDestroy, HasMetaTags {
         );
 
         this.activeElement$ = this.elements$.pipe(
-            map(elements => {
+            map((elements: Element[]) => {
                 return Array.isArray(elements) ? elements[0] : null;
             })
         );
@@ -63,9 +63,9 @@ export class DetailComponent implements OnInit, OnDestroy, HasMetaTags {
         this.subscriptions.unsubscribe();
     }
 
-    initMetaTags(element: Element): void {
+    initMetaTags(element: Element): boolean {
         if (this.config.getMetaTags().disableMetaTags === true) {
-            return;
+            return false;
         }
 
         let tags = {};
@@ -87,6 +87,8 @@ export class DetailComponent implements OnInit, OnDestroy, HasMetaTags {
         }
 
         this.metafrenzyService.setTags(tags);
+
+        return true;
     }
 
     back(): void {
