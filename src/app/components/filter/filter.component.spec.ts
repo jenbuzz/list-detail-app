@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ConfigService, ApiService, TranslationService } from '@listdetailapp/services';
 import { MockConfigService, MockApiService, MockTranslationService } from '@listdetailapp/mocks';
@@ -14,6 +15,9 @@ describe('FilterComponent', () => {
             declarations: [
                 FilterComponent,
                 TranslatePipe,
+            ],
+            imports: [
+                RouterTestingModule,
             ],
             providers: [
                 {provide: ApiService, useClass: MockApiService},
