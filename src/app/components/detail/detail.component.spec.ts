@@ -11,6 +11,7 @@ import { DetailComponent } from './detail.component';
 describe('DetailComponent', () => {
     let component: DetailComponent;
     let fixture: ComponentFixture<DetailComponent>;
+    let configService: MockConfigService;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -38,6 +39,9 @@ describe('DetailComponent', () => {
         fixture = TestBed.createComponent(DetailComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
+
+        const debugElement = fixture.debugElement;
+        configService = debugElement.injector.get(ConfigService);
     });
 
     it('should create', () => {
@@ -45,8 +49,22 @@ describe('DetailComponent', () => {
     });
 
     it('should not add meta tags', () => {
+        spyOn(configService, 'getMetaTags').and.returnValue({
+            disableMetaTags: true,
+        });
+
         expect(component.initMetaTags({
             id: 1,
-        })).toBeUndefined();
+        })).toBeFalsy();
+    });
+
+    it('should add meta tags', () => {
+        spyOn(configService, 'getMetaTags').and.returnValue({
+            disableMetaTags: false,
+        });
+
+        expect(component.initMetaTags({
+            id: 1,
+        })).toBeTruthy();
     });
 });
