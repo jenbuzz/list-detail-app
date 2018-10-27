@@ -28,6 +28,7 @@ export class CardComponent {
 
     apiUrl: string = '';
     themeMainColor: string = '';
+    themeTextColor: string = '';
     showSourceTextOnBtn: boolean = true;
     showSquareImage: boolean = false;
     useHtmlImage: boolean = false;
@@ -43,6 +44,7 @@ export class CardComponent {
         this.useHtmlImage = this.config.getSettings().useHtmlImage;
 
         this.themeMainColor = this.config.getStyling().themeMainColor;
+        this.themeTextColor = this.config.getStyling().themeTextColor;
     }
 
     getBackgroundImage(): Object {

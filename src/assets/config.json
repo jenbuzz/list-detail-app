@@ -52,7 +52,8 @@
         "mainFilter": []
     },
     "styling": {
-        "themeMainColor": ""
+        "themeMainColor": "",
+        "themeTextColor": ""
     },
     "settings": {
         "showSourceTextOnBtn": false,

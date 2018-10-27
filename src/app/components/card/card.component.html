@@ -36,7 +36,8 @@
             <ng-container *ngFor="let label of element.labels">
             <span *ngIf="label !== ''"
                 class="mr-2" 
-                [style.background-color]="themeMainColor">{{ label }}</span>
+                [style.background-color]="themeMainColor"
+                [style.color]="themeTextColor">{{ label }}</span>
             </ng-container>
         </div>
         <div *ngIf="showExternalLinkBtn">
@@ -44,6 +45,7 @@
                 <a class="btn mb-2" 
                     [class.has-icon]="link.icon"
                     [style.background]="themeMainColor" 
+                    [style.color]="themeTextColor" 
                     href="{{ link.url }}" 
                     target="_blank" 
                     rel="nofollow">

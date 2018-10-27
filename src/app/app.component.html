@@ -1,7 +1,9 @@
 <div class="container">
     <div class="row header" [style.background-color]="themeMainColor">
         <div class="col-md-12 text-center">
-            <a [routerLink]="['/']" *ngIf="title"><h2 class="mb-2 mt-1">{{ title }}</h2></a>
+            <a [routerLink]="['/']" *ngIf="title" [style.color]="themeTextColor">
+                <h2 class="mb-2 mt-1">{{ title }}</h2>
+            </a>
         </div>
     </div>
     <div class="row searchbar" [style.background-color]="themeMainColor">
