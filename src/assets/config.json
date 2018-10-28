@@ -52,6 +52,7 @@
         "mainFilter": []
     },
     "styling": {
+        "theme": "light",
         "themeMainColor": "",
         "themeTextColor": ""
     },

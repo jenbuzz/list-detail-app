@@ -12,6 +12,7 @@ import { routeAnimation } from '@listdetailapp/animations';
 })
 export class AppComponent implements OnInit {
 
+    theme: string = '';
     themeMainColor: string = '';
     themeTextColor: string = '';
     title: string = '';
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit {
         private router: Router,
         private element: ElementRef
     ) {
+        this.theme = this.config.getStyling().theme;
         this.themeMainColor = this.config.getStyling().themeMainColor;
         this.themeTextColor = this.config.getStyling().themeTextColor;
         this.title = this.translationService.translate('title');

@@ -58,6 +58,7 @@ export interface ConfigFilters {
 }
 
 export interface ConfigStyling {
+    theme?: string;
     themeMainColor?: string;
     themeTextColor?: string;
 }

@@ -21,6 +21,27 @@ list-detail-app {
         padding-right: 15px;
         padding-left: 15px;
         font-family: Verdana, Geneva, sans-serif;
+
+        &.light {
+            .searchbar {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .input-group-append,
+            a.btn,
+            button {
+                border: 1px solid #ced4da;
+            }
+
+            .card {        
+                .card-image-container {
+                    div.image-overlay {
+                        color: #000000;
+                    }
+                }
+            }
+        }
     }
 
     .header {
