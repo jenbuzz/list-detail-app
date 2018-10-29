@@ -44,6 +44,10 @@ list-detail-app {
         }
     }
 
+    .hidden {
+        display: none;
+    }
+
     .header {
         background: $default-theme-background-color;
         padding: 8px;
@@ -68,6 +72,7 @@ list-detail-app {
         .input-group-append {
             background-color: #ffffff;
             border-radius: 0.25rem;
+            line-height: 1;
 
             .clear {
                 vertical-align: middle;
