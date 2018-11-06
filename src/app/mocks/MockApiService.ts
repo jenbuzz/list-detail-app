@@ -14,7 +14,7 @@ export class MockApiService {
     }
 
     getElementsSubject(): Subject<Element[]> {
-        return new BehaviorSubject([]);
+        return new Subject<Element[]>();
     }
 
     getElementSubject(): Subject<Element> {
