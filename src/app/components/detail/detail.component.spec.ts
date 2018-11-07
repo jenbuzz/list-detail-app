@@ -89,4 +89,8 @@ describe('DetailComponent', () => {
         tick();
         expect(location.path()).toBe('/');
     }));
+
+    it('should destroy', () => {
+        expect(component.ngOnDestroy()).toBeUndefined();
+    });
 });
