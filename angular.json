@@ -68,7 +68,7 @@
             "karmaConfig": "./karma.conf.js",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
-            "codeCoverageExclude": ["src/app/mocks/**/*"],
+            "codeCoverageExclude": ["src/app/mocks/**/*", "src/app/**/index.ts"],
             "scripts": [],
             "styles": [
               "src/styles.scss"
