@@ -83,8 +83,10 @@ describe('DetailComponent', () => {
     });
 
     it('should redirect to frontpage when calling back()', fakeAsync(() => {
+        router.navigate(['detail/1']);
+        tick();
         component.back();
-        tick(50);
+        tick();
         expect(location.path()).toBe('/');
     }));
 });
