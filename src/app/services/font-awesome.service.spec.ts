@@ -11,8 +11,15 @@ describe('FontAwesomeService', () => {
         this.service = TestBed.get(FontAwesomeService);
     });
 
-    it('should return icon', () => {
+    it('should return "times" solid icon', () => {
         const name = 'times';
+        const icon = this.service.getIcon(name);
+        expect(typeof icon).toBe('object');
+        expect(icon.iconName).toBe(name);
+    });
+
+    it('should return "android" brand icon', () => {
+        const name = 'android';
         const icon = this.service.getIcon(name);
         expect(typeof icon).toBe('object');
         expect(icon.iconName).toBe(name);
