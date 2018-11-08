@@ -1,28 +1,43 @@
-import { TestBed } from '@angular/core/testing';
-import { TranslationService } from '@listdetailapp/services/translation.service';
-import { ConfigService } from '@listdetailapp/services/config.service';
+import { TranslationService, ConfigService } from '@listdetailapp/services';
 import { MockConfigService } from '@listdetailapp/mocks';
 
 describe('TranslationService', () => {
+    let configServiceMock: ConfigService;
+    let translationService: TranslationService;
+
     beforeEach(() => {
-        TestBed.configureTestingModule({
-            providers: [
-                TranslationService,
-                {provide: ConfigService, useClass: MockConfigService},
-            ]
-        });
-        this.service = TestBed.get(TranslationService);
+        configServiceMock = <ConfigService> new MockConfigService();
+
+        translationService = new TranslationService(configServiceMock);
     });
 
-    it('should return language', () => {
-        expect(this.service.getLanguage()).toEqual('en');
+    it('should return fallback language', () => {
+        expect(translationService.getLanguage()).toEqual('en');
+    });
+
+    it('should return html element language', () => {
+        spyOn(configServiceMock, 'getTranslation').and.returnValue({
+            'useHtmlLang': true,
+        });
+        translationService = new TranslationService(configServiceMock);
+
+        expect(translationService.getLanguage()).toBeNull();
+    });
+
+    it('should return local storage language', () => {
+        spyOn(configServiceMock, 'getTranslation').and.returnValue({
+            useLocalStorage: true,
+        });
+        translationService = new TranslationService(configServiceMock);
+
+        expect(translationService.getLanguage()).toBeNull();
     });
 
     it('should return translated title', () => {
-        expect(this.service.translate('title')).toEqual('Lorem ipsum');
+        expect(translationService.translate('title')).toEqual('Lorem ipsum');
     });
 
     it('should return empty string for untranslateable text', () => {
-        expect(this.service.translate('bs')).toEqual('');
+        expect(translationService.translate('bs')).toEqual('');
     });
 });
