@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ApiService } from '@listdetailapp/services';
 
 @Component({
@@ -7,15 +7,19 @@ import { ApiService } from '@listdetailapp/services';
 })
 export class PaginationComponent {
 
+    @Output() pageChange = new EventEmitter();
+
     constructor(private apiService: ApiService) {
     }
 
     prevPage(): void {
         this.apiService.decrementPage();
+        this.pageChange.emit('prev');
     }
 
     nextPage(): void {
         this.apiService.incrementPage();
+        this.pageChange.emit('next');
     }
 
     hasPrevPage(): boolean {

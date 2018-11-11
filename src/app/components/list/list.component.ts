@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MetafrenzyService } from 'ngx-metafrenzy';
 import { ConfigService, ApiService } from '@listdetailapp/services';
@@ -17,6 +17,7 @@ export class ListComponent implements OnInit, HasMetaTags {
     hasError$: Observable<boolean>;
 
     constructor(
+        private element: ElementRef,
         private apiService: ApiService,
         private config: ConfigService,
         private metafrenzyService: MetafrenzyService
@@ -46,6 +47,13 @@ export class ListComponent implements OnInit, HasMetaTags {
             title,
             image: this.config.getMetaTags().image,
             url: this.config.getMetaTags().url,
+        });
+    }
+
+    scrollToTop(direction: string) {
+        window.scrollTo({
+            top: this.element.nativeElement.offsetTop,
+            behavior: 'smooth',
         });
     }
 
