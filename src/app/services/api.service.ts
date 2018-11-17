@@ -58,19 +58,23 @@ export class ApiService {
         this.resetPage();
     }
 
-    decrementPage(): void {
+    decrementPage(): number {
         if (this.hasPrevPage()) {
             this.page--;
             this.isLastPageLoaded = false;
             this.getElements();
         }
+
+        return this.page;
     }
 
-    incrementPage(): void {
+    incrementPage(): number {
         if (this.hasNextPage()) {
             this.page++;
             this.getElements();
         }
+
+        return this.page;
     }
 
     hasPrevPage(): boolean {

@@ -40,10 +40,12 @@ export class MockApiService {
     setFilter(name: string): void {
     }
 
-    decrementPage(): void {
+    decrementPage(): number {
+        return 1;
     }
 
-    incrementPage(): void {
+    incrementPage(): number {
+        return 1;
     }
 
     hasPrevPage(): boolean {
