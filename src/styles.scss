@@ -425,6 +425,12 @@ list-detail-app {
         }
     }
 
+    list {
+        .loader-container {
+            overflow: inherit;
+        }
+    }
+
     .loader {
         font-size: 10px;
         margin: 50px auto;
