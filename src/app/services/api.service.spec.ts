@@ -15,6 +15,8 @@ describe('ApiService', () => {
                 {provide: ConfigService, useClass: MockConfigService},
             ]
         });
+
+        this.service = TestBed.get(ApiService);
     });
 
     it('getElements should return elements', inject(
@@ -53,4 +55,20 @@ describe('ApiService', () => {
             mockReq[0].flush(response);
         }
     ));
+
+    it('should not decrement page and return first page', () => {
+        expect(this.service.decrementPage()).toEqual(0);
+    });
+
+    it('should not increment page and return first page', () => {
+        expect(this.service.incrementPage()).toEqual(1);
+    });
+
+    it('should not return previous page', () => {
+        expect(this.service.hasPrevPage()).toBeFalsy();
+    });
+
+    it('should return next page', () => {
+        expect(this.service.hasNextPage()).toBeTruthy();
+    });
 });
