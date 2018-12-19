@@ -245,6 +245,11 @@ list-detail-app {
                 display: block;
             }
         }
+
+        // Quickfix for 1px diff between list and detail
+        .page-link {
+            margin-bottom: 1px;
+        }
     }
 
     .page-link {
