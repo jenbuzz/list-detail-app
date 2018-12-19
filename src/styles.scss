@@ -25,6 +25,11 @@ list-detail-app {
 $default-theme-background-color: #000000;
 $default-theme-color: #ffffff;
 
+// Inputs, Buttons, Loaders, etc
+$element-background-color: #ffffff;
+$element-color: #000000;
+$element-hover-color: #f1f1f1;
+
 $size-sm: 576px;
 $size-md: 768px;
 $size-lg: 992px;
@@ -86,7 +91,7 @@ list-detail-app {
         padding: 0 16px 16px 16px;
 
         .input-group-append {
-            background-color: #ffffff;
+            background-color: $element-background-color;
             border-radius: 0.25rem;
             line-height: 1;
 
@@ -122,7 +127,7 @@ list-detail-app {
         .btn {
             width: 100%;
             overflow: hidden;
-            background: #ffffff;
+            background: $element-background-color;
         }
 
         &:hover .dropdown-content {
@@ -134,7 +139,7 @@ list-detail-app {
         .dropdown-content {
             opacity: 0;
             position: absolute;
-            background-color: #ffffff;
+            background-color: $element-background-color;
             width: 100%;
             margin-top: -5px;
             box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -144,14 +149,14 @@ list-detail-app {
             transition: all 0.5s ease-in-out;
 
             div {
-                color: #000000;
+                color: $element-color;
                 padding: 12px 16px;
                 text-decoration: none;
                 display: block;
                 cursor: pointer;
 
                 &:hover {
-                    background-color: #f1f1f1;
+                    background-color: $element-hover-color;
                 }
             }
         }
@@ -398,7 +403,7 @@ list-detail-app {
 list-detail-app {
     .loader-container {
         position: absolute;
-        background: #ffffff;
+        background: $element-background-color;
         height: 100%;
         width: 100%;
         right: 0;
@@ -409,7 +414,7 @@ list-detail-app {
             content: "";
             width: 16px;
             position: absolute;
-            background: #ffffff;
+            background: $element-background-color;
             height: 100%;
             left: -16px;
             top: 0;
@@ -419,7 +424,7 @@ list-detail-app {
             content: "";
             width: 16px;
             position: absolute;
-            background: #ffffff;
+            background: $element-background-color;
             height: 100%;
             right: -16px;
             top: 0;
@@ -439,7 +444,7 @@ list-detail-app {
         width: 11em;
         height: 11em;
         border-radius: 50%;
-        background: #ffffff;
+        background: $element-background-color;
         background: -moz-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
         background: -webkit-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
         background: -o-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
@@ -465,7 +470,7 @@ list-detail-app {
     }
 
     .loader::after {
-        background: #ffffff;
+        background: $element-background-color;
         width: 75%;
         height: 75%;
         border-radius: 50%;
