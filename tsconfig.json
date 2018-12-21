@@ -20,5 +20,8 @@
     "paths": {
       "@listdetailapp/*": ["app/*"],
     }
+  },
+  "angularCompilerOptions": {
+    "enableIvy": false
   }
 }
