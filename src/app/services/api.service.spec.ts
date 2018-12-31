@@ -58,6 +58,10 @@ describe('ApiService', () => {
 
     it('should not decrement page and return first page', () => {
         expect(this.service.decrementPage()).toEqual(0);
+
+        this.service.page = 1;
+
+        expect(this.service.decrementPage()).toEqual(0);
     });
 
     it('should not increment page and return first page', () => {
@@ -70,5 +74,31 @@ describe('ApiService', () => {
 
     it('should return next page', () => {
         expect(this.service.hasNextPage()).toBeTruthy();
+    });
+
+    it('should reset page', () => {
+        this.service.page = 2;
+        this.service.isLastPageLoaded = true;
+
+        this.service.resetPage();
+
+        expect(this.service.page).toEqual(0);
+        expect(this.service.isLastPageLoaded).toBeFalsy();
+    });
+
+    it('should return has no errors', () => {
+        const subject = this.service.getHasErrorSubject();
+
+        subject.subscribe(hasError => {
+            expect(hasError).toBeFalsy();
+        });
+    });
+
+    it('should return is not loading', () => {
+        const subject = this.service.getIsLoadingSubject();
+
+        subject.subscribe(isLoading => {
+            expect(isLoading).toBeFalsy();
+        });
     });
 });
