@@ -1,6 +1,7 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, tick, fakeAsync } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from '@listdetailapp/app.component';
@@ -55,5 +56,20 @@ describe('AppComponent', () => {
         const dom = fixture.debugElement.nativeElement;
 
         expect(dom.querySelectorAll('router-outlet').length).toBe(1);
+    }));
+
+    it('should scroll to top on route change', fakeAsync(() => {
+        const windowSpy = spyOn(window, 'scrollTo');
+
+        const fixture = TestBed.createComponent(AppComponent);
+        fixture.detectChanges();
+
+        const debugElement = fixture.debugElement;
+        const router = debugElement.injector.get(Router);
+
+        router.navigate(['detail/1']);
+        tick();
+
+        expect(windowSpy).toHaveBeenCalled();
     }));
 });
