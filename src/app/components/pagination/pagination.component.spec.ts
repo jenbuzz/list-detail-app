@@ -49,8 +49,8 @@ describe('PaginationComponent', () => {
 
         component.prevPage();
 
-        expect(apiService.decrementPage).toHaveBeenCalled(); 
-        expect(component.pageChange.emit).toHaveBeenCalled(); 
+        expect(apiService.decrementPage).toHaveBeenCalled();
+        expect(component.pageChange.emit).toHaveBeenCalled();
     });
 
     it('should go to next page', () => {
@@ -59,8 +59,8 @@ describe('PaginationComponent', () => {
 
         component.nextPage();
 
-        expect(apiService.incrementPage).toHaveBeenCalled(); 
-        expect(component.pageChange.emit).toHaveBeenCalled(); 
+        expect(apiService.incrementPage).toHaveBeenCalled();
+        expect(component.pageChange.emit).toHaveBeenCalled();
     });
 
     it('should check for previous page', () => {
