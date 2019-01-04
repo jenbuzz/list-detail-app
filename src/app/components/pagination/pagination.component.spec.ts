@@ -9,6 +9,7 @@ import { PaginationComponent } from './pagination.component';
 describe('PaginationComponent', () => {
     let component: PaginationComponent;
     let fixture: ComponentFixture<PaginationComponent>;
+    let apiService: MockApiService;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -33,10 +34,33 @@ describe('PaginationComponent', () => {
         fixture = TestBed.createComponent(PaginationComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
+
+        const debugElement = fixture.debugElement;
+        apiService = debugElement.injector.get(ApiService);
     });
 
     it('should create', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('should go to previous page', () => {
+        spyOn(apiService, 'decrementPage');
+        spyOn(component.pageChange, 'emit');
+
+        component.prevPage();
+
+        expect(apiService.decrementPage).toHaveBeenCalled(); 
+        expect(component.pageChange.emit).toHaveBeenCalled(); 
+    });
+
+    it('should go to next page', () => {
+        spyOn(apiService, 'incrementPage');
+        spyOn(component.pageChange, 'emit');
+
+        component.nextPage();
+
+        expect(apiService.incrementPage).toHaveBeenCalled(); 
+        expect(component.pageChange.emit).toHaveBeenCalled(); 
     });
 
     it('should check for previous page', () => {

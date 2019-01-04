@@ -17,23 +17,6 @@ export class MockApiService {
         return new Subject<Element[]>();
     }
 
-    getElementSubject(): Subject<Element> {
-        const element: Element = {
-            id: 123,
-            title: 'Test',
-            description: 'Lorem ipsum',
-            internal_link: 'test',
-            external_link: 'http://asdf',
-            external_link_icon: '',
-            image: 'test.jpg',
-            source: 'Test',
-            icons: [],
-            labels: [],
-        };
-
-        return new BehaviorSubject(element);
-    }
-
     setSearchTerm(term: string): void {
     }
 
