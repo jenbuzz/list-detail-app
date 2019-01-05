@@ -75,10 +75,13 @@ describe('DetailComponent', () => {
     it('should add meta tags', () => {
         spyOn(configService, 'getMetaTags').and.returnValue({
             disableMetaTags: false,
+            url: 'http://test.test',
         });
 
         expect(component.initMetaTags({
             id: 1,
+            title: 'test',
+            image: 'test.jpg',
         })).toBeTruthy();
     });
 
