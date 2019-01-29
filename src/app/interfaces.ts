@@ -50,6 +50,8 @@ export interface ConfigElementFieldMapping {
     external_link?: string[];
     external_link_icon?: string[];
     image?: string[];
+    icons?: string[];
+    labels?: string[];
     source?: string[];
 }
 
