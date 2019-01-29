@@ -18,7 +18,7 @@ import { environment } from '../../environments/environment';
 })
 export class ConfigService {
 
-    private config: Config;
+    config: Config;
 
     constructor(private http: HttpClient, private platformLocation: PlatformLocation) {
     }
