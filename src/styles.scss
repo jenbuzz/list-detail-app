@@ -177,8 +177,8 @@ list-detail-app {
 
         .row {
             margin-bottom: -0.5rem;
-            margin-left: -1.5rem;
-            margin-right: -1.5rem;
+            margin-left: calc(-1.5rem + 1px);
+            margin-right: calc(-1.5rem + 1px);
         }
 
         .card {
