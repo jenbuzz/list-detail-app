@@ -1,7 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ConfigService } from '@listdetailapp/services/config.service';
-import { ConfigApi, ConfigElementFieldMapping, ConfigFilters, ConfigStyling, ConfigSettings, ConfigTranslation } from '@listdetailapp/interfaces';
+import {
+    ConfigApi,
+    ConfigElementFieldMapping,
+    ConfigFilters,
+    ConfigStyling,
+    ConfigSettings,
+    ConfigTranslation
+} from '@listdetailapp/interfaces';
 
 describe('ConfigService', () => {
     let httpMock: HttpTestingController;
@@ -56,12 +63,12 @@ describe('ConfigService', () => {
             settings: {},
             translation: {},
         };
-    
+
         service.load().then(hasConfig => {
           expect(hasConfig).toBeTruthy();
           expect(service.config).toEqual(dummyConfig);
         });
-    
+
         const req = httpMock.expectOne('/assets/config.json');
         expect(req.request.method).toBe('GET');
         req.flush(dummyConfig);
