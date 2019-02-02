@@ -19,6 +19,10 @@ describe('ApiService', () => {
         this.service = TestBed.get(ApiService);
     });
 
+    it('initSearch should update searchterm and elements', () => {
+        this.service.initSearch();
+    });
+
     it('getElements should return elements', inject(
         [HttpTestingController, ApiService],
         (httpMock: HttpTestingController, apiService: ApiService) => {
@@ -100,5 +104,37 @@ describe('ApiService', () => {
         subject.subscribe(isLoading => {
             expect(isLoading).toBeFalsy();
         });
+    });
+
+    it('should return zero elements', () => {
+        const subject = this.service.getElementsSubject();
+
+        subject.subscribe(elements => {
+            expect(elements).toBeFalsy();
+        });
+    });
+
+    it('should update searchterm', () => {
+        spyOn(this.service, 'resetPage');
+
+        const searchTerm = 'test';
+
+        this.service.setSearchTerm(searchTerm);
+
+        this.service.searchTerm$.subscribe(searchTerm => {
+            expect(searchTerm).toEqual(searchTerm);
+            expect(this.service.resetPage).toHaveBeenCalled();
+        });
+    });
+
+    it('should update filter', () => {
+        spyOn(this.service, 'getElements');
+
+        const filter = 'test-filter';
+
+        this.service.setFilter(filter);
+
+        expect(filter).toEqual(filter);
+        expect(this.service.getElements).toHaveBeenCalled();
     });
 });
