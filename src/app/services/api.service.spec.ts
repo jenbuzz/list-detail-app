@@ -121,8 +121,8 @@ describe('ApiService', () => {
 
         this.service.setSearchTerm(searchTerm);
 
-        this.service.searchTerm$.subscribe(searchTerm => {
-            expect(searchTerm).toEqual(searchTerm);
+        this.service.searchTerm$.subscribe(newSearchTerm => {
+            expect(searchTerm).toEqual(newSearchTerm);
             expect(this.service.resetPage).toHaveBeenCalled();
         });
     });
