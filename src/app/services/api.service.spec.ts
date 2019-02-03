@@ -3,6 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ApiService } from '@listdetailapp/services/api.service';
 import { ConfigService } from '@listdetailapp/services/config.service';
 import { MockConfigService } from '@listdetailapp/mocks';
+import { of } from 'rxjs';
 
 describe('ApiService', () => {
     beforeEach(() => {
@@ -17,6 +18,7 @@ describe('ApiService', () => {
         });
 
         this.service = TestBed.get(ApiService);
+        this.configService = TestBed.get(ConfigService);
     });
 
     it('initSearch should update searchterm and elements', () => {
@@ -59,6 +61,22 @@ describe('ApiService', () => {
             mockReq[0].flush(response);
         }
     ));
+
+    it('should check for token on getElements', () => {
+        spyOn(this.service, 'getToken').and.returnValue(of(false));
+
+        this.service.getElements();
+
+        expect(this.service.getToken).toHaveBeenCalled();
+    });
+
+    it('should check if token authentication is enabled', () => {
+        spyOn(this.configService, 'get').and.returnValue(true);
+
+        this.service.getToken();
+
+        expect(this.configService.get).toHaveBeenCalled();
+    });
 
     it('should not decrement page and return first page', () => {
         expect(this.service.decrementPage()).toEqual(0);

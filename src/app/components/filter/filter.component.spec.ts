@@ -43,4 +43,12 @@ describe('FilterComponent', () => {
         expect(component.filter('')).toBeFalsy();
         expect(component.filter('name')).toBeTruthy();
     });
+
+    it('should be able to reset filter', () => {
+        component.filter('name');
+
+        component.reset();
+
+        expect(component.currentFilter).toEqual('');
+    });
 });

@@ -194,6 +194,11 @@ describe('ConfigService', () => {
         expect(getSpy).toHaveBeenCalled();
     });
 
+    it('should return empty array if there is no specified filter', () => {
+        spyOn(service, 'getFilters').and.returnValue({});
+        expect(service.getFilter('mainFilter')).toEqual([]);
+    });
+
     it('should return api url', () => {
         expect(service.getEnvironmentApiUrl()).toBeTruthy();
     });
