@@ -85,6 +85,42 @@ describe('DetailComponent', () => {
         })).toBeTruthy();
     });
 
+    it('should not add title but all other meta tags', () => {
+        spyOn(configService, 'getMetaTags').and.returnValue({
+            disableMetaTags: false,
+            url: 'http://test.test',
+        });
+
+        expect(component.initMetaTags({
+            id: 1,
+            image: 'test.jpg',
+        })).toBeTruthy();
+    });
+
+    it('should not add image but all other meta tags', () => {
+        spyOn(configService, 'getMetaTags').and.returnValue({
+            disableMetaTags: false,
+            url: 'http://test.test',
+        });
+
+        expect(component.initMetaTags({
+            id: 1,
+            title: 'test',
+        })).toBeTruthy();
+    });
+
+    it('should not add url but all other meta tags', () => {
+        spyOn(configService, 'getMetaTags').and.returnValue({
+            disableMetaTags: false,
+        });
+
+        expect(component.initMetaTags({
+            id: 1,
+            title: 'test',
+            image: 'test.jpg',
+        })).toBeTruthy();
+    });
+
     it('should redirect to frontpage when calling back()', fakeAsync(() => {
         router.navigate(['detail/1']);
         tick();

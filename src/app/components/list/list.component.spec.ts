@@ -10,6 +10,7 @@ import { ListComponent } from './list.component';
 
 describe('ListComponent', () => {
     let component: ListComponent;
+    let configService: MockConfigService;
     let fixture: ComponentFixture<ListComponent>;
 
     beforeEach(async(() => {
@@ -37,6 +38,9 @@ describe('ListComponent', () => {
         fixture = TestBed.createComponent(ListComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
+
+        const debugElement = fixture.debugElement;
+        configService = debugElement.injector.get(ConfigService);
     });
 
     it('should create', () => {
@@ -44,6 +48,19 @@ describe('ListComponent', () => {
     });
 
     it('should not add meta tags', () => {
-        expect(component.initMetaTags()).toBeUndefined();
+        spyOn(configService, 'getMetaTags').and.returnValue({
+            disableMetaTags: true,
+        });
+
+        expect(component.initMetaTags()).toBeFalsy();
+    });
+
+    it('should add meta tags', () => {
+        spyOn(configService, 'getMetaTags').and.returnValue({
+            disableMetaTags: false,
+            url: 'http://test.test',
+        });
+
+        expect(component.initMetaTags()).toBeTruthy();
     });
 });

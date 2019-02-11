@@ -35,9 +35,9 @@ export class ListComponent implements OnInit, HasMetaTags {
         this.initMetaTags();
     }
 
-    initMetaTags(): void {
+    initMetaTags(): boolean {
         if (this.config.getMetaTags().disableMetaTags === true) {
-            return;
+            return false;
         }
 
         const title = this.config.getMetaTags().title !== '' ?
@@ -48,6 +48,8 @@ export class ListComponent implements OnInit, HasMetaTags {
             image: this.config.getMetaTags().image,
             url: this.config.getMetaTags().url,
         });
+
+        return true;
     }
 
     scrollToTop(direction: string) {
