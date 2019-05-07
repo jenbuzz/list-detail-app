@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "start-local": "CHOKIDAR_USEPOLLING=true ng serve --host=dev01.local --disable-host-check",
+    "start:local": "CHOKIDAR_USEPOLLING=true ng serve --host=dev01.local --disable-host-check",
     "build": "ng build --prod --output-hashing none && node scripts/concat-dist.js",
     "test": "ng test --watch=false",
     "test:coverage": "ng test --watch=false --code-coverage && cat ./coverage/lcov.info | coveralls",
