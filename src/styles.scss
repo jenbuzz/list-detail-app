@@ -254,6 +254,7 @@ list-detail-app {
 
     .page-link {
         font-size: 0.8rem;
+        cursor: pointer;
 
         &.disabled:hover {
             background: none;
