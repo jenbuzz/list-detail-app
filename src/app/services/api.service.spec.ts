@@ -3,9 +3,12 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ApiService } from '@listdetailapp/services/api.service';
 import { ConfigService } from '@listdetailapp/services/config.service';
 import { MockConfigService } from '@listdetailapp/mocks';
-import { of } from 'rxjs';
+import { of, BehaviorSubject } from 'rxjs';
 
 describe('ApiService', () => {
+    let service: ApiService;
+    let configService: ConfigService;
+
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [
@@ -17,12 +20,12 @@ describe('ApiService', () => {
             ]
         });
 
-        this.service = TestBed.get(ApiService);
-        this.configService = TestBed.get(ConfigService);
+        service = TestBed.get(ApiService);
+        configService = TestBed.get(ConfigService);
     });
 
     it('initSearch should update searchterm and elements', () => {
-        this.service.initSearch();
+        service.initSearch();
     });
 
     it('getElements should return elements', inject(
@@ -63,53 +66,53 @@ describe('ApiService', () => {
     ));
 
     it('should check for token on getElements', () => {
-        spyOn(this.service, 'getToken').and.returnValue(of(false));
+        spyOn(service, 'getToken').and.returnValue(new BehaviorSubject(''));
 
-        this.service.getElements();
+        service.getElements();
 
-        expect(this.service.getToken).toHaveBeenCalled();
+        expect(service.getToken).toHaveBeenCalled();
     });
 
     it('should check if token authentication is enabled', () => {
-        spyOn(this.configService, 'get').and.returnValue(true);
+        spyOn(configService, 'get').and.returnValue(true);
 
-        this.service.getToken();
+        service.getToken();
 
-        expect(this.configService.get).toHaveBeenCalled();
+        expect(configService.get).toHaveBeenCalled();
     });
 
     it('should not decrement page and return first page', () => {
-        expect(this.service.decrementPage()).toEqual(0);
+        expect(service.decrementPage()).toEqual(0);
 
-        this.service.page = 1;
+        service.page = 1;
 
-        expect(this.service.decrementPage()).toEqual(0);
+        expect(service.decrementPage()).toEqual(0);
     });
 
     it('should not increment page and return first page', () => {
-        expect(this.service.incrementPage()).toEqual(1);
+        expect(service.incrementPage()).toEqual(1);
     });
 
     it('should not return previous page', () => {
-        expect(this.service.hasPrevPage()).toBeFalsy();
+        expect(service.hasPrevPage()).toBeFalsy();
     });
 
     it('should return next page', () => {
-        expect(this.service.hasNextPage()).toBeTruthy();
+        expect(service.hasNextPage()).toBeTruthy();
     });
 
     it('should reset page', () => {
-        this.service.page = 2;
-        this.service.isLastPageLoaded = true;
+        service.page = 2;
+        service.isLastPageLoaded = true;
 
-        this.service.resetPage();
+        service.resetPage();
 
-        expect(this.service.page).toEqual(0);
-        expect(this.service.isLastPageLoaded).toBeFalsy();
+        expect(service.page).toEqual(0);
+        expect(service.isLastPageLoaded).toBeFalsy();
     });
 
     it('should return has no errors', () => {
-        const subject = this.service.getHasErrorSubject();
+        const subject = service.getHasErrorSubject();
 
         subject.subscribe(hasError => {
             expect(hasError).toBeFalsy();
@@ -117,7 +120,7 @@ describe('ApiService', () => {
     });
 
     it('should return is not loading', () => {
-        const subject = this.service.getIsLoadingSubject();
+        const subject = service.getIsLoadingSubject();
 
         subject.subscribe(isLoading => {
             expect(isLoading).toBeFalsy();
@@ -125,7 +128,7 @@ describe('ApiService', () => {
     });
 
     it('should return zero elements', () => {
-        const subject = this.service.getElementsSubject();
+        const subject = service.getElementsSubject();
 
         subject.subscribe(elements => {
             expect(elements).toBeFalsy();
@@ -133,26 +136,26 @@ describe('ApiService', () => {
     });
 
     it('should update searchterm', () => {
-        spyOn(this.service, 'resetPage');
+        spyOn(service, 'resetPage');
 
         const searchTerm = 'test';
 
-        this.service.setSearchTerm(searchTerm);
+        service.setSearchTerm(searchTerm);
 
-        this.service.searchTerm$.subscribe(newSearchTerm => {
+        service.searchTerm$.subscribe(newSearchTerm => {
             expect(searchTerm).toEqual(newSearchTerm);
-            expect(this.service.resetPage).toHaveBeenCalled();
+            expect(service.resetPage).toHaveBeenCalled();
         });
     });
 
     it('should update filter', () => {
-        spyOn(this.service, 'getElements');
+        spyOn(service, 'getElements');
 
         const filter = 'test-filter';
 
-        this.service.setFilter(filter);
+        service.setFilter(filter);
 
         expect(filter).toEqual(filter);
-        expect(this.service.getElements).toHaveBeenCalled();
+        expect(service.getElements).toHaveBeenCalled();
     });
 });
