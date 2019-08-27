@@ -93,8 +93,8 @@
       }
     },
     "list-detail-app-e2e": {
-      "root": "",
-      "sourceRoot": "",
+      "root": "list-detail-app-e2e",
+      "sourceRoot": "e2e",
       "projectType": "application",
       "architect": {
         "e2e": {
