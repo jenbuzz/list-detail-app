@@ -169,6 +169,11 @@ list-detail-app {
 
         .pagination-container {
             height: 30px;
+
+            .disabled {
+                opacity: 0;
+                cursor: default;
+            }
         }
 
         .pagination-row .col-sm {
