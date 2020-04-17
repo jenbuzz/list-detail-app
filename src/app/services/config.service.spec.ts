@@ -39,10 +39,10 @@ describe('ConfigService', () => {
                 ConfigService,
             ]
         });
-        service = TestBed.get(ConfigService);
+        service = TestBed.inject(ConfigService);
         service.config = config;
 
-        httpMock = TestBed.get(HttpTestingController);
+        httpMock = TestBed.inject(HttpTestingController);
     });
 
     afterEach(() => {

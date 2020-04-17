@@ -10,7 +10,7 @@ describe('FontAwesomeService', () => {
                 FontAwesomeService,
             ]
         });
-        service = TestBed.get(FontAwesomeService);
+        service = TestBed.inject(FontAwesomeService);
     });
 
     it('should return "times" solid icon', () => {

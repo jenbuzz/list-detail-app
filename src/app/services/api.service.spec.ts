@@ -20,8 +20,8 @@ describe('ApiService', () => {
             ]
         });
 
-        service = TestBed.get(ApiService);
-        configService = TestBed.get(ConfigService);
+        service = TestBed.inject(ApiService);
+        configService = TestBed.inject(ConfigService);
     });
 
     it('initSearch should update searchterm and elements', () => {

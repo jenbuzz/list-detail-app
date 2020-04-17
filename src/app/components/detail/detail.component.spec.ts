@@ -43,8 +43,8 @@ describe('DetailComponent', () => {
         })
         .compileComponents();
 
-        router = TestBed.get(Router);
-        location = TestBed.get(Location);
+        router = TestBed.inject(Router);
+        location = TestBed.inject(Location);
 
         router.initialNavigation();
     }));
