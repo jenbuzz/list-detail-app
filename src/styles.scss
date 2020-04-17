@@ -462,8 +462,8 @@ list-detail-app {
         background: -ms-linear-gradient(left, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
         background: linear-gradient(to right, #dddddd 10%, rgba(255, 255, 255, 0) 42%);
         position: relative;
-        -webkit-animation: animationLoad 1.4s infinite linear;
-        animation: animationLoad 1.4s infinite linear;
+        -webkit-animation: animationload 1.4s infinite linear;
+        animation: animationload 1.4s infinite linear;
         -webkit-transform: translateZ(0);
         -ms-transform: translateZ(0);
         transform: translateZ(0);
@@ -495,7 +495,7 @@ list-detail-app {
     }
 }
 
-@-webkit-keyframes animationLoad {
+@-webkit-keyframes animationload {
     0% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
@@ -507,7 +507,7 @@ list-detail-app {
     }
 }
 
-@keyframes animationLoad {
+@keyframes animationload {
     0% {
         -webkit-transform: rotate(0deg);
         transform: rotate(0deg);
