@@ -16,6 +16,7 @@ export class ApiService {
     searchTerm$: BehaviorSubject<string> = new BehaviorSubject('');
     elements$: Subject<Element[]> = new Subject<Element[]>();
     isLastPageLoaded: boolean = false;
+    isBeyondLastPage: boolean = false;
     limit: number = 10;
     page: number = 0;
     searchTerm: string = '';
@@ -88,6 +89,7 @@ export class ApiService {
     resetPage(): void {
         this.page = 0;
         this.isLastPageLoaded = false;
+        this.isBeyondLastPage = false;
     }
 
     getToken(): BehaviorSubject<string|null> {
@@ -144,6 +146,10 @@ export class ApiService {
                         this.isLastPageLoaded = true;
                     }
 
+                    if (id === null && elementData.length === 0 && this.page > 0) {
+                        this.isBeyondLastPage = true;
+                    }
+
                     return preparedElements;
                 })
             ).subscribe(
@@ -151,7 +157,7 @@ export class ApiService {
                     this.isLoading$.next(false);
                     this.elements$.next(elements);
                 },
-                error => {
+                () => {
                     this.isLoading$.next(false);
                     this.hasError$.next(true);
                 }
