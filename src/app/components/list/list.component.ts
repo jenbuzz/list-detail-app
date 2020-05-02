@@ -31,7 +31,7 @@ export class ListComponent implements OnInit, HasMetaTags {
 
     ngOnInit(): void {
         this.apiService.getElements();
-        
+
         this.elements$.subscribe(() => {
             if (this.apiService.isBeyondLastPage) {
                 this.apiService.resetPage();
