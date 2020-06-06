@@ -52,7 +52,7 @@ list-detail-app {
             .input-group-append,
             a.btn,
             button {
-                border: 1px solid #ced4da;
+                border: 1px solid #ced4da !important;
             }
 
             .card {
@@ -61,6 +61,13 @@ list-detail-app {
                         color: #000000;
                     }
                 }
+            }
+
+            .form-control {
+                border-top-color: #ced4da;
+                border-bottom-color: #ced4da;
+                border-left-color: #ced4da;
+                background: $element-background-color;
             }
         }
     }
@@ -91,15 +98,18 @@ list-detail-app {
         padding: 0 16px 16px 16px;
 
         .form-control {
-            border-top-color: #ffffff;
-            border-bottom-color: #ffffff;
-            border-left-color: #ffffff;
-            background: #ffffff;
+            border-top-color: $element-color;
+            border-bottom-color: $element-color;
+            border-left-color: $element-color;
+            background: $element-background-color;
         }
 
         .input-group-append {
             background-color: $element-background-color;
+            border: 1px solid $element-color;
             border-radius: 0.25rem;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
             line-height: 1;
 
             .clear {
@@ -135,6 +145,7 @@ list-detail-app {
             width: 100%;
             overflow: hidden;
             background: $element-background-color;
+            border-color: $element-color;
         }
 
         &:hover .dropdown-content {
