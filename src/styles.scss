@@ -90,6 +90,13 @@ list-detail-app {
         background: $default-theme-background-color;
         padding: 0 16px 16px 16px;
 
+        .form-control {
+            border-top-color: #ffffff;
+            border-bottom-color: #ffffff;
+            border-left-color: #ffffff;
+            background: #ffffff;
+        }
+
         .input-group-append {
             background-color: $element-background-color;
             border-radius: 0.25rem;
