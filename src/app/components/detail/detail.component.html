@@ -4,7 +4,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm" *ngIf="(activeElement$ | async) as element">
+    <div class="col-12" *ngIf="(activeElement$ | async) as element">
         <card [element]="element" [showExternalLinkBtn]="true" [showDescription]="true" [showSource]="true"></card>
     </div>
     <div class="col-12">
