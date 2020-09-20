@@ -1,4 +1,4 @@
-import { TestBed, async, tick, fakeAsync } from '@angular/core/testing';
+import { TestBed, waitForAsync, tick, fakeAsync } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { MockConfigService, MockApiService, MockTranslationService } from '@list
 import { routes } from '@listdetailapp/app-routing.module';
 
 describe('AppComponent', () => {
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [
                 BrowserAnimationsModule,
@@ -44,13 +44,13 @@ describe('AppComponent', () => {
         }).compileComponents();
     }));
 
-    it('should create the app', async(() => {
+    it('should create the app', waitForAsync(() => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
     }));
 
-    it('should include a router outlet', async(() => {
+    it('should include a router outlet', waitForAsync(() => {
         const fixture = TestBed.createComponent(AppComponent);
         fixture.detectChanges();
         const dom = fixture.debugElement.nativeElement;

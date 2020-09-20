@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ConfigService, TranslationService, FontAwesomeService } from '@listdetailapp/services';
 import { TranslatePipe } from '@listdetailapp/pipes';
@@ -9,7 +9,7 @@ describe('CardComponent', () => {
     let component: CardComponent;
     let fixture: ComponentFixture<CardComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [
                 CardComponent,

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ApiService, ConfigService, TranslationService } from '@listdetailapp/services';
@@ -11,7 +11,7 @@ describe('PaginationComponent', () => {
     let fixture: ComponentFixture<PaginationComponent>;
     let apiService: MockApiService;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [
                 HttpClientModule,
